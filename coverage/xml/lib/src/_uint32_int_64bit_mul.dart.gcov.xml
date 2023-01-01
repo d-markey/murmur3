@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?xml-stylesheet type="text/xsl" href="../../jgenhtml.xsl"?><coverage branch-rate="NaN" branches-covered="0" branches-valid="0" complexity="0" date="2023-01-01" filename="_uint32_int_64bit_mul.dart" function-rate="NaN" functions-covered="0" functions-valid="0" line-rate="0.8965517" lines-covered="26" lines-valid="29" package="/lib/src" testname="lcov.info" version="1.5">
+    <lines>
+        <line>
+            <code>import 'uint.dart' show IUint32;</code>
+        </line>
+        <line>
+            <code/>
+        </line>
+        <line>
+            <code>/// 32-bit arithmetic based on a 32-bit int value. This implementation uses</code>
+        </line>
+        <line>
+            <code>/// multiplication on 64-bit numbers and is not compatible with browser platforms</code>
+        </line>
+        <line>
+            <code>/// where integer values are safe up to `pow(2, 53)` only.</code>
+        </line>
+        <line>
+            <code>// ignore: camel_case_types</code>
+        </line>
+        <line>
+            <code>class Uint32_int_64bit_mul implements IUint32 {</code>
+        </line>
+        <line>
+            <code>  static const _mask = 0xFFFFFFFF;</code>
+        </line>
+        <line>
+            <code/>
+        </line>
+        <line hits="4">
+            <code>  static int _clamp(int n) =&gt; n &amp; _mask;</code>
+            <hit count="4" name="&lt;unnamed&gt;"/>
+        </line>
+        <line>
+            <code/>
+        </line>
+        <line hits="6">
+            <code>  Uint32_int_64bit_mul(int num) : _num = _clamp(num);</code>
+            <hit count="6" name="&lt;unnamed&gt;"/>
+        </line>
+        <line>
+            <code/>
+        </line>
+        <line hits="2">
+            <code>  @override</code>
+            <hit count="2" name="&lt;unnamed&gt;"/>
+        </line>
+        <line hits="2">
+            <code>  int get value =&gt; _num;</code>
+            <hit count="2" name="&lt;unnamed&gt;"/>
+        </line>
+        <line>
+            <code>  int _num;</code>
+        </line>
+        <line>
+            <code/>
+        </line>
+        <line hits="2">
+            <code>  @override</code>
+            <hit count="2" name="&lt;unnamed&gt;"/>
+        </line>
+        <line hits="0">
+            <code>  int loadLEBytes(List&lt;int&gt; bytes, int offset, {int fromByte = 0}) {</code>
+        </line>
+        <line hits="2">
+            <code>    var idx = offset, len = bytes.length, count = 0;</code>
+            <hit count="2" name="&lt;unnamed&gt;"/>
+        </line>
+        <line hits="2">
+            <code>    if (fromByte == 0) {</code>
+            <hit count="2" name="&lt;unnamed&gt;"/>
+        </line>
+        <line hits="2">
+            <code>      _num = 0;</code>
+            <hit count="2" name="&lt;unnamed&gt;"/>
+        </line>
+        <line>
+            <code>    }</code>
+        </line>
+        <line hits="2">
+            <code>    var n = fromByte * 8;</code>
+            <hit count="2" name="&lt;unnamed&gt;"/>
+        </line>
+        <line hits="4">
+            <code>    while (idx &lt; len &amp;&amp; n &lt; 32) {</code>
+            <hit count="4" name="&lt;unnamed&gt;"/>
+        </line>
+        <line hits="8">
+            <code>      _num |= bytes[idx] &lt;&lt; n;</code>
+            <hit count="8" name="&lt;unnamed&gt;"/>
+        </line>
+        <line hits="2">
+            <code>      count++;</code>
+            <hit count="2" name="&lt;unnamed&gt;"/>
+        </line>
+        <line hits="2">
+            <code>      idx++;</code>
+            <hit count="2" name="&lt;unnamed&gt;"/>
+        </line>
+        <line hits="2">
+            <code>      n += 8;</code>
+            <hit count="2" name="&lt;unnamed&gt;"/>
+        </line>
+        <line>
+            <code>    }</code>
+        </line>
+        <line hits="0">
+            <code>    return count;</code>
+        </line>
+        <line hits="0">
+            <code>  }</code>
+        </line>
+        <line>
+            <code/>
+        </line>
+        <line hits="2">
+            <code>  @override</code>
+            <hit count="2" name="&lt;unnamed&gt;"/>
+        </line>
+        <line hits="10">
+            <code>  void add(IUint32 other) =&gt; _num = _clamp(_num + other.value);</code>
+            <hit count="10" name="&lt;unnamed&gt;"/>
+        </line>
+        <line>
+            <code/>
+        </line>
+        <line hits="2">
+            <code>  @override</code>
+            <hit count="2" name="&lt;unnamed&gt;"/>
+        </line>
+        <line>
+            <code>  // requires 64-bit arithmetic</code>
+        </line>
+        <line hits="10">
+            <code>  void mul(IUint32 other) =&gt; _num = _clamp(_num * other.value);</code>
+            <hit count="10" name="&lt;unnamed&gt;"/>
+        </line>
+        <line>
+            <code/>
+        </line>
+        <line hits="2">
+            <code>  @override</code>
+            <hit count="2" name="&lt;unnamed&gt;"/>
+        </line>
+        <line hits="16">
+            <code>  void rotl(int n) =&gt; _num = _clamp(_num &lt;&lt; n) | (_num &gt;&gt; (32 - n));</code>
+            <hit count="16" name="&lt;unnamed&gt;"/>
+        </line>
+        <line>
+            <code/>
+        </line>
+        <line hits="1">
+            <code>  @override</code>
+            <hit count="1" name="&lt;unnamed&gt;"/>
+        </line>
+        <line hits="4">
+            <code>  void shl(int n) =&gt; _num = _clamp(_num &lt;&lt; n);</code>
+            <hit count="4" name="&lt;unnamed&gt;"/>
+        </line>
+        <line>
+            <code/>
+        </line>
+        <line hits="2">
+            <code>  @override</code>
+            <hit count="2" name="&lt;unnamed&gt;"/>
+        </line>
+        <line hits="6">
+            <code>  void xor(IUint32 other) =&gt; _num ^= other.value;</code>
+            <hit count="6" name="&lt;unnamed&gt;"/>
+        </line>
+        <line>
+            <code/>
+        </line>
+        <line hits="2">
+            <code>  @override</code>
+            <hit count="2" name="&lt;unnamed&gt;"/>
+        </line>
+        <line hits="8">
+            <code>  void xshr(int n) =&gt; _num ^= (_num &gt;&gt; n);</code>
+            <hit count="8" name="&lt;unnamed&gt;"/>
+        </line>
+        <line>
+            <code>}</code>
+        </line>
+        <line>
+            <code/>
+        </line>
+        <line>
+            <code>/// Type definition for platform-specific implementation</code>
+        </line>
+        <line>
+            <code>// ignore: camel_case_types</code>
+        </line>
+        <line>
+            <code>typedef Uint32_int_xplat = Uint32_int_64bit_mul;</code>
+        </line>
+    </lines>
+    <config branch-coverage="true" description-file="false" function-coverage="true" genhtml_hi_limit="90" genhtml_med_limit="75" legend="false" no-sort="false" no-source="false"/>
+    <base href="../../"/>
+    <base href="../../"/>
+</coverage>

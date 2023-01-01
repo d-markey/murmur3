@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?xml-stylesheet type="text/xsl" href="../../jgenhtml.xsl"?><coverage branch-rate="NaN" branches-covered="0" branches-valid="0" complexity="0" date="2023-01-01" filename="_murmur_context_3a.dart" function-rate="NaN" functions-covered="0" functions-valid="0" line-rate="1.0" lines-covered="38" lines-valid="38" package="/lib/src" testname="lcov.info" version="1.5">
+    <lines>
+        <line>
+            <code>part of '_murmur_context.dart';</code>
+        </line>
+        <line>
+            <code/>
+        </line>
+        <line>
+            <code>// ignore: camel_case_types</code>
+        </line>
+        <line>
+            <code>class MurmurContext3a extends MurmurContext&lt;int&gt; {</code>
+        </line>
+        <line hits="3">
+            <code>  MurmurContext3a(this._uint32, int seed) : super(4) {</code>
+            <hit count="3" name="&lt;unnamed&gt;"/>
+        </line>
+        <line hits="4">
+            <code>    _hash = _uint32(seed);</code>
+            <hit count="4" name="&lt;unnamed&gt;"/>
+        </line>
+        <line>
+            <code>  }</code>
+        </line>
+        <line>
+            <code/>
+        </line>
+        <line hits="1">
+            <code>  @override</code>
+            <hit count="1" name="&lt;unnamed&gt;"/>
+        </line>
+        <line hits="5">
+            <code>  int getHash() =&gt; _hash.value;</code>
+            <hit count="5" name="&lt;unnamed&gt;"/>
+        </line>
+        <line>
+            <code/>
+        </line>
+        <line hits="3">
+            <code>  late final IUint32 _hash;</code>
+            <hit count="3" name="&lt;unnamed&gt;"/>
+        </line>
+        <line hits="6">
+            <code>  late final IUint32 _k = _uint32(0);</code>
+            <hit count="6" name="&lt;unnamed&gt;"/>
+        </line>
+        <line>
+            <code/>
+        </line>
+        <line>
+            <code>  final IUint32 Function(int num) _uint32;</code>
+        </line>
+        <line>
+            <code/>
+        </line>
+        <line hits="6">
+            <code>  late final _c1 = _uint32(0xCC9E2D51);</code>
+            <hit count="6" name="&lt;unnamed&gt;"/>
+        </line>
+        <line hits="6">
+            <code>  late final _c2 = _uint32(0x1B873593);</code>
+            <hit count="6" name="&lt;unnamed&gt;"/>
+        </line>
+        <line hits="6">
+            <code>  late final _c3 = _uint32(0xE6546B64);</code>
+            <hit count="6" name="&lt;unnamed&gt;"/>
+        </line>
+        <line hits="6">
+            <code>  late final _c4 = _uint32(0x85EBCA6B);</code>
+            <hit count="6" name="&lt;unnamed&gt;"/>
+        </line>
+        <line hits="6">
+            <code>  late final _c5 = _uint32(0xC2B2AE35);</code>
+            <hit count="6" name="&lt;unnamed&gt;"/>
+        </line>
+        <line>
+            <code/>
+        </line>
+        <line hits="6">
+            <code>  late final _five = _uint32(5);</code>
+            <hit count="6" name="&lt;unnamed&gt;"/>
+        </line>
+        <line>
+            <code/>
+        </line>
+        <line hits="1">
+            <code>  @override</code>
+            <hit count="1" name="&lt;unnamed&gt;"/>
+        </line>
+        <line>
+            <code>  int _loadBlock(List&lt;int&gt; bytes, int offset) =&gt;</code>
+        </line>
+        <line hits="6">
+            <code>      _k.loadLEBytes(bytes, offset, fromByte: _pending);</code>
+            <hit count="6" name="&lt;unnamed&gt;"/>
+        </line>
+        <line>
+            <code/>
+        </line>
+        <line hits="1">
+            <code>  @override</code>
+            <hit count="1" name="&lt;unnamed&gt;"/>
+        </line>
+        <line>
+            <code>  void _processBlock() {</code>
+        </line>
+        <line hits="4">
+            <code>    _k</code>
+            <hit count="4" name="&lt;unnamed&gt;"/>
+        </line>
+        <line hits="5">
+            <code>      ..mul(_c1)</code>
+            <hit count="5" name="&lt;unnamed&gt;"/>
+        </line>
+        <line hits="1">
+            <code>      ..rotl(15)</code>
+            <hit count="1" name="&lt;unnamed&gt;"/>
+        </line>
+        <line hits="5">
+            <code>      ..mul(_c2);</code>
+            <hit count="5" name="&lt;unnamed&gt;"/>
+        </line>
+        <line hits="4">
+            <code>    _hash</code>
+            <hit count="4" name="&lt;unnamed&gt;"/>
+        </line>
+        <line hits="5">
+            <code>      ..xor(_k)</code>
+            <hit count="5" name="&lt;unnamed&gt;"/>
+        </line>
+        <line hits="1">
+            <code>      ..rotl(13)</code>
+            <hit count="1" name="&lt;unnamed&gt;"/>
+        </line>
+        <line hits="2">
+            <code>      ..mul(_five)</code>
+            <hit count="2" name="&lt;unnamed&gt;"/>
+        </line>
+        <line hits="2">
+            <code>      ..add(_c3);</code>
+            <hit count="2" name="&lt;unnamed&gt;"/>
+        </line>
+        <line>
+            <code>  }</code>
+        </line>
+        <line>
+            <code/>
+        </line>
+        <line hits="1">
+            <code>  @override</code>
+            <hit count="1" name="&lt;unnamed&gt;"/>
+        </line>
+        <line>
+            <code>  void _processTail() {</code>
+        </line>
+        <line hits="4">
+            <code>    _k</code>
+            <hit count="4" name="&lt;unnamed&gt;"/>
+        </line>
+        <line hits="5">
+            <code>      ..mul(_c1)</code>
+            <hit count="5" name="&lt;unnamed&gt;"/>
+        </line>
+        <line hits="1">
+            <code>      ..rotl(15)</code>
+            <hit count="1" name="&lt;unnamed&gt;"/>
+        </line>
+        <line hits="5">
+            <code>      ..mul(_c2);</code>
+            <hit count="5" name="&lt;unnamed&gt;"/>
+        </line>
+        <line hits="6">
+            <code>    _hash.xor(_k);</code>
+            <hit count="6" name="&lt;unnamed&gt;"/>
+        </line>
+        <line>
+            <code>  }</code>
+        </line>
+        <line>
+            <code/>
+        </line>
+        <line hits="1">
+            <code>  @override</code>
+            <hit count="1" name="&lt;unnamed&gt;"/>
+        </line>
+        <line>
+            <code>  void _finalize() {</code>
+        </line>
+        <line hits="4">
+            <code>    _hash</code>
+            <hit count="4" name="&lt;unnamed&gt;"/>
+        </line>
+        <line hits="7">
+            <code>      ..xor(_uint32(_length))</code>
+            <hit count="7" name="&lt;unnamed&gt;"/>
+        </line>
+        <line hits="1">
+            <code>      ..xshr(16)</code>
+            <hit count="1" name="&lt;unnamed&gt;"/>
+        </line>
+        <line hits="2">
+            <code>      ..mul(_c4)</code>
+            <hit count="2" name="&lt;unnamed&gt;"/>
+        </line>
+        <line hits="1">
+            <code>      ..xshr(13)</code>
+            <hit count="1" name="&lt;unnamed&gt;"/>
+        </line>
+        <line hits="2">
+            <code>      ..mul(_c5)</code>
+            <hit count="2" name="&lt;unnamed&gt;"/>
+        </line>
+        <line hits="1">
+            <code>      ..xshr(16);</code>
+            <hit count="1" name="&lt;unnamed&gt;"/>
+        </line>
+        <line>
+            <code>  }</code>
+        </line>
+        <line>
+            <code>}</code>
+        </line>
+    </lines>
+    <config branch-coverage="true" description-file="false" function-coverage="true" genhtml_hi_limit="90" genhtml_med_limit="75" legend="false" no-sort="false" no-source="false"/>
+    <base href="../../"/>
+    <base href="../../"/>
+</coverage>

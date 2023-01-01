@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?xml-stylesheet type="text/xsl" href="../../jgenhtml.xsl"?><coverage branch-rate="NaN" branches-covered="0" branches-valid="0" complexity="0" date="2023-01-01" filename="murmur_hash_v3.dart" function-rate="NaN" functions-covered="0" functions-valid="0" line-rate="1.0" lines-covered="17" lines-valid="17" package="/lib/src" testname="lcov.info" version="1.5">
+    <lines>
+        <line>
+            <code>import 'dart:async';</code>
+        </line>
+        <line>
+            <code>import 'dart:typed_data';</code>
+        </line>
+        <line>
+            <code/>
+        </line>
+        <line>
+            <code>import '_murmur_context.dart';</code>
+        </line>
+        <line>
+            <code>import 'type_exception.dart';</code>
+        </line>
+        <line>
+            <code>import 'uint.dart';</code>
+        </line>
+        <line>
+            <code/>
+        </line>
+        <line>
+            <code>/// MurmurHash3 for x64 (Little Endian).</code>
+        </line>
+        <line>
+            <code>/// Reference: https://en.wikipedia.org/wiki/MurmurHash</code>
+        </line>
+        <line>
+            <code>class MurmurHashV3 {</code>
+        </line>
+        <line>
+            <code>  ///////////////////////////////////</code>
+        </line>
+        <line>
+            <code>  //</code>
+        </line>
+        <line>
+            <code>  // 32-bit implementation (murmur3a)</code>
+        </line>
+        <line>
+            <code>  //</code>
+        </line>
+        <line>
+            <code>  ///////////////////////////////////</code>
+        </line>
+        <line>
+            <code/>
+        </line>
+        <line>
+            <code>  /// Sets the IUInt64 implementation to use. Defaults to [Uint32_int_xplat.new].</code>
+        </line>
+        <line hits="1">
+            <code>  static void useUInt32Impl(IUint32 Function(int n) uint32) =&gt; _uint32 = uint32;</code>
+            <hit count="1" name="&lt;unnamed&gt;"/>
+        </line>
+        <line>
+            <code/>
+        </line>
+        <line hits="1">
+            <code>  static IUint32 Function(int n) _uint32 = Uint32_int_xplat.new;</code>
+            <hit count="1" name="&lt;unnamed&gt;"/>
+        </line>
+        <line>
+            <code/>
+        </line>
+        <line>
+            <code>  /// MurmurHash3 32-bit implementation.</code>
+        </line>
+        <line hits="3">
+            <code>  static FutureOr&lt;int&gt; murmur3a(dynamic data, {int seed = 0}) {</code>
+            <hit count="3" name="&lt;unnamed&gt;"/>
+        </line>
+        <line hits="3">
+            <code>    final context = MurmurContext3a(_uint32, seed);</code>
+            <hit count="3" name="&lt;unnamed&gt;"/>
+        </line>
+        <line hits="2">
+            <code>    return (data is Stream)</code>
+            <hit count="2" name="&lt;unnamed&gt;"/>
+        </line>
+        <line hits="1">
+            <code>        ? context.processStream(data)</code>
+            <hit count="1" name="&lt;unnamed&gt;"/>
+        </line>
+        <line hits="1">
+            <code>        : context.process(data);</code>
+            <hit count="1" name="&lt;unnamed&gt;"/>
+        </line>
+        <line hits="1">
+            <code>  }</code>
+            <hit count="1" name="&lt;unnamed&gt;"/>
+        </line>
+        <line>
+            <code/>
+        </line>
+        <line>
+            <code>  ////////////////////////////////////////</code>
+        </line>
+        <line>
+            <code>  //</code>
+        </line>
+        <line>
+            <code>  // 128-bit x64 implementation (murmur3f)</code>
+        </line>
+        <line>
+            <code>  //</code>
+        </line>
+        <line>
+            <code>  ////////////////////////////////////////</code>
+        </line>
+        <line>
+            <code/>
+        </line>
+        <line>
+            <code>  /// Sets the IUInt64 implementation to use. Defaults to [Uint64_int.new].</code>
+        </line>
+        <line hits="1">
+            <code>  static void useUInt64Impl(IUint64 Function(dynamic n) uint64) =&gt;</code>
+            <hit count="1" name="&lt;unnamed&gt;"/>
+        </line>
+        <line>
+            <code>      _uint64 = uint64;</code>
+        </line>
+        <line>
+            <code/>
+        </line>
+        <line hits="1">
+            <code>  static IUint64 Function(dynamic n) _uint64 = Uint64_int.new;</code>
+            <hit count="1" name="&lt;unnamed&gt;"/>
+        </line>
+        <line>
+            <code/>
+        </line>
+        <line>
+            <code>  /// MurmurHash3 128-bit x64 implementation, converting the input data via [_getBytes].</code>
+        </line>
+        <line>
+            <code>  // ignore: non_constant_identifier_names</code>
+        </line>
+        <line hits="3">
+            <code>  static FutureOr&lt;BigInt&gt; murmur3f(dynamic data, {int seed = 0}) {</code>
+            <hit count="3" name="&lt;unnamed&gt;"/>
+        </line>
+        <line hits="3">
+            <code>    final context = MurmurContext3f(_uint64, seed);</code>
+            <hit count="3" name="&lt;unnamed&gt;"/>
+        </line>
+        <line hits="2">
+            <code>    return (data is Stream)</code>
+            <hit count="2" name="&lt;unnamed&gt;"/>
+        </line>
+        <line hits="1">
+            <code>        ? context.processStream(data)</code>
+            <hit count="1" name="&lt;unnamed&gt;"/>
+        </line>
+        <line hits="1">
+            <code>        : context.process(data);</code>
+            <hit count="1" name="&lt;unnamed&gt;"/>
+        </line>
+        <line hits="1">
+            <code>  }</code>
+            <hit count="1" name="&lt;unnamed&gt;"/>
+        </line>
+        <line>
+            <code/>
+        </line>
+        <line>
+            <code>  /// Get bytes from [data]. Conversion depends on [data]'s type:</code>
+        </line>
+        <line>
+            <code>  /// * `null` --&gt; returns `[]`.</code>
+        </line>
+        <line>
+            <code>  /// * [Uint8List] --&gt; returns [data] as is.</code>
+        </line>
+        <line>
+            <code>  /// * [Iterable]&lt;[num]&gt; --&gt; returns [data] as bytes, throwing a [TypeException] if data contains any non-byte value.</code>
+        </line>
+        <line>
+            <code>  /// * [num] --&gt; returns an array containing [data] if it is a byte, otherwise throws a [TypeException].</code>
+        </line>
+        <line>
+            <code>  /// * [bool] --&gt; returns `[1]` if [data] is `true`, `[0]` otherwise.</code>
+        </line>
+        <line>
+            <code>  /// * [String] --&gt; returns an array containing [data]'s UTF-8 bytes.</code>
+        </line>
+        <line>
+            <code>  /// * [Iterable] --&gt; returns an array containing all bytes obtained by applying [getBytes] to each item in [data].</code>
+        </line>
+        <line>
+            <code>  /// Otherwise, a [TypeException] is thrown.</code>
+        </line>
+        <line hits="3">
+            <code>  static Uint8List getBytes(dynamic data) =&gt; MurmurContext.getBytes(data);</code>
+            <hit count="3" name="&lt;unnamed&gt;"/>
+        </line>
+        <line>
+            <code>}</code>
+        </line>
+    </lines>
+    <config branch-coverage="true" description-file="false" function-coverage="true" genhtml_hi_limit="90" genhtml_med_limit="75" legend="false" no-sort="false" no-source="false"/>
+    <base href="../../"/>
+    <base href="../../"/>
+</coverage>

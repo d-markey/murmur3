@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?xml-stylesheet type="text/xsl" href="../../jgenhtml.xsl"?><coverage branch-rate="NaN" branches-covered="0" branches-valid="0" complexity="0" date="2023-01-01" filename="type_exception.dart" function-rate="NaN" functions-covered="0" functions-valid="0" line-rate="0.75" lines-covered="3" lines-valid="4" package="/lib/src" testname="lcov.info" version="1.5">
+    <lines>
+        <line>
+            <code>/// Exception thrown when the data type is not supported.</code>
+        </line>
+        <line>
+            <code>class TypeException implements Exception {</code>
+        </line>
+        <line hits="4">
+            <code>  TypeException([this.message = '']);</code>
+            <hit count="4" name="&lt;unnamed&gt;"/>
+        </line>
+        <line>
+            <code/>
+        </line>
+        <line>
+            <code>  final String message;</code>
+        </line>
+        <line>
+            <code/>
+        </line>
+        <line hits="2">
+            <code>  @override</code>
+            <hit count="2" name="&lt;unnamed&gt;"/>
+        </line>
+        <line hits="0">
+            <code>  String toString() =&gt;</code>
+        </line>
+        <line hits="8">
+            <code>      message.isEmpty ? 'TypeException' : 'TypeException: $message';</code>
+            <hit count="8" name="&lt;unnamed&gt;"/>
+        </line>
+        <line>
+            <code>}</code>
+        </line>
+    </lines>
+    <config branch-coverage="true" description-file="false" function-coverage="true" genhtml_hi_limit="90" genhtml_med_limit="75" legend="false" no-sort="false" no-source="false"/>
+    <base href="../../"/>
+    <base href="../../"/>
+</coverage>

@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?xml-stylesheet type="text/xsl" href="../../jgenhtml.xsl"?><coverage branch-rate="NaN" branches-covered="0" branches-valid="0" complexity="0" date="2023-01-01" filename="_uint64_bigint.dart" function-rate="NaN" functions-covered="0" functions-valid="0" line-rate="1.0" lines-covered="46" lines-valid="46" package="/lib/src" testname="lcov.info" version="1.5">
+    <lines>
+        <line>
+            <code>import 'uint.dart' show IUint64;</code>
+        </line>
+        <line>
+            <code/>
+        </line>
+        <line>
+            <code>/// 64-bit arithmetic based on a [BigInt] value.</code>
+        </line>
+        <line>
+            <code>// ignore: camel_case_types</code>
+        </line>
+        <line>
+            <code>class Uint64_BigInt implements IUint64 {</code>
+        </line>
+        <line hits="5">
+            <code>  static final _mask = BigInt.parse('0xFFFFFFFFFFFFFFFF');</code>
+            <hit count="5" name="&lt;unnamed&gt;"/>
+        </line>
+        <line hits="5">
+            <code>  static final _loMask = BigInt.parse('0x00000000FFFFFFFF');</code>
+            <hit count="5" name="&lt;unnamed&gt;"/>
+        </line>
+        <line hits="5">
+            <code>  static final _hiMask = BigInt.parse('0xFFFFFFFF00000000');</code>
+            <hit count="5" name="&lt;unnamed&gt;"/>
+        </line>
+        <line>
+            <code/>
+        </line>
+        <line hits="2">
+            <code>  static BigInt _clamp(BigInt n) =&gt;</code>
+            <hit count="2" name="&lt;unnamed&gt;"/>
+        </line>
+        <line hits="7">
+            <code>      (BigInt.zero &lt;= n &amp;&amp; n &lt;= _mask) ? n : (n &amp; _mask);</code>
+            <hit count="7" name="&lt;unnamed&gt;"/>
+        </line>
+        <line>
+            <code/>
+        </line>
+        <line hits="2">
+            <code>  Uint64_BigInt(dynamic num)</code>
+            <hit count="2" name="&lt;unnamed&gt;"/>
+        </line>
+        <line hits="2">
+            <code>      : _num = (num is BigInt)</code>
+            <hit count="2" name="&lt;unnamed&gt;"/>
+        </line>
+        <line>
+            <code>            ? num</code>
+        </line>
+        <line hits="4">
+            <code>            : _clamp((num is String) ? BigInt.parse(num) : BigInt.from(num));</code>
+            <hit count="4" name="&lt;unnamed&gt;"/>
+        </line>
+        <line>
+            <code/>
+        </line>
+        <line hits="1">
+            <code>  @override</code>
+            <hit count="1" name="&lt;unnamed&gt;"/>
+        </line>
+        <line hits="2">
+            <code>  BigInt get value =&gt; _num;</code>
+            <hit count="2" name="&lt;unnamed&gt;"/>
+        </line>
+        <line hits="1">
+            <code>  BigInt _num;</code>
+            <hit count="1" name="&lt;unnamed&gt;"/>
+        </line>
+        <line>
+            <code/>
+        </line>
+        <line hits="1">
+            <code>  @override</code>
+            <hit count="1" name="&lt;unnamed&gt;"/>
+        </line>
+        <line hits="1">
+            <code>  int loadLEBytes(List&lt;int&gt; bytes, int offset, {int fromByte = 0}) {</code>
+            <hit count="1" name="&lt;unnamed&gt;"/>
+        </line>
+        <line hits="2">
+            <code>    var idx = offset, len = bytes.length, count = 0;</code>
+            <hit count="2" name="&lt;unnamed&gt;"/>
+        </line>
+        <line>
+            <code>    int lo, hi;</code>
+        </line>
+        <line hits="2">
+            <code>    if (fromByte == 0) {</code>
+            <hit count="2" name="&lt;unnamed&gt;"/>
+        </line>
+        <line>
+            <code>      lo = 0;</code>
+        </line>
+        <line>
+            <code>      hi = 0;</code>
+        </line>
+        <line>
+            <code>    } else {</code>
+        </line>
+        <line hits="5">
+            <code>      lo = (_num &amp; _loMask).toInt();</code>
+            <hit count="5" name="&lt;unnamed&gt;"/>
+        </line>
+        <line hits="6">
+            <code>      hi = ((_num &amp; _hiMask) &gt;&gt; 32).toInt();</code>
+            <hit count="6" name="&lt;unnamed&gt;"/>
+        </line>
+        <line>
+            <code>    }</code>
+        </line>
+        <line hits="2">
+            <code>    if (fromByte &lt; 4) {</code>
+            <hit count="2" name="&lt;unnamed&gt;"/>
+        </line>
+        <line hits="2">
+            <code>      var n = fromByte * 8;</code>
+            <hit count="2" name="&lt;unnamed&gt;"/>
+        </line>
+        <line hits="3">
+            <code>      while (idx &lt; len &amp;&amp; n &lt; 32) {</code>
+            <hit count="3" name="&lt;unnamed&gt;"/>
+        </line>
+        <line hits="4">
+            <code>        lo |= bytes[idx] &lt;&lt; n;</code>
+            <hit count="4" name="&lt;unnamed&gt;"/>
+        </line>
+        <line hits="2">
+            <code>        count++;</code>
+            <hit count="2" name="&lt;unnamed&gt;"/>
+        </line>
+        <line hits="2">
+            <code>        idx++;</code>
+            <hit count="2" name="&lt;unnamed&gt;"/>
+        </line>
+        <line hits="2">
+            <code>        n += 8;</code>
+            <hit count="2" name="&lt;unnamed&gt;"/>
+        </line>
+        <line>
+            <code>      }</code>
+        </line>
+        <line>
+            <code>      fromByte = 4;</code>
+        </line>
+        <line>
+            <code>    }</code>
+        </line>
+        <line hits="1">
+            <code>    if (fromByte &gt;= 4) {</code>
+            <hit count="1" name="&lt;unnamed&gt;"/>
+        </line>
+        <line hits="3">
+            <code>      var n = (fromByte - 4) * 8;</code>
+            <hit count="3" name="&lt;unnamed&gt;"/>
+        </line>
+        <line hits="3">
+            <code>      while (idx &lt; len &amp;&amp; n &lt; 32) {</code>
+            <hit count="3" name="&lt;unnamed&gt;"/>
+        </line>
+        <line hits="4">
+            <code>        hi |= bytes[idx] &lt;&lt; n;</code>
+            <hit count="4" name="&lt;unnamed&gt;"/>
+        </line>
+        <line hits="2">
+            <code>        count++;</code>
+            <hit count="2" name="&lt;unnamed&gt;"/>
+        </line>
+        <line hits="2">
+            <code>        idx++;</code>
+            <hit count="2" name="&lt;unnamed&gt;"/>
+        </line>
+        <line hits="2">
+            <code>        n += 8;</code>
+            <hit count="2" name="&lt;unnamed&gt;"/>
+        </line>
+        <line>
+            <code>      }</code>
+        </line>
+        <line>
+            <code>    }</code>
+        </line>
+        <line hits="6">
+            <code>    _num = (BigInt.from(hi) &lt;&lt; 32) | BigInt.from(lo);</code>
+            <hit count="6" name="&lt;unnamed&gt;"/>
+        </line>
+        <line hits="1">
+            <code>    return count;</code>
+            <hit count="1" name="&lt;unnamed&gt;"/>
+        </line>
+        <line hits="1">
+            <code>  }</code>
+            <hit count="1" name="&lt;unnamed&gt;"/>
+        </line>
+        <line>
+            <code/>
+        </line>
+        <line hits="1">
+            <code>  @override</code>
+            <hit count="1" name="&lt;unnamed&gt;"/>
+        </line>
+        <line hits="6">
+            <code>  void add(IUint64 other) =&gt; _num = _clamp(_num + other.value);</code>
+            <hit count="6" name="&lt;unnamed&gt;"/>
+        </line>
+        <line>
+            <code/>
+        </line>
+        <line hits="1">
+            <code>  @override</code>
+            <hit count="1" name="&lt;unnamed&gt;"/>
+        </line>
+        <line hits="6">
+            <code>  void mul(IUint64 other) =&gt; _num = _clamp(_num * other.value);</code>
+            <hit count="6" name="&lt;unnamed&gt;"/>
+        </line>
+        <line>
+            <code/>
+        </line>
+        <line hits="1">
+            <code>  @override</code>
+            <hit count="1" name="&lt;unnamed&gt;"/>
+        </line>
+        <line hits="9">
+            <code>  void rotl(int n) =&gt; _num = _clamp(_num &lt;&lt; n | (_num &gt;&gt; (64 - n)));</code>
+            <hit count="9" name="&lt;unnamed&gt;"/>
+        </line>
+        <line>
+            <code/>
+        </line>
+        <line hits="1">
+            <code>  @override</code>
+            <hit count="1" name="&lt;unnamed&gt;"/>
+        </line>
+        <line hits="4">
+            <code>  void xor(IUint64 other) =&gt; _num ^= other.value;</code>
+            <hit count="4" name="&lt;unnamed&gt;"/>
+        </line>
+        <line>
+            <code/>
+        </line>
+        <line hits="1">
+            <code>  @override</code>
+            <hit count="1" name="&lt;unnamed&gt;"/>
+        </line>
+        <line hits="5">
+            <code>  void shl(int n) =&gt; _num = _clamp(_num &lt;&lt; n);</code>
+            <hit count="5" name="&lt;unnamed&gt;"/>
+        </line>
+        <line>
+            <code/>
+        </line>
+        <line hits="1">
+            <code>  @override</code>
+            <hit count="1" name="&lt;unnamed&gt;"/>
+        </line>
+        <line hits="5">
+            <code>  void xshr(int n) =&gt; _num ^= (_num &gt;&gt; n);</code>
+            <hit count="5" name="&lt;unnamed&gt;"/>
+        </line>
+        <line>
+            <code>}</code>
+        </line>
+    </lines>
+    <config branch-coverage="true" description-file="false" function-coverage="true" genhtml_hi_limit="90" genhtml_med_limit="75" legend="false" no-sort="false" no-source="false"/>
+    <base href="../../"/>
+    <base href="../../"/>
+</coverage>
