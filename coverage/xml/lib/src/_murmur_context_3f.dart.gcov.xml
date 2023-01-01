@@ -35,28 +35,28 @@
             <code>  @override</code>
             <hit count="1" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="8">
+        <line hits="7">
             <code>  BigInt getHash() =&gt; (_hash1.value &lt;&lt; 64) | _hash2.value;</code>
-            <hit count="8" name="&lt;unnamed&gt;"/>
+            <hit count="7" name="&lt;unnamed&gt;"/>
         </line>
         <line>
             <code/>
         </line>
-        <line hits="2">
+        <line hits="1">
             <code>  late final IUint64 _hash1;</code>
-            <hit count="2" name="&lt;unnamed&gt;"/>
+            <hit count="1" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="2">
+        <line hits="1">
             <code>  late final IUint64 _hash2;</code>
-            <hit count="2" name="&lt;unnamed&gt;"/>
+            <hit count="1" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="5">
+        <line hits="4">
             <code>  late final IUint64 _k1 = _uint64(0);</code>
-            <hit count="5" name="&lt;unnamed&gt;"/>
+            <hit count="4" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="5">
+        <line hits="4">
             <code>  late final IUint64 _k2 = _uint64(0);</code>
-            <hit count="5" name="&lt;unnamed&gt;"/>
+            <hit count="4" name="&lt;unnamed&gt;"/>
         </line>
         <line>
             <code/>
@@ -67,36 +67,36 @@
         <line>
             <code/>
         </line>
-        <line hits="5">
+        <line hits="4">
             <code>  late final _c1 = _uint64('0x87C37B91114253D5');</code>
-            <hit count="5" name="&lt;unnamed&gt;"/>
+            <hit count="4" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="5">
+        <line hits="4">
             <code>  late final _c2 = _uint64('0x4CF5AD432745937F');</code>
-            <hit count="5" name="&lt;unnamed&gt;"/>
+            <hit count="4" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="5">
+        <line hits="4">
             <code>  late final _c3 = _uint64(0x52DCE729);</code>
-            <hit count="5" name="&lt;unnamed&gt;"/>
+            <hit count="4" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="5">
+        <line hits="4">
             <code>  late final _c4 = _uint64(0x38495AB5);</code>
-            <hit count="5" name="&lt;unnamed&gt;"/>
+            <hit count="4" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="5">
+        <line hits="4">
             <code>  late final _c5 = _uint64('0xFF51AFD7ED558CCD');</code>
-            <hit count="5" name="&lt;unnamed&gt;"/>
+            <hit count="4" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="5">
+        <line hits="4">
             <code>  late final _c6 = _uint64('0xC4CEB9FE1A85EC53');</code>
-            <hit count="5" name="&lt;unnamed&gt;"/>
+            <hit count="4" name="&lt;unnamed&gt;"/>
         </line>
         <line>
             <code/>
         </line>
-        <line hits="5">
+        <line hits="4">
             <code>  late final _five = _uint64(5);</code>
-            <hit count="5" name="&lt;unnamed&gt;"/>
+            <hit count="4" name="&lt;unnamed&gt;"/>
         </line>
         <line>
             <code/>
@@ -111,17 +111,17 @@
         <line>
             <code>    var count = 0;</code>
         </line>
-        <line hits="4">
+        <line hits="3">
             <code>    if (_pending &lt; 8) {</code>
-            <hit count="4" name="&lt;unnamed&gt;"/>
+            <hit count="3" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="6">
+        <line hits="5">
             <code>      count += _k1.loadLEBytes(bytes, offset, fromByte: _pending);</code>
-            <hit count="6" name="&lt;unnamed&gt;"/>
+            <hit count="5" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="8">
+        <line hits="7">
             <code>      count += _k2.loadLEBytes(bytes, offset + 8 - _pending);</code>
-            <hit count="8" name="&lt;unnamed&gt;"/>
+            <hit count="7" name="&lt;unnamed&gt;"/>
         </line>
         <line>
             <code>    } else {</code>
@@ -149,29 +149,29 @@
         <line>
             <code>  void _processBlock() {</code>
         </line>
-        <line hits="3">
+        <line hits="2">
             <code>    _k1</code>
-            <hit count="3" name="&lt;unnamed&gt;"/>
+            <hit count="2" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="4">
+        <line hits="3">
             <code>      ..mul(_c1)</code>
-            <hit count="4" name="&lt;unnamed&gt;"/>
+            <hit count="3" name="&lt;unnamed&gt;"/>
         </line>
         <line hits="1">
             <code>      ..rotl(31)</code>
             <hit count="1" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="4">
-            <code>      ..mul(_c2);</code>
-            <hit count="4" name="&lt;unnamed&gt;"/>
-        </line>
         <line hits="3">
-            <code>    _hash1</code>
+            <code>      ..mul(_c2);</code>
             <hit count="3" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="4">
+        <line hits="2">
+            <code>    _hash1</code>
+            <hit count="2" name="&lt;unnamed&gt;"/>
+        </line>
+        <line hits="3">
             <code>      ..xor(_k1)</code>
-            <hit count="4" name="&lt;unnamed&gt;"/>
+            <hit count="3" name="&lt;unnamed&gt;"/>
         </line>
         <line hits="1">
             <code>      ..rotl(27)</code>
@@ -181,9 +181,9 @@
             <code>      ..add(_hash2)</code>
             <hit count="2" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="4">
+        <line hits="3">
             <code>      ..mul(_five)</code>
-            <hit count="4" name="&lt;unnamed&gt;"/>
+            <hit count="3" name="&lt;unnamed&gt;"/>
         </line>
         <line hits="2">
             <code>      ..add(_c3);</code>
@@ -192,29 +192,29 @@
         <line>
             <code/>
         </line>
-        <line hits="3">
+        <line hits="2">
             <code>    _k2</code>
-            <hit count="3" name="&lt;unnamed&gt;"/>
+            <hit count="2" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="4">
+        <line hits="3">
             <code>      ..mul(_c2)</code>
-            <hit count="4" name="&lt;unnamed&gt;"/>
+            <hit count="3" name="&lt;unnamed&gt;"/>
         </line>
         <line hits="1">
             <code>      ..rotl(33)</code>
             <hit count="1" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="4">
-            <code>      ..mul(_c1);</code>
-            <hit count="4" name="&lt;unnamed&gt;"/>
-        </line>
         <line hits="3">
-            <code>    _hash2</code>
+            <code>      ..mul(_c1);</code>
             <hit count="3" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="4">
+        <line hits="2">
+            <code>    _hash2</code>
+            <hit count="2" name="&lt;unnamed&gt;"/>
+        </line>
+        <line hits="3">
             <code>      ..xor(_k2)</code>
-            <hit count="4" name="&lt;unnamed&gt;"/>
+            <hit count="3" name="&lt;unnamed&gt;"/>
         </line>
         <line hits="1">
             <code>      ..rotl(31)</code>
@@ -224,9 +224,9 @@
             <code>      ..add(_hash1)</code>
             <hit count="2" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="4">
+        <line hits="3">
             <code>      ..mul(_five)</code>
-            <hit count="4" name="&lt;unnamed&gt;"/>
+            <hit count="3" name="&lt;unnamed&gt;"/>
         </line>
         <line hits="2">
             <code>      ..add(_c4);</code>
@@ -245,48 +245,48 @@
         <line>
             <code>  void _processTail() {</code>
         </line>
-        <line hits="3">
+        <line hits="2">
             <code>    _k2</code>
-            <hit count="3" name="&lt;unnamed&gt;"/>
+            <hit count="2" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="4">
+        <line hits="3">
             <code>      ..mul(_c2)</code>
-            <hit count="4" name="&lt;unnamed&gt;"/>
+            <hit count="3" name="&lt;unnamed&gt;"/>
         </line>
         <line hits="1">
             <code>      ..rotl(33)</code>
             <hit count="1" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="4">
+        <line hits="3">
             <code>      ..mul(_c1);</code>
-            <hit count="4" name="&lt;unnamed&gt;"/>
+            <hit count="3" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="5">
+        <line hits="4">
             <code>    _hash2.xor(_k2);</code>
-            <hit count="5" name="&lt;unnamed&gt;"/>
+            <hit count="4" name="&lt;unnamed&gt;"/>
         </line>
         <line>
             <code/>
         </line>
-        <line hits="3">
+        <line hits="2">
             <code>    _k1</code>
-            <hit count="3" name="&lt;unnamed&gt;"/>
+            <hit count="2" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="4">
+        <line hits="3">
             <code>      ..mul(_c1)</code>
-            <hit count="4" name="&lt;unnamed&gt;"/>
+            <hit count="3" name="&lt;unnamed&gt;"/>
         </line>
         <line hits="1">
             <code>      ..rotl(31)</code>
             <hit count="1" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="4">
+        <line hits="3">
             <code>      ..mul(_c2);</code>
-            <hit count="4" name="&lt;unnamed&gt;"/>
+            <hit count="3" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="5">
+        <line hits="4">
             <code>    _hash1.xor(_k1);</code>
-            <hit count="5" name="&lt;unnamed&gt;"/>
+            <hit count="4" name="&lt;unnamed&gt;"/>
         </line>
         <line>
             <code>  }</code>
@@ -301,41 +301,41 @@
         <line>
             <code>  void _finalize() {</code>
         </line>
-        <line hits="5">
+        <line hits="4">
             <code>    final l = _uint64(_length);</code>
-            <hit count="5" name="&lt;unnamed&gt;"/>
+            <hit count="4" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="4">
+        <line hits="3">
             <code>    _hash1.xor(l);</code>
-            <hit count="4" name="&lt;unnamed&gt;"/>
+            <hit count="3" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="4">
+        <line hits="3">
             <code>    _hash2.xor(l);</code>
-            <hit count="4" name="&lt;unnamed&gt;"/>
-        </line>
-        <line hits="5">
-            <code>    _hash1.add(_hash2);</code>
-            <hit count="5" name="&lt;unnamed&gt;"/>
-        </line>
-        <line hits="5">
-            <code>    _hash2.add(_hash1);</code>
-            <hit count="5" name="&lt;unnamed&gt;"/>
+            <hit count="3" name="&lt;unnamed&gt;"/>
         </line>
         <line hits="4">
+            <code>    _hash1.add(_hash2);</code>
+            <hit count="4" name="&lt;unnamed&gt;"/>
+        </line>
+        <line hits="4">
+            <code>    _hash2.add(_hash1);</code>
+            <hit count="4" name="&lt;unnamed&gt;"/>
+        </line>
+        <line hits="3">
             <code>    _mix(_hash1);</code>
+            <hit count="3" name="&lt;unnamed&gt;"/>
+        </line>
+        <line hits="3">
+            <code>    _mix(_hash2);</code>
+            <hit count="3" name="&lt;unnamed&gt;"/>
+        </line>
+        <line hits="4">
+            <code>    _hash1.add(_hash2);</code>
             <hit count="4" name="&lt;unnamed&gt;"/>
         </line>
         <line hits="4">
-            <code>    _mix(_hash2);</code>
-            <hit count="4" name="&lt;unnamed&gt;"/>
-        </line>
-        <line hits="5">
-            <code>    _hash1.add(_hash2);</code>
-            <hit count="5" name="&lt;unnamed&gt;"/>
-        </line>
-        <line hits="5">
             <code>    _hash2.add(_hash1);</code>
-            <hit count="5" name="&lt;unnamed&gt;"/>
+            <hit count="4" name="&lt;unnamed&gt;"/>
         </line>
         <line>
             <code>  }</code>
@@ -343,9 +343,9 @@
         <line>
             <code/>
         </line>
-        <line hits="3">
+        <line hits="2">
             <code>  void _mix(IUint64 hash) =&gt; hash</code>
-            <hit count="3" name="&lt;unnamed&gt;"/>
+            <hit count="2" name="&lt;unnamed&gt;"/>
         </line>
         <line hits="1">
             <code>    ..xshr(33)</code>
@@ -363,9 +363,9 @@
             <code>    ..mul(_c6)</code>
             <hit count="2" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="3">
+        <line hits="2">
             <code>    ..xshr(33);</code>
-            <hit count="3" name="&lt;unnamed&gt;"/>
+            <hit count="2" name="&lt;unnamed&gt;"/>
         </line>
         <line>
             <code>}</code>

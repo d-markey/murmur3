@@ -118,46 +118,46 @@
                     <td>19</td><td></td><td>1</td><td><code>  @override</code></td>
                 </tr>
                 <tr class="lineCov" title="Line 20" id="line20">
-                    <td>20</td><td></td><td>4</td><td><code>  int loadLEBytes(List&lt;int&gt; bytes, int offset, {int fromByte = 0}) {</code></td>
+                    <td>20</td><td></td><td>2</td><td><code>  int loadLEBytes(List&lt;int&gt; bytes, int offset, {int fromByte = 0}) {</code></td>
                 </tr>
                 <tr class="lineCov" title="Line 21" id="line21">
-                    <td>21</td><td></td><td>5</td><td><code>    var idx = offset, len = bytes.length, count = 0;</code></td>
+                    <td>21</td><td></td><td>3</td><td><code>    var idx = offset, len = bytes.length, count = 0;</code></td>
                 </tr>
                 <tr class="lineCov" title="Line 22" id="line22">
-                    <td>22</td><td></td><td>5</td><td><code>    if (fromByte == 0) {</code></td>
+                    <td>22</td><td></td><td>3</td><td><code>    if (fromByte == 0) {</code></td>
                 </tr>
                 <tr class="lineCov" title="Line 23" id="line23">
-                    <td>23</td><td></td><td>5</td><td><code>      _num = 0;</code></td>
+                    <td>23</td><td></td><td>3</td><td><code>      _num = 0;</code></td>
                 </tr>
                 <tr class="noop" title="Line 24" id="line24">
                     <td>24</td><td></td><td></td><td><code>    }</code></td>
                 </tr>
                 <tr class="lineCov" title="Line 25" id="line25">
-                    <td>25</td><td></td><td>5</td><td><code>    var n = fromByte * 8;</code></td>
+                    <td>25</td><td></td><td>3</td><td><code>    var n = fromByte * 8;</code></td>
                 </tr>
                 <tr class="lineCov" title="Line 26" id="line26">
-                    <td>26</td><td></td><td>6</td><td><code>    while (idx &lt; len &amp;&amp; n &lt; 32) {</code></td>
+                    <td>26</td><td></td><td>4</td><td><code>    while (idx &lt; len &amp;&amp; n &lt; 32) {</code></td>
                 </tr>
                 <tr class="lineCov" title="Line 27" id="line27">
-                    <td>27</td><td></td><td>8</td><td><code>      _num |= bytes[idx] &lt;&lt; n;</code></td>
+                    <td>27</td><td></td><td>6</td><td><code>      _num |= bytes[idx] &lt;&lt; n;</code></td>
                 </tr>
                 <tr class="lineCov" title="Line 28" id="line28">
-                    <td>28</td><td></td><td>5</td><td><code>      count++;</code></td>
+                    <td>28</td><td></td><td>3</td><td><code>      count++;</code></td>
                 </tr>
                 <tr class="lineCov" title="Line 29" id="line29">
-                    <td>29</td><td></td><td>5</td><td><code>      idx++;</code></td>
+                    <td>29</td><td></td><td>3</td><td><code>      idx++;</code></td>
                 </tr>
                 <tr class="lineCov" title="Line 30" id="line30">
-                    <td>30</td><td></td><td>5</td><td><code>      n += 8;</code></td>
+                    <td>30</td><td></td><td>3</td><td><code>      n += 8;</code></td>
                 </tr>
                 <tr class="noop" title="Line 31" id="line31">
                     <td>31</td><td></td><td></td><td><code>    }</code></td>
                 </tr>
                 <tr class="lineCov" title="Line 32" id="line32">
-                    <td>32</td><td></td><td>4</td><td><code>    return count;</code></td>
+                    <td>32</td><td></td><td>2</td><td><code>    return count;</code></td>
                 </tr>
                 <tr class="lineCov" title="Line 33" id="line33">
-                    <td>33</td><td></td><td>4</td><td><code>  }</code></td>
+                    <td>33</td><td></td><td>2</td><td><code>  }</code></td>
                 </tr>
                 <tr class="noop" title="Line 34" id="line34">
                     <td>34</td><td></td><td></td><td><code></code></td>

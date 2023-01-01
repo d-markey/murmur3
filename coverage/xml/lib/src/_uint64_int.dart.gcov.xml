@@ -48,24 +48,24 @@
         <line>
             <code/>
         </line>
-        <line hits="11">
+        <line hits="10">
             <code>  static int _lo32(BigInt n) =&gt; (n &amp; _maskLo32).toInt();</code>
-            <hit count="11" name="&lt;unnamed&gt;"/>
+            <hit count="10" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="13">
+        <line hits="12">
             <code>  static int _hi32(BigInt n) =&gt; ((n &amp; _maskHi32) &gt;&gt; 32).toInt();</code>
-            <hit count="13" name="&lt;unnamed&gt;"/>
+            <hit count="12" name="&lt;unnamed&gt;"/>
         </line>
         <line>
             <code/>
         </line>
-        <line hits="5">
+        <line hits="4">
             <code>  Uint64_int(dynamic num) {</code>
-            <hit count="5" name="&lt;unnamed&gt;"/>
+            <hit count="4" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="5">
+        <line hits="4">
             <code>    final n = (num is BigInt)</code>
-            <hit count="5" name="&lt;unnamed&gt;"/>
+            <hit count="4" name="&lt;unnamed&gt;"/>
         </line>
         <line>
             <code>        ? num</code>
@@ -78,17 +78,17 @@
             <code>            ? BigInt.parse(num)</code>
             <hit count="1" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="5">
+        <line hits="4">
             <code>            : BigInt.from(num);</code>
-            <hit count="5" name="&lt;unnamed&gt;"/>
+            <hit count="4" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="7">
+        <line hits="6">
             <code>    _lo = _lo32(n);</code>
-            <hit count="7" name="&lt;unnamed&gt;"/>
+            <hit count="6" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="7">
+        <line hits="6">
             <code>    _hi = _hi32(n);</code>
-            <hit count="7" name="&lt;unnamed&gt;"/>
+            <hit count="6" name="&lt;unnamed&gt;"/>
         </line>
         <line>
             <code>  }</code>
@@ -117,56 +117,56 @@
             <code>  @override</code>
             <hit count="2" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="3">
+        <line hits="2">
             <code>  int loadLEBytes(List&lt;int&gt; bytes, int offset, {int fromByte = 0}) {</code>
-            <hit count="3" name="&lt;unnamed&gt;"/>
+            <hit count="2" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="5">
+        <line hits="4">
             <code>    var idx = offset, len = bytes.length, count = 0;</code>
-            <hit count="5" name="&lt;unnamed&gt;"/>
+            <hit count="4" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="5">
+        <line hits="4">
             <code>    if (fromByte == 0) {</code>
-            <hit count="5" name="&lt;unnamed&gt;"/>
+            <hit count="4" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="5">
+        <line hits="4">
             <code>      _lo = 0;</code>
-            <hit count="5" name="&lt;unnamed&gt;"/>
+            <hit count="4" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="5">
+        <line hits="4">
             <code>      _hi = 0;</code>
-            <hit count="5" name="&lt;unnamed&gt;"/>
+            <hit count="4" name="&lt;unnamed&gt;"/>
         </line>
         <line>
             <code>    }</code>
         </line>
-        <line hits="5">
+        <line hits="4">
             <code>    if (fromByte &lt; 4) {</code>
-            <hit count="5" name="&lt;unnamed&gt;"/>
+            <hit count="4" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="5">
+        <line hits="4">
             <code>      var n = fromByte * 8;</code>
-            <hit count="5" name="&lt;unnamed&gt;"/>
+            <hit count="4" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="7">
+        <line hits="6">
             <code>      while (idx &lt; len &amp;&amp; n &lt; 32) {</code>
-            <hit count="7" name="&lt;unnamed&gt;"/>
+            <hit count="6" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="11">
+        <line hits="10">
             <code>        _lo |= bytes[idx] &lt;&lt; n;</code>
-            <hit count="11" name="&lt;unnamed&gt;"/>
+            <hit count="10" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="5">
+        <line hits="4">
             <code>        count++;</code>
-            <hit count="5" name="&lt;unnamed&gt;"/>
+            <hit count="4" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="5">
+        <line hits="4">
             <code>        idx++;</code>
-            <hit count="5" name="&lt;unnamed&gt;"/>
+            <hit count="4" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="5">
+        <line hits="4">
             <code>        n += 8;</code>
-            <hit count="5" name="&lt;unnamed&gt;"/>
+            <hit count="4" name="&lt;unnamed&gt;"/>
         </line>
         <line>
             <code>      }</code>
@@ -181,29 +181,29 @@
             <code>    if (fromByte &gt;= 4) {</code>
             <hit count="2" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="7">
+        <line hits="6">
             <code>      var n = (fromByte - 4) * 8;</code>
-            <hit count="7" name="&lt;unnamed&gt;"/>
+            <hit count="6" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="7">
+        <line hits="6">
             <code>      while (idx &lt; len &amp;&amp; n &lt; 32) {</code>
-            <hit count="7" name="&lt;unnamed&gt;"/>
+            <hit count="6" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="11">
+        <line hits="10">
             <code>        _hi |= bytes[idx] &lt;&lt; n;</code>
-            <hit count="11" name="&lt;unnamed&gt;"/>
+            <hit count="10" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="5">
+        <line hits="4">
             <code>        count++;</code>
-            <hit count="5" name="&lt;unnamed&gt;"/>
+            <hit count="4" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="5">
+        <line hits="4">
             <code>        idx++;</code>
-            <hit count="5" name="&lt;unnamed&gt;"/>
+            <hit count="4" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="5">
+        <line hits="4">
             <code>        n += 8;</code>
-            <hit count="5" name="&lt;unnamed&gt;"/>
+            <hit count="4" name="&lt;unnamed&gt;"/>
         </line>
         <line>
             <code>      }</code>
@@ -211,13 +211,13 @@
         <line>
             <code>    }</code>
         </line>
-        <line hits="3">
+        <line hits="2">
             <code>    return count;</code>
-            <hit count="3" name="&lt;unnamed&gt;"/>
+            <hit count="2" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="3">
+        <line hits="2">
             <code>  }</code>
-            <hit count="3" name="&lt;unnamed&gt;"/>
+            <hit count="2" name="&lt;unnamed&gt;"/>
         </line>
         <line>
             <code/>
@@ -565,21 +565,21 @@
             <code>  @override</code>
             <hit count="2" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="3">
+        <line hits="2">
             <code>  void xshr(int n) {</code>
-            <hit count="3" name="&lt;unnamed&gt;"/>
+            <hit count="2" name="&lt;unnamed&gt;"/>
         </line>
         <line hits="2">
             <code>    final rsh = 32 - n;</code>
             <hit count="2" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="5">
+        <line hits="4">
             <code>    if (rsh &lt;= 0) {</code>
-            <hit count="5" name="&lt;unnamed&gt;"/>
+            <hit count="4" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="15">
+        <line hits="14">
             <code>      _lo ^= (_hi &gt;&gt; -rsh) &amp; _mask32;</code>
-            <hit count="15" name="&lt;unnamed&gt;"/>
+            <hit count="14" name="&lt;unnamed&gt;"/>
         </line>
         <line>
             <code>    } else {</code>
@@ -599,9 +599,9 @@
         <line>
             <code>    }</code>
         </line>
-        <line hits="3">
+        <line hits="2">
             <code>  }</code>
-            <hit count="3" name="&lt;unnamed&gt;"/>
+            <hit count="2" name="&lt;unnamed&gt;"/>
         </line>
         <line>
             <code>}</code>

@@ -63,59 +63,59 @@
             <code>  @override</code>
             <hit count="1" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="4">
+        <line hits="2">
             <code>  int loadLEBytes(List&lt;int&gt; bytes, int offset, {int fromByte = 0}) {</code>
-            <hit count="4" name="&lt;unnamed&gt;"/>
+            <hit count="2" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="5">
+        <line hits="3">
             <code>    var idx = offset, len = bytes.length, count = 0;</code>
-            <hit count="5" name="&lt;unnamed&gt;"/>
+            <hit count="3" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="5">
+        <line hits="3">
             <code>    if (fromByte == 0) {</code>
-            <hit count="5" name="&lt;unnamed&gt;"/>
+            <hit count="3" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="5">
+        <line hits="3">
             <code>      _num = 0;</code>
-            <hit count="5" name="&lt;unnamed&gt;"/>
+            <hit count="3" name="&lt;unnamed&gt;"/>
         </line>
         <line>
             <code>    }</code>
         </line>
-        <line hits="5">
+        <line hits="3">
             <code>    var n = fromByte * 8;</code>
-            <hit count="5" name="&lt;unnamed&gt;"/>
+            <hit count="3" name="&lt;unnamed&gt;"/>
+        </line>
+        <line hits="4">
+            <code>    while (idx &lt; len &amp;&amp; n &lt; 32) {</code>
+            <hit count="4" name="&lt;unnamed&gt;"/>
         </line>
         <line hits="6">
-            <code>    while (idx &lt; len &amp;&amp; n &lt; 32) {</code>
+            <code>      _num |= bytes[idx] &lt;&lt; n;</code>
             <hit count="6" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="8">
-            <code>      _num |= bytes[idx] &lt;&lt; n;</code>
-            <hit count="8" name="&lt;unnamed&gt;"/>
-        </line>
-        <line hits="5">
+        <line hits="3">
             <code>      count++;</code>
-            <hit count="5" name="&lt;unnamed&gt;"/>
+            <hit count="3" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="5">
+        <line hits="3">
             <code>      idx++;</code>
-            <hit count="5" name="&lt;unnamed&gt;"/>
+            <hit count="3" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="5">
+        <line hits="3">
             <code>      n += 8;</code>
-            <hit count="5" name="&lt;unnamed&gt;"/>
+            <hit count="3" name="&lt;unnamed&gt;"/>
         </line>
         <line>
             <code>    }</code>
         </line>
-        <line hits="4">
+        <line hits="2">
             <code>    return count;</code>
-            <hit count="4" name="&lt;unnamed&gt;"/>
+            <hit count="2" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="4">
+        <line hits="2">
             <code>  }</code>
-            <hit count="4" name="&lt;unnamed&gt;"/>
+            <hit count="2" name="&lt;unnamed&gt;"/>
         </line>
         <line>
             <code/>

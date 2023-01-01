@@ -115,7 +115,7 @@
                     <td>18</td><td></td><td></td><td><code>  /// The total length processed, in bytes.</code></td>
                 </tr>
                 <tr class="lineCov" title="Line 19" id="line19">
-                    <td>19</td><td></td><td>1</td><td><code>  int _length = 0;</code></td>
+                    <td>19</td><td></td><td>2</td><td><code>  int _length = 0;</code></td>
                 </tr>
                 <tr class="noop" title="Line 20" id="line20">
                     <td>20</td><td></td><td></td><td><code></code></td>
@@ -124,7 +124,7 @@
                     <td>21</td><td></td><td></td><td><code>  /// Returns the number of pending bytes.</code></td>
                 </tr>
                 <tr class="lineCov" title="Line 22" id="line22">
-                    <td>22</td><td></td><td>1</td><td><code>  int _pending = 0;</code></td>
+                    <td>22</td><td></td><td>2</td><td><code>  int _pending = 0;</code></td>
                 </tr>
                 <tr class="noop" title="Line 23" id="line23">
                     <td>23</td><td></td><td></td><td><code></code></td>
@@ -190,10 +190,10 @@
                     <td>43</td><td></td><td></td><td><code></code></td>
                 </tr>
                 <tr class="lineCov" title="Line 44" id="line44">
-                    <td>44</td><td></td><td>3</td><td><code>    _handleBody(data);</code></td>
+                    <td>44</td><td></td><td>4</td><td><code>    _handleBody(data);</code></td>
                 </tr>
                 <tr class="lineCov" title="Line 45" id="line45">
-                    <td>45</td><td></td><td>3</td><td><code>    _handleTailAndFinalize();</code></td>
+                    <td>45</td><td></td><td>4</td><td><code>    _handleTailAndFinalize();</code></td>
                 </tr>
                 <tr class="noop" title="Line 46" id="line46">
                     <td>46</td><td></td><td></td><td><code></code></td>
@@ -220,28 +220,28 @@
                     <td>53</td><td></td><td>2</td><td><code>  Future&lt;T&gt; processStream(Stream data) {</code></td>
                 </tr>
                 <tr class="lineCov" title="Line 54" id="line54">
-                    <td>54</td><td></td><td>5</td><td><code>    _completer = Completer&lt;T&gt;();</code></td>
+                    <td>54</td><td></td><td>6</td><td><code>    _completer = Completer&lt;T&gt;();</code></td>
                 </tr>
                 <tr class="lineCov" title="Line 55" id="line55">
-                    <td>55</td><td></td><td>3</td><td><code>    _pending = 0;</code></td>
+                    <td>55</td><td></td><td>4</td><td><code>    _pending = 0;</code></td>
                 </tr>
                 <tr class="lineCov" title="Line 56" id="line56">
-                    <td>56</td><td></td><td>3</td><td><code>    _length = 0;</code></td>
+                    <td>56</td><td></td><td>4</td><td><code>    _length = 0;</code></td>
                 </tr>
                 <tr class="noop" title="Line 57" id="line57">
                     <td>57</td><td></td><td></td><td><code></code></td>
                 </tr>
                 <tr class="lineCov" title="Line 58" id="line58">
-                    <td>58</td><td></td><td>3</td><td><code>    final sub = data.listen(</code></td>
+                    <td>58</td><td></td><td>4</td><td><code>    final sub = data.listen(</code></td>
                 </tr>
                 <tr class="lineCov" title="Line 59" id="line59">
-                    <td>59</td><td></td><td>3</td><td><code>      _handleBody,</code></td>
+                    <td>59</td><td></td><td>4</td><td><code>      _handleBody,</code></td>
                 </tr>
                 <tr class="lineCov" title="Line 60" id="line60">
-                    <td>60</td><td></td><td>3</td><td><code>      onDone: _handleTailAndFinalize,</code></td>
+                    <td>60</td><td></td><td>4</td><td><code>      onDone: _handleTailAndFinalize,</code></td>
                 </tr>
                 <tr class="lineCov" title="Line 61" id="line61">
-                    <td>61</td><td></td><td>3</td><td><code>      onError: _handleError,</code></td>
+                    <td>61</td><td></td><td>4</td><td><code>      onError: _handleError,</code></td>
                 </tr>
                 <tr class="noop" title="Line 62" id="line62">
                     <td>62</td><td></td><td></td><td><code>      cancelOnError: true,</code></td>
@@ -253,7 +253,7 @@
                     <td>64</td><td></td><td></td><td><code></code></td>
                 </tr>
                 <tr class="lineCov" title="Line 65" id="line65">
-                    <td>65</td><td></td><td>9</td><td><code>    return _completer!.future.whenComplete(sub.cancel);</code></td>
+                    <td>65</td><td></td><td>10</td><td><code>    return _completer!.future.whenComplete(sub.cancel);</code></td>
                 </tr>
                 <tr class="noop" title="Line 66" id="line66">
                     <td>66</td><td></td><td></td><td><code>  }</code></td>
@@ -262,43 +262,43 @@
                     <td>67</td><td></td><td></td><td><code></code></td>
                 </tr>
                 <tr class="lineCov" title="Line 68" id="line68">
-                    <td>68</td><td></td><td>5</td><td><code>  void _handleBody(dynamic input) {</code></td>
+                    <td>68</td><td></td><td>4</td><td><code>  void _handleBody(dynamic input) {</code></td>
                 </tr>
                 <tr class="lineCov" title="Line 69" id="line69">
-                    <td>69</td><td></td><td>3</td><td><code>    try {</code></td>
+                    <td>69</td><td></td><td>2</td><td><code>    try {</code></td>
                 </tr>
                 <tr class="lineCov" title="Line 70" id="line70">
-                    <td>70</td><td></td><td>5</td><td><code>      final bytes = getBytes(input);</code></td>
+                    <td>70</td><td></td><td>4</td><td><code>      final bytes = getBytes(input);</code></td>
                 </tr>
                 <tr class="lineCov" title="Line 71" id="line71">
-                    <td>71</td><td></td><td>5</td><td><code>      final len = bytes.length;</code></td>
+                    <td>71</td><td></td><td>4</td><td><code>      final len = bytes.length;</code></td>
                 </tr>
                 <tr class="lineCov" title="Line 72" id="line72">
-                    <td>72</td><td></td><td>3</td><td><code>      var idx = 0;</code></td>
+                    <td>72</td><td></td><td>2</td><td><code>      var idx = 0;</code></td>
                 </tr>
                 <tr class="lineCov" title="Line 73" id="line73">
-                    <td>73</td><td></td><td>5</td><td><code>      while (idx &lt; len) {</code></td>
+                    <td>73</td><td></td><td>4</td><td><code>      while (idx &lt; len) {</code></td>
                 </tr>
                 <tr class="lineCov" title="Line 74" id="line74">
-                    <td>74</td><td></td><td>5</td><td><code>        final count = _loadBlock(bytes, idx);</code></td>
+                    <td>74</td><td></td><td>4</td><td><code>        final count = _loadBlock(bytes, idx);</code></td>
                 </tr>
                 <tr class="lineCov" title="Line 75" id="line75">
-                    <td>75</td><td></td><td>7</td><td><code>        _pending += count;</code></td>
+                    <td>75</td><td></td><td>6</td><td><code>        _pending += count;</code></td>
                 </tr>
                 <tr class="lineCov" title="Line 76" id="line76">
-                    <td>76</td><td></td><td>7</td><td><code>        _length += count;</code></td>
+                    <td>76</td><td></td><td>6</td><td><code>        _length += count;</code></td>
                 </tr>
                 <tr class="lineCov" title="Line 77" id="line77">
-                    <td>77</td><td></td><td>5</td><td><code>        idx += count;</code></td>
+                    <td>77</td><td></td><td>4</td><td><code>        idx += count;</code></td>
                 </tr>
                 <tr class="lineCov" title="Line 78" id="line78">
-                    <td>78</td><td></td><td>9</td><td><code>        if (_pending == blockSize) {</code></td>
+                    <td>78</td><td></td><td>8</td><td><code>        if (_pending == blockSize) {</code></td>
                 </tr>
                 <tr class="lineCov" title="Line 79" id="line79">
                     <td>79</td><td></td><td>2</td><td><code>          _processBlock();</code></td>
                 </tr>
                 <tr class="lineCov" title="Line 80" id="line80">
-                    <td>80</td><td></td><td>5</td><td><code>          _pending = 0;</code></td>
+                    <td>80</td><td></td><td>4</td><td><code>          _pending = 0;</code></td>
                 </tr>
                 <tr class="noop" title="Line 81" id="line81">
                     <td>81</td><td></td><td></td><td><code>        }</code></td>
@@ -328,25 +328,25 @@
                     <td>89</td><td></td><td></td><td><code>    }</code></td>
                 </tr>
                 <tr class="lineCov" title="Line 90" id="line90">
-                    <td>90</td><td></td><td>3</td><td><code>  }</code></td>
+                    <td>90</td><td></td><td>2</td><td><code>  }</code></td>
                 </tr>
                 <tr class="noop" title="Line 91" id="line91">
                     <td>91</td><td></td><td></td><td><code></code></td>
                 </tr>
                 <tr class="lineCov" title="Line 92" id="line92">
-                    <td>92</td><td></td><td>5</td><td><code>  void _handleTailAndFinalize() {</code></td>
+                    <td>92</td><td></td><td>4</td><td><code>  void _handleTailAndFinalize() {</code></td>
                 </tr>
                 <tr class="lineCov" title="Line 93" id="line93">
-                    <td>93</td><td></td><td>3</td><td><code>    try {</code></td>
+                    <td>93</td><td></td><td>2</td><td><code>    try {</code></td>
                 </tr>
                 <tr class="noop" title="Line 94" id="line94">
                     <td>94</td><td></td><td></td><td><code>      // process tail &amp; finalize</code></td>
                 </tr>
                 <tr class="lineCov" title="Line 95" id="line95">
-                    <td>95</td><td></td><td>7</td><td><code>      if (_pending &gt; 0) {</code></td>
+                    <td>95</td><td></td><td>6</td><td><code>      if (_pending &gt; 0) {</code></td>
                 </tr>
                 <tr class="lineCov" title="Line 96" id="line96">
-                    <td>96</td><td></td><td>5</td><td><code>        _pending = 0;</code></td>
+                    <td>96</td><td></td><td>4</td><td><code>        _pending = 0;</code></td>
                 </tr>
                 <tr class="lineCov" title="Line 97" id="line97">
                     <td>97</td><td></td><td>2</td><td><code>        _processTail();</code></td>
@@ -364,7 +364,7 @@
                     <td>101</td><td></td><td></td><td><code>      // done</code></td>
                 </tr>
                 <tr class="lineCov" title="Line 102" id="line102">
-                    <td>102</td><td></td><td>9</td><td><code>      _completer?.complete(getHash());</code></td>
+                    <td>102</td><td></td><td>8</td><td><code>      _completer?.complete(getHash());</code></td>
                 </tr>
                 <tr class="lineNoCov" title="Line 103" id="line103">
                     <td>103</td><td></td><td>0</td><td><code>    } catch (e, st) {</code></td>
@@ -388,49 +388,49 @@
                     <td>109</td><td></td><td></td><td><code>    }</code></td>
                 </tr>
                 <tr class="lineCov" title="Line 110" id="line110">
-                    <td>110</td><td></td><td>3</td><td><code>  }</code></td>
+                    <td>110</td><td></td><td>2</td><td><code>  }</code></td>
                 </tr>
                 <tr class="noop" title="Line 111" id="line111">
                     <td>111</td><td></td><td></td><td><code></code></td>
                 </tr>
                 <tr class="lineCov" title="Line 112" id="line112">
-                    <td>112</td><td></td><td>3</td><td><code>  void _handleError(Object error, StackTrace st) {</code></td>
+                    <td>112</td><td></td><td>4</td><td><code>  void _handleError(Object error, StackTrace st) {</code></td>
                 </tr>
                 <tr class="lineCov" title="Line 113" id="line113">
-                    <td>113</td><td></td><td>5</td><td><code>    _completer!.completeError(error, st);</code></td>
+                    <td>113</td><td></td><td>6</td><td><code>    _completer!.completeError(error, st);</code></td>
                 </tr>
                 <tr class="lineCov" title="Line 114" id="line114">
-                    <td>114</td><td></td><td>1</td><td><code>  }</code></td>
+                    <td>114</td><td></td><td>2</td><td><code>  }</code></td>
                 </tr>
                 <tr class="noop" title="Line 115" id="line115">
                     <td>115</td><td></td><td></td><td><code></code></td>
                 </tr>
                 <tr class="lineCov" title="Line 116" id="line116">
-                    <td>116</td><td></td><td>4</td><td><code>  static Uint8List getBytes(dynamic data) {</code></td>
+                    <td>116</td><td></td><td>6</td><td><code>  static Uint8List getBytes(dynamic data) {</code></td>
                 </tr>
                 <tr class="lineCov" title="Line 117" id="line117">
-                    <td>117</td><td></td><td>4</td><td><code>    if (data is Uint8List) {</code></td>
+                    <td>117</td><td></td><td>6</td><td><code>    if (data is Uint8List) {</code></td>
                 </tr>
                 <tr class="lineCov" title="Line 118" id="line118">
-                    <td>118</td><td></td><td>1</td><td><code>      return data;</code></td>
+                    <td>118</td><td></td><td>3</td><td><code>      return data;</code></td>
                 </tr>
                 <tr class="lineCov" title="Line 119" id="line119">
-                    <td>119</td><td></td><td>4</td><td><code>    } else if (data is Iterable&lt;num&gt;) {</code></td>
+                    <td>119</td><td></td><td>6</td><td><code>    } else if (data is Iterable&lt;num&gt;) {</code></td>
                 </tr>
                 <tr class="lineCov" title="Line 120" id="line120">
-                    <td>120</td><td></td><td>10</td><td><code>      return Uint8List.fromList(data.map(_getByte).toList());</code></td>
+                    <td>120</td><td></td><td>12</td><td><code>      return Uint8List.fromList(data.map(_getByte).toList());</code></td>
                 </tr>
                 <tr class="noop" title="Line 121" id="line121">
                     <td>121</td><td></td><td></td><td><code>    } else {</code></td>
                 </tr>
                 <tr class="lineCov" title="Line 122" id="line122">
-                    <td>122</td><td></td><td>10</td><td><code>      return Uint8List.fromList(_getBytes(data).toList());</code></td>
+                    <td>122</td><td></td><td>12</td><td><code>      return Uint8List.fromList(_getBytes(data).toList());</code></td>
                 </tr>
                 <tr class="noop" title="Line 123" id="line123">
                     <td>123</td><td></td><td></td><td><code>    }</code></td>
                 </tr>
                 <tr class="lineCov" title="Line 124" id="line124">
-                    <td>124</td><td></td><td>1</td><td><code>  }</code></td>
+                    <td>124</td><td></td><td>3</td><td><code>  }</code></td>
                 </tr>
                 <tr class="noop" title="Line 125" id="line125">
                     <td>125</td><td></td><td></td><td><code></code></td>

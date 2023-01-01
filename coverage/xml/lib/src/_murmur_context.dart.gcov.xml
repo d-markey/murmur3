@@ -56,9 +56,9 @@
         <line>
             <code>  /// The total length processed, in bytes.</code>
         </line>
-        <line hits="1">
+        <line hits="2">
             <code>  int _length = 0;</code>
-            <hit count="1" name="&lt;unnamed&gt;"/>
+            <hit count="2" name="&lt;unnamed&gt;"/>
         </line>
         <line>
             <code/>
@@ -66,9 +66,9 @@
         <line>
             <code>  /// Returns the number of pending bytes.</code>
         </line>
-        <line hits="1">
+        <line hits="2">
             <code>  int _pending = 0;</code>
-            <hit count="1" name="&lt;unnamed&gt;"/>
+            <hit count="2" name="&lt;unnamed&gt;"/>
         </line>
         <line>
             <code/>
@@ -136,13 +136,13 @@
         <line>
             <code/>
         </line>
-        <line hits="3">
+        <line hits="4">
             <code>    _handleBody(data);</code>
-            <hit count="3" name="&lt;unnamed&gt;"/>
+            <hit count="4" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="3">
+        <line hits="4">
             <code>    _handleTailAndFinalize();</code>
-            <hit count="3" name="&lt;unnamed&gt;"/>
+            <hit count="4" name="&lt;unnamed&gt;"/>
         </line>
         <line>
             <code/>
@@ -171,36 +171,36 @@
             <code>  Future&lt;T&gt; processStream(Stream data) {</code>
             <hit count="2" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="5">
+        <line hits="6">
             <code>    _completer = Completer&lt;T&gt;();</code>
-            <hit count="5" name="&lt;unnamed&gt;"/>
+            <hit count="6" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="3">
+        <line hits="4">
             <code>    _pending = 0;</code>
-            <hit count="3" name="&lt;unnamed&gt;"/>
+            <hit count="4" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="3">
+        <line hits="4">
             <code>    _length = 0;</code>
-            <hit count="3" name="&lt;unnamed&gt;"/>
+            <hit count="4" name="&lt;unnamed&gt;"/>
         </line>
         <line>
             <code/>
         </line>
-        <line hits="3">
+        <line hits="4">
             <code>    final sub = data.listen(</code>
-            <hit count="3" name="&lt;unnamed&gt;"/>
+            <hit count="4" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="3">
+        <line hits="4">
             <code>      _handleBody,</code>
-            <hit count="3" name="&lt;unnamed&gt;"/>
+            <hit count="4" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="3">
+        <line hits="4">
             <code>      onDone: _handleTailAndFinalize,</code>
-            <hit count="3" name="&lt;unnamed&gt;"/>
+            <hit count="4" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="3">
+        <line hits="4">
             <code>      onError: _handleError,</code>
-            <hit count="3" name="&lt;unnamed&gt;"/>
+            <hit count="4" name="&lt;unnamed&gt;"/>
         </line>
         <line>
             <code>      cancelOnError: true,</code>
@@ -211,9 +211,9 @@
         <line>
             <code/>
         </line>
-        <line hits="9">
+        <line hits="10">
             <code>    return _completer!.future.whenComplete(sub.cancel);</code>
-            <hit count="9" name="&lt;unnamed&gt;"/>
+            <hit count="10" name="&lt;unnamed&gt;"/>
         </line>
         <line>
             <code>  }</code>
@@ -221,57 +221,57 @@
         <line>
             <code/>
         </line>
-        <line hits="5">
+        <line hits="4">
             <code>  void _handleBody(dynamic input) {</code>
-            <hit count="5" name="&lt;unnamed&gt;"/>
+            <hit count="4" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="3">
+        <line hits="2">
             <code>    try {</code>
-            <hit count="3" name="&lt;unnamed&gt;"/>
+            <hit count="2" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="5">
+        <line hits="4">
             <code>      final bytes = getBytes(input);</code>
-            <hit count="5" name="&lt;unnamed&gt;"/>
+            <hit count="4" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="5">
+        <line hits="4">
             <code>      final len = bytes.length;</code>
-            <hit count="5" name="&lt;unnamed&gt;"/>
+            <hit count="4" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="3">
+        <line hits="2">
             <code>      var idx = 0;</code>
-            <hit count="3" name="&lt;unnamed&gt;"/>
+            <hit count="2" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="5">
+        <line hits="4">
             <code>      while (idx &lt; len) {</code>
-            <hit count="5" name="&lt;unnamed&gt;"/>
+            <hit count="4" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="5">
+        <line hits="4">
             <code>        final count = _loadBlock(bytes, idx);</code>
-            <hit count="5" name="&lt;unnamed&gt;"/>
+            <hit count="4" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="7">
+        <line hits="6">
             <code>        _pending += count;</code>
-            <hit count="7" name="&lt;unnamed&gt;"/>
+            <hit count="6" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="7">
+        <line hits="6">
             <code>        _length += count;</code>
-            <hit count="7" name="&lt;unnamed&gt;"/>
+            <hit count="6" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="5">
+        <line hits="4">
             <code>        idx += count;</code>
-            <hit count="5" name="&lt;unnamed&gt;"/>
+            <hit count="4" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="9">
+        <line hits="8">
             <code>        if (_pending == blockSize) {</code>
-            <hit count="9" name="&lt;unnamed&gt;"/>
+            <hit count="8" name="&lt;unnamed&gt;"/>
         </line>
         <line hits="2">
             <code>          _processBlock();</code>
             <hit count="2" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="5">
+        <line hits="4">
             <code>          _pending = 0;</code>
-            <hit count="5" name="&lt;unnamed&gt;"/>
+            <hit count="4" name="&lt;unnamed&gt;"/>
         </line>
         <line>
             <code>        }</code>
@@ -304,31 +304,31 @@
         <line>
             <code>    }</code>
         </line>
-        <line hits="3">
+        <line hits="2">
             <code>  }</code>
-            <hit count="3" name="&lt;unnamed&gt;"/>
+            <hit count="2" name="&lt;unnamed&gt;"/>
         </line>
         <line>
             <code/>
         </line>
-        <line hits="5">
+        <line hits="4">
             <code>  void _handleTailAndFinalize() {</code>
-            <hit count="5" name="&lt;unnamed&gt;"/>
+            <hit count="4" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="3">
+        <line hits="2">
             <code>    try {</code>
-            <hit count="3" name="&lt;unnamed&gt;"/>
+            <hit count="2" name="&lt;unnamed&gt;"/>
         </line>
         <line>
             <code>      // process tail &amp; finalize</code>
         </line>
-        <line hits="7">
+        <line hits="6">
             <code>      if (_pending &gt; 0) {</code>
-            <hit count="7" name="&lt;unnamed&gt;"/>
+            <hit count="6" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="5">
+        <line hits="4">
             <code>        _pending = 0;</code>
-            <hit count="5" name="&lt;unnamed&gt;"/>
+            <hit count="4" name="&lt;unnamed&gt;"/>
         </line>
         <line hits="2">
             <code>        _processTail();</code>
@@ -347,9 +347,9 @@
         <line>
             <code>      // done</code>
         </line>
-        <line hits="9">
+        <line hits="8">
             <code>      _completer?.complete(getHash());</code>
-            <hit count="9" name="&lt;unnamed&gt;"/>
+            <hit count="8" name="&lt;unnamed&gt;"/>
         </line>
         <line hits="0">
             <code>    } catch (e, st) {</code>
@@ -372,61 +372,61 @@
         <line>
             <code>    }</code>
         </line>
-        <line hits="3">
+        <line hits="2">
             <code>  }</code>
-            <hit count="3" name="&lt;unnamed&gt;"/>
+            <hit count="2" name="&lt;unnamed&gt;"/>
         </line>
         <line>
             <code/>
         </line>
-        <line hits="3">
+        <line hits="4">
             <code>  void _handleError(Object error, StackTrace st) {</code>
-            <hit count="3" name="&lt;unnamed&gt;"/>
+            <hit count="4" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="5">
+        <line hits="6">
             <code>    _completer!.completeError(error, st);</code>
-            <hit count="5" name="&lt;unnamed&gt;"/>
+            <hit count="6" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="1">
+        <line hits="2">
             <code>  }</code>
-            <hit count="1" name="&lt;unnamed&gt;"/>
+            <hit count="2" name="&lt;unnamed&gt;"/>
         </line>
         <line>
             <code/>
         </line>
-        <line hits="4">
+        <line hits="6">
             <code>  static Uint8List getBytes(dynamic data) {</code>
-            <hit count="4" name="&lt;unnamed&gt;"/>
+            <hit count="6" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="4">
+        <line hits="6">
             <code>    if (data is Uint8List) {</code>
-            <hit count="4" name="&lt;unnamed&gt;"/>
+            <hit count="6" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="1">
+        <line hits="3">
             <code>      return data;</code>
-            <hit count="1" name="&lt;unnamed&gt;"/>
+            <hit count="3" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="4">
+        <line hits="6">
             <code>    } else if (data is Iterable&lt;num&gt;) {</code>
-            <hit count="4" name="&lt;unnamed&gt;"/>
+            <hit count="6" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="10">
+        <line hits="12">
             <code>      return Uint8List.fromList(data.map(_getByte).toList());</code>
-            <hit count="10" name="&lt;unnamed&gt;"/>
+            <hit count="12" name="&lt;unnamed&gt;"/>
         </line>
         <line>
             <code>    } else {</code>
         </line>
-        <line hits="10">
+        <line hits="12">
             <code>      return Uint8List.fromList(_getBytes(data).toList());</code>
-            <hit count="10" name="&lt;unnamed&gt;"/>
+            <hit count="12" name="&lt;unnamed&gt;"/>
         </line>
         <line>
             <code>    }</code>
         </line>
-        <line hits="1">
+        <line hits="3">
             <code>  }</code>
-            <hit count="1" name="&lt;unnamed&gt;"/>
+            <hit count="3" name="&lt;unnamed&gt;"/>
         </line>
         <line>
             <code/>

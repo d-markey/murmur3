@@ -69,9 +69,9 @@
         <line>
             <code>  /// MurmurHash3 32-bit implementation.</code>
         </line>
-        <line hits="3">
+        <line hits="2">
             <code>  static FutureOr&lt;int&gt; murmur3a(dynamic data, {int seed = 0}) {</code>
-            <hit count="3" name="&lt;unnamed&gt;"/>
+            <hit count="2" name="&lt;unnamed&gt;"/>
         </line>
         <line hits="3">
             <code>    final context = MurmurContext3a(_uint32, seed);</code>
@@ -140,9 +140,9 @@
         <line>
             <code>  // ignore: non_constant_identifier_names</code>
         </line>
-        <line hits="3">
+        <line hits="2">
             <code>  static FutureOr&lt;BigInt&gt; murmur3f(dynamic data, {int seed = 0}) {</code>
-            <hit count="3" name="&lt;unnamed&gt;"/>
+            <hit count="2" name="&lt;unnamed&gt;"/>
         </line>
         <line hits="3">
             <code>    final context = MurmurContext3f(_uint64, seed);</code>

@@ -106,19 +106,19 @@
                     <td>15</td><td></td><td></td><td><code></code></td>
                 </tr>
                 <tr class="lineCov" title="Line 16" id="line16">
-                    <td>16</td><td></td><td>11</td><td><code>  static int _lo32(BigInt n) =&gt; (n &amp; _maskLo32).toInt();</code></td>
+                    <td>16</td><td></td><td>10</td><td><code>  static int _lo32(BigInt n) =&gt; (n &amp; _maskLo32).toInt();</code></td>
                 </tr>
                 <tr class="lineCov" title="Line 17" id="line17">
-                    <td>17</td><td></td><td>13</td><td><code>  static int _hi32(BigInt n) =&gt; ((n &amp; _maskHi32) &gt;&gt; 32).toInt();</code></td>
+                    <td>17</td><td></td><td>12</td><td><code>  static int _hi32(BigInt n) =&gt; ((n &amp; _maskHi32) &gt;&gt; 32).toInt();</code></td>
                 </tr>
                 <tr class="noop" title="Line 18" id="line18">
                     <td>18</td><td></td><td></td><td><code></code></td>
                 </tr>
                 <tr class="lineCov" title="Line 19" id="line19">
-                    <td>19</td><td></td><td>5</td><td><code>  Uint64_int(dynamic num) {</code></td>
+                    <td>19</td><td></td><td>4</td><td><code>  Uint64_int(dynamic num) {</code></td>
                 </tr>
                 <tr class="lineCov" title="Line 20" id="line20">
-                    <td>20</td><td></td><td>5</td><td><code>    final n = (num is BigInt)</code></td>
+                    <td>20</td><td></td><td>4</td><td><code>    final n = (num is BigInt)</code></td>
                 </tr>
                 <tr class="noop" title="Line 21" id="line21">
                     <td>21</td><td></td><td></td><td><code>        ? num</code></td>
@@ -130,13 +130,13 @@
                     <td>23</td><td></td><td>1</td><td><code>            ? BigInt.parse(num)</code></td>
                 </tr>
                 <tr class="lineCov" title="Line 24" id="line24">
-                    <td>24</td><td></td><td>5</td><td><code>            : BigInt.from(num);</code></td>
+                    <td>24</td><td></td><td>4</td><td><code>            : BigInt.from(num);</code></td>
                 </tr>
                 <tr class="lineCov" title="Line 25" id="line25">
-                    <td>25</td><td></td><td>7</td><td><code>    _lo = _lo32(n);</code></td>
+                    <td>25</td><td></td><td>6</td><td><code>    _lo = _lo32(n);</code></td>
                 </tr>
                 <tr class="lineCov" title="Line 26" id="line26">
-                    <td>26</td><td></td><td>7</td><td><code>    _hi = _hi32(n);</code></td>
+                    <td>26</td><td></td><td>6</td><td><code>    _hi = _hi32(n);</code></td>
                 </tr>
                 <tr class="noop" title="Line 27" id="line27">
                     <td>27</td><td></td><td></td><td><code>  }</code></td>
@@ -163,43 +163,43 @@
                     <td>34</td><td></td><td>2</td><td><code>  @override</code></td>
                 </tr>
                 <tr class="lineCov" title="Line 35" id="line35">
-                    <td>35</td><td></td><td>3</td><td><code>  int loadLEBytes(List&lt;int&gt; bytes, int offset, {int fromByte = 0}) {</code></td>
+                    <td>35</td><td></td><td>2</td><td><code>  int loadLEBytes(List&lt;int&gt; bytes, int offset, {int fromByte = 0}) {</code></td>
                 </tr>
                 <tr class="lineCov" title="Line 36" id="line36">
-                    <td>36</td><td></td><td>5</td><td><code>    var idx = offset, len = bytes.length, count = 0;</code></td>
+                    <td>36</td><td></td><td>4</td><td><code>    var idx = offset, len = bytes.length, count = 0;</code></td>
                 </tr>
                 <tr class="lineCov" title="Line 37" id="line37">
-                    <td>37</td><td></td><td>5</td><td><code>    if (fromByte == 0) {</code></td>
+                    <td>37</td><td></td><td>4</td><td><code>    if (fromByte == 0) {</code></td>
                 </tr>
                 <tr class="lineCov" title="Line 38" id="line38">
-                    <td>38</td><td></td><td>5</td><td><code>      _lo = 0;</code></td>
+                    <td>38</td><td></td><td>4</td><td><code>      _lo = 0;</code></td>
                 </tr>
                 <tr class="lineCov" title="Line 39" id="line39">
-                    <td>39</td><td></td><td>5</td><td><code>      _hi = 0;</code></td>
+                    <td>39</td><td></td><td>4</td><td><code>      _hi = 0;</code></td>
                 </tr>
                 <tr class="noop" title="Line 40" id="line40">
                     <td>40</td><td></td><td></td><td><code>    }</code></td>
                 </tr>
                 <tr class="lineCov" title="Line 41" id="line41">
-                    <td>41</td><td></td><td>5</td><td><code>    if (fromByte &lt; 4) {</code></td>
+                    <td>41</td><td></td><td>4</td><td><code>    if (fromByte &lt; 4) {</code></td>
                 </tr>
                 <tr class="lineCov" title="Line 42" id="line42">
-                    <td>42</td><td></td><td>5</td><td><code>      var n = fromByte * 8;</code></td>
+                    <td>42</td><td></td><td>4</td><td><code>      var n = fromByte * 8;</code></td>
                 </tr>
                 <tr class="lineCov" title="Line 43" id="line43">
-                    <td>43</td><td></td><td>7</td><td><code>      while (idx &lt; len &amp;&amp; n &lt; 32) {</code></td>
+                    <td>43</td><td></td><td>6</td><td><code>      while (idx &lt; len &amp;&amp; n &lt; 32) {</code></td>
                 </tr>
                 <tr class="lineCov" title="Line 44" id="line44">
-                    <td>44</td><td></td><td>11</td><td><code>        _lo |= bytes[idx] &lt;&lt; n;</code></td>
+                    <td>44</td><td></td><td>10</td><td><code>        _lo |= bytes[idx] &lt;&lt; n;</code></td>
                 </tr>
                 <tr class="lineCov" title="Line 45" id="line45">
-                    <td>45</td><td></td><td>5</td><td><code>        count++;</code></td>
+                    <td>45</td><td></td><td>4</td><td><code>        count++;</code></td>
                 </tr>
                 <tr class="lineCov" title="Line 46" id="line46">
-                    <td>46</td><td></td><td>5</td><td><code>        idx++;</code></td>
+                    <td>46</td><td></td><td>4</td><td><code>        idx++;</code></td>
                 </tr>
                 <tr class="lineCov" title="Line 47" id="line47">
-                    <td>47</td><td></td><td>5</td><td><code>        n += 8;</code></td>
+                    <td>47</td><td></td><td>4</td><td><code>        n += 8;</code></td>
                 </tr>
                 <tr class="noop" title="Line 48" id="line48">
                     <td>48</td><td></td><td></td><td><code>      }</code></td>
@@ -214,22 +214,22 @@
                     <td>51</td><td></td><td>2</td><td><code>    if (fromByte &gt;= 4) {</code></td>
                 </tr>
                 <tr class="lineCov" title="Line 52" id="line52">
-                    <td>52</td><td></td><td>7</td><td><code>      var n = (fromByte - 4) * 8;</code></td>
+                    <td>52</td><td></td><td>6</td><td><code>      var n = (fromByte - 4) * 8;</code></td>
                 </tr>
                 <tr class="lineCov" title="Line 53" id="line53">
-                    <td>53</td><td></td><td>7</td><td><code>      while (idx &lt; len &amp;&amp; n &lt; 32) {</code></td>
+                    <td>53</td><td></td><td>6</td><td><code>      while (idx &lt; len &amp;&amp; n &lt; 32) {</code></td>
                 </tr>
                 <tr class="lineCov" title="Line 54" id="line54">
-                    <td>54</td><td></td><td>11</td><td><code>        _hi |= bytes[idx] &lt;&lt; n;</code></td>
+                    <td>54</td><td></td><td>10</td><td><code>        _hi |= bytes[idx] &lt;&lt; n;</code></td>
                 </tr>
                 <tr class="lineCov" title="Line 55" id="line55">
-                    <td>55</td><td></td><td>5</td><td><code>        count++;</code></td>
+                    <td>55</td><td></td><td>4</td><td><code>        count++;</code></td>
                 </tr>
                 <tr class="lineCov" title="Line 56" id="line56">
-                    <td>56</td><td></td><td>5</td><td><code>        idx++;</code></td>
+                    <td>56</td><td></td><td>4</td><td><code>        idx++;</code></td>
                 </tr>
                 <tr class="lineCov" title="Line 57" id="line57">
-                    <td>57</td><td></td><td>5</td><td><code>        n += 8;</code></td>
+                    <td>57</td><td></td><td>4</td><td><code>        n += 8;</code></td>
                 </tr>
                 <tr class="noop" title="Line 58" id="line58">
                     <td>58</td><td></td><td></td><td><code>      }</code></td>
@@ -238,10 +238,10 @@
                     <td>59</td><td></td><td></td><td><code>    }</code></td>
                 </tr>
                 <tr class="lineCov" title="Line 60" id="line60">
-                    <td>60</td><td></td><td>3</td><td><code>    return count;</code></td>
+                    <td>60</td><td></td><td>2</td><td><code>    return count;</code></td>
                 </tr>
                 <tr class="lineCov" title="Line 61" id="line61">
-                    <td>61</td><td></td><td>3</td><td><code>  }</code></td>
+                    <td>61</td><td></td><td>2</td><td><code>  }</code></td>
                 </tr>
                 <tr class="noop" title="Line 62" id="line62">
                     <td>62</td><td></td><td></td><td><code></code></td>
@@ -535,16 +535,16 @@
                     <td>158</td><td></td><td>2</td><td><code>  @override</code></td>
                 </tr>
                 <tr class="lineCov" title="Line 159" id="line159">
-                    <td>159</td><td></td><td>3</td><td><code>  void xshr(int n) {</code></td>
+                    <td>159</td><td></td><td>2</td><td><code>  void xshr(int n) {</code></td>
                 </tr>
                 <tr class="lineCov" title="Line 160" id="line160">
                     <td>160</td><td></td><td>2</td><td><code>    final rsh = 32 - n;</code></td>
                 </tr>
                 <tr class="lineCov" title="Line 161" id="line161">
-                    <td>161</td><td></td><td>5</td><td><code>    if (rsh &lt;= 0) {</code></td>
+                    <td>161</td><td></td><td>4</td><td><code>    if (rsh &lt;= 0) {</code></td>
                 </tr>
                 <tr class="lineCov" title="Line 162" id="line162">
-                    <td>162</td><td></td><td>15</td><td><code>      _lo ^= (_hi &gt;&gt; -rsh) &amp; _mask32;</code></td>
+                    <td>162</td><td></td><td>14</td><td><code>      _lo ^= (_hi &gt;&gt; -rsh) &amp; _mask32;</code></td>
                 </tr>
                 <tr class="noop" title="Line 163" id="line163">
                     <td>163</td><td></td><td></td><td><code>    } else {</code></td>
@@ -562,7 +562,7 @@
                     <td>167</td><td></td><td></td><td><code>    }</code></td>
                 </tr>
                 <tr class="lineCov" title="Line 168" id="line168">
-                    <td>168</td><td></td><td>3</td><td><code>  }</code></td>
+                    <td>168</td><td></td><td>2</td><td><code>  }</code></td>
                 </tr>
                 <tr class="noop" title="Line 169" id="line169">
                     <td>169</td><td></td><td></td><td><code>}</code></td>
