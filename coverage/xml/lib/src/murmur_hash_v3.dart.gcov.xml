@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<?xml-stylesheet type="text/xsl" href="../../jgenhtml.xsl"?><coverage branch-rate="NaN" branches-covered="0" branches-valid="0" complexity="0" date="2023-01-01" filename="murmur_hash_v3.dart" function-rate="NaN" functions-covered="0" functions-valid="0" line-rate="1.0" lines-covered="17" lines-valid="17" package="/lib/src" testname="lcov.info" version="1.5">
+<?xml-stylesheet type="text/xsl" href="../../jgenhtml.xsl"?><coverage branch-rate="NaN" branches-covered="0" branches-valid="0" complexity="0" date="2023-03-02" filename="murmur_hash_v3.dart" function-rate="NaN" functions-covered="0" functions-valid="0" line-rate="1.0" lines-covered="17" lines-valid="17" package="/lib/src" testname="lcov.info" version="1.5">
     <lines>
         <line>
             <code>import 'dart:async';</code>
@@ -141,12 +141,12 @@
             <code>  // ignore: non_constant_identifier_names</code>
         </line>
         <line hits="2">
-            <code>  static FutureOr&lt;BigInt&gt; murmur3f(dynamic data, {int seed = 0}) {</code>
+            <code>  static FutureOr&lt;BigInt&gt; murmur3f(dynamic data, {BigInt? seed}) {</code>
             <hit count="2" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="3">
-            <code>    final context = MurmurContext3f(_uint64, seed);</code>
-            <hit count="3" name="&lt;unnamed&gt;"/>
+        <line hits="4">
+            <code>    final context = MurmurContext3f(_uint64, seed ?? BigInt.zero);</code>
+            <hit count="4" name="&lt;unnamed&gt;"/>
         </line>
         <line hits="2">
             <code>    return (data is Stream)</code>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<?xml-stylesheet type="text/xsl" href="../../jgenhtml.xsl"?><coverage branch-rate="NaN" branches-covered="0" branches-valid="0" complexity="0" date="2023-01-01" filename="_murmur_context_3f.dart" function-rate="NaN" functions-covered="0" functions-valid="0" line-rate="1.0" lines-covered="69" lines-valid="69" package="/lib/src" testname="lcov.info" version="1.5">
+<?xml-stylesheet type="text/xsl" href="../../jgenhtml.xsl"?><coverage branch-rate="NaN" branches-covered="0" branches-valid="0" complexity="0" date="2023-03-02" filename="_murmur_context_3f.dart" function-rate="NaN" functions-covered="0" functions-valid="0" line-rate="1.0" lines-covered="72" lines-valid="72" package="/lib/src" testname="lcov.info" version="1.5">
     <lines>
         <line>
             <code>part of '_murmur_context.dart';</code>
@@ -14,15 +14,33 @@
             <code>class MurmurContext3f extends MurmurContext&lt;BigInt&gt; {</code>
         </line>
         <line hits="3">
-            <code>  MurmurContext3f(this._uint64, int seed) : super(16) {</code>
+            <code>  MurmurContext3f(this._uint64, BigInt seed) : super(16) {</code>
+            <hit count="3" name="&lt;unnamed&gt;"/>
+        </line>
+        <line hits="3">
+            <code>    final lo = seed &amp; BigInt.parse('0x0000000000000000FFFFFFFFFFFFFFFF');</code>
             <hit count="3" name="&lt;unnamed&gt;"/>
         </line>
         <line hits="4">
-            <code>    _hash1 = _uint64(seed);</code>
+            <code>    var hi = seed &amp; BigInt.parse('0xFFFFFFFFFFFFFFFF0000000000000000') &gt;&gt; 64;</code>
+            <hit count="4" name="&lt;unnamed&gt;"/>
+        </line>
+        <line hits="3">
+            <code>    if (hi == BigInt.zero) {</code>
+            <hit count="3" name="&lt;unnamed&gt;"/>
+        </line>
+        <line>
+            <code>      hi = lo;</code>
+        </line>
+        <line>
+            <code>    }</code>
+        </line>
+        <line hits="4">
+            <code>    _hash1 = _uint64(lo);</code>
             <hit count="4" name="&lt;unnamed&gt;"/>
         </line>
         <line hits="4">
-            <code>    _hash2 = _uint64(seed);</code>
+            <code>    _hash2 = _uint64(hi);</code>
             <hit count="4" name="&lt;unnamed&gt;"/>
         </line>
         <line>

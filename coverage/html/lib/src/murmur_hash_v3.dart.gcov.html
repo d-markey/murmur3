@@ -18,7 +18,7 @@
                     <dt>Test</dt>
                     <dd>lcov.info</dd>
                     <dt>Date</dt>
-                    <dd>2023-01-01</dd>
+                    <dd>2023-03-02</dd>
                     <dt class="legend">Legend</dt>
                     <dd class="legend">
                         <dl class="legend">
@@ -190,10 +190,10 @@
                     <td>43</td><td></td><td></td><td><code>  // ignore: non_constant_identifier_names</code></td>
                 </tr>
                 <tr class="lineCov" title="Line 44" id="line44">
-                    <td>44</td><td></td><td>2</td><td><code>  static FutureOr&lt;BigInt&gt; murmur3f(dynamic data, {int seed = 0}) {</code></td>
+                    <td>44</td><td></td><td>2</td><td><code>  static FutureOr&lt;BigInt&gt; murmur3f(dynamic data, {BigInt? seed}) {</code></td>
                 </tr>
                 <tr class="lineCov" title="Line 45" id="line45">
-                    <td>45</td><td></td><td>3</td><td><code>    final context = MurmurContext3f(_uint64, seed);</code></td>
+                    <td>45</td><td></td><td>4</td><td><code>    final context = MurmurContext3f(_uint64, seed ?? BigInt.zero);</code></td>
                 </tr>
                 <tr class="lineCov" title="Line 46" id="line46">
                     <td>46</td><td></td><td>2</td><td><code>    return (data is Stream)</code></td>
