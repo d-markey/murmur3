@@ -41,8 +41,8 @@ class MurmurHashV3 {
 
   /// MurmurHash3 128-bit x64 implementation, converting the input data via [_getBytes].
   // ignore: non_constant_identifier_names
-  static FutureOr<BigInt> murmur3f(dynamic data, {int seed = 0}) {
-    final context = MurmurContext3f(_uint64, seed);
+  static FutureOr<BigInt> murmur3f(dynamic data, {BigInt? seed}) {
+    final context = MurmurContext3f(_uint64, seed ?? BigInt.zero);
     return (data is Stream)
         ? context.processStream(data)
         : context.process(data);

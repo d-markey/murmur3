@@ -2,9 +2,14 @@ part of '_murmur_context.dart';
 
 // ignore: camel_case_types
 class MurmurContext3f extends MurmurContext<BigInt> {
-  MurmurContext3f(this._uint64, int seed) : super(16) {
-    _hash1 = _uint64(seed);
-    _hash2 = _uint64(seed);
+  MurmurContext3f(this._uint64, BigInt seed) : super(16) {
+    final lo = seed & BigInt.parse('0x0000000000000000FFFFFFFFFFFFFFFF');
+    var hi = seed & BigInt.parse('0xFFFFFFFFFFFFFFFF0000000000000000') >> 64;
+    if (hi == BigInt.zero) {
+      hi = lo;
+    }
+    _hash1 = _uint64(lo);
+    _hash2 = _uint64(hi);
   }
 
   @override

@@ -6,10 +6,10 @@ import 'package:test/test.dart';
 import '_helpers.dart';
 
 class TestCase3f {
-  TestCase3f(this.data, this.seed, this.result);
+  TestCase3f(this.data, int seed, this.result) : seed = BigInt.from(seed);
 
   final dynamic data;
-  final int seed;
+  final BigInt seed;
   final BigInt result;
 
   Future<void> check() async {
@@ -22,13 +22,13 @@ class TestCase3f {
       return this;
     } else if (data is Iterable) {
       final parts = splitWorkload(data);
-      return TestCase3f(Stream.fromIterable(parts), seed, result);
+      return TestCase3f(Stream.fromIterable(parts), seed.toInt(), result);
     } else if (data is String) {
       final parts =
           splitWorkload(data.runes).map((r) => String.fromCharCodes(r));
-      return TestCase3f(Stream.fromIterable(parts), seed, result);
+      return TestCase3f(Stream.fromIterable(parts), seed.toInt(), result);
     } else {
-      return TestCase3f(Stream.fromIterable([data]), seed, result);
+      return TestCase3f(Stream.fromIterable([data]), seed.toInt(), result);
     }
   }
 }

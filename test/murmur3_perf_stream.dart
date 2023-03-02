@@ -45,7 +45,7 @@ Future run(PerfStats perfStats, int length) async {
 class PerfStats {
   final _algorithms = <String, HashFunction>{
     'murmur3a': (stream, seed) => murmur3a(stream, seed: seed),
-    'murmur3f': (stream, seed) => murmur3f(stream, seed: seed),
+    'murmur3f': (stream, seed) => murmur3f(stream, seed: BigInt.from(seed)),
   };
 
   final _stats = <String, Stats>{};
