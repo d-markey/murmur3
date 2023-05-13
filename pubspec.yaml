@@ -1,6 +1,6 @@
 name: murmur3
 description: MurmurHash v3 for Dart & Flutter platforms. Supports array and stream data sources, on native and browser environments.
-version: 2.0.0
+version: 2.1.0
 repository: https://www.github.com/d-markey/murmur3
 
 platforms:
@@ -12,7 +12,7 @@ platforms:
   windows:
 
 environment:
-  sdk: '>=2.15.0 <3.0.0'
+  sdk: '>=2.15.0 <4.0.0'
 
 dev_dependencies:
   lints: ^2.0.1
