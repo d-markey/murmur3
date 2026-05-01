@@ -70,7 +70,7 @@
                     <td>3</td><td></td><td></td><td><code></code></td>
                 </tr>
                 <tr class="lineCov" title="Line 4" id="line4">
-                    <td>4</td><td></td><td>9</td><td><code>final mask64 = BigInt.parse('0xFFFFFFFFFFFFFFFF');</code></td>
+                    <td>4</td><td></td><td>3</td><td><code>final mask64 = BigInt.parse('0xFFFFFFFFFFFFFFFF');</code></td>
                 </tr>
                 <tr class="noop" title="Line 5" id="line5">
                     <td>5</td><td></td><td></td><td><code>const mask32 = 0xFFFFFFFF;</code></td>
@@ -79,34 +79,34 @@
                     <td>6</td><td></td><td></td><td><code></code></td>
                 </tr>
                 <tr class="lineCov" title="Line 7" id="line7">
-                    <td>7</td><td></td><td>4</td><td><code>int clamp32(int n) =&gt; n &amp; mask32;</code></td>
+                    <td>7</td><td></td><td>2</td><td><code>int clamp32(int n) =&gt; n &amp; mask32;</code></td>
                 </tr>
                 <tr class="noop" title="Line 8" id="line8">
                     <td>8</td><td></td><td></td><td><code></code></td>
                 </tr>
                 <tr class="lineCov" title="Line 9" id="line9">
-                    <td>9</td><td></td><td>3</td><td><code>BigInt clamp64(BigInt n) =&gt;</code></td>
+                    <td>9</td><td></td><td>1</td><td><code>BigInt clamp64(BigInt n) =&gt;</code></td>
                 </tr>
                 <tr class="lineCov" title="Line 10" id="line10">
-                    <td>10</td><td></td><td>18</td><td><code>    (BigInt.zero &lt;= n &amp;&amp; n &lt;= mask64) ? n : (n &amp; mask64);</code></td>
+                    <td>10</td><td></td><td>6</td><td><code>    (BigInt.zero &lt;= n &amp;&amp; n &lt;= mask64) ? n : (n &amp; mask64);</code></td>
                 </tr>
                 <tr class="noop" title="Line 11" id="line11">
                     <td>11</td><td></td><td></td><td><code></code></td>
                 </tr>
                 <tr class="lineCov" title="Line 12" id="line12">
-                    <td>12</td><td></td><td>6</td><td><code>BigInt toBigInt(Object? value) =&gt; clamp64(switch (value) {</code></td>
+                    <td>12</td><td></td><td>2</td><td><code>BigInt toBigInt(Object? value) =&gt; clamp64(switch (value) {</code></td>
                 </tr>
                 <tr class="lineCov" title="Line 13" id="line13">
-                    <td>13</td><td></td><td>3</td><td><code>      BigInt() =&gt; value,</code></td>
+                    <td>13</td><td></td><td>1</td><td><code>      BigInt() =&gt; value,</code></td>
                 </tr>
                 <tr class="lineCov" title="Line 14" id="line14">
-                    <td>14</td><td></td><td>3</td><td><code>      IUint64() =&gt; value.value,</code></td>
+                    <td>14</td><td></td><td>1</td><td><code>      IUint64() =&gt; value.value,</code></td>
                 </tr>
                 <tr class="lineCov" title="Line 15" id="line15">
-                    <td>15</td><td></td><td>5</td><td><code>      String() =&gt; BigInt.parse(value),</code></td>
+                    <td>15</td><td></td><td>2</td><td><code>      String() =&gt; BigInt.parse(value),</code></td>
                 </tr>
                 <tr class="lineCov" title="Line 16" id="line16">
-                    <td>16</td><td></td><td>6</td><td><code>      num() =&gt; BigInt.from(value),</code></td>
+                    <td>16</td><td></td><td>2</td><td><code>      num() =&gt; BigInt.from(value),</code></td>
                 </tr>
                 <tr class="lineNoCov" title="Line 17" id="line17">
                     <td>17</td><td></td><td>0</td><td><code>      _ =&gt; throw TypeException('Cannot handle ${value.runtimeType}')</code></td>

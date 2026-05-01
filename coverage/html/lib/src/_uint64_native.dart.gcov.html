@@ -85,22 +85,22 @@
                     <td>8</td><td></td><td></td><td><code>class Uint64_native implements IUint64 {</code></td>
                 </tr>
                 <tr class="lineCov" title="Line 9" id="line9">
-                    <td>9</td><td></td><td>2</td><td><code>  Uint64_native(Object? value) {</code></td>
+                    <td>9</td><td></td><td>1</td><td><code>  Uint64_native(Object? value) {</code></td>
                 </tr>
                 <tr class="noop" title="Line 10" id="line10">
                     <td>10</td><td></td><td></td><td><code>    if ($vmOrWasm) {</code></td>
                 </tr>
                 <tr class="lineCov" title="Line 11" id="line11">
-                    <td>11</td><td></td><td>2</td><td><code>      _value = switch (value) {</code></td>
+                    <td>11</td><td></td><td>1</td><td><code>      _value = switch (value) {</code></td>
                 </tr>
                 <tr class="lineCov" title="Line 12" id="line12">
-                    <td>12</td><td></td><td>2</td><td><code>        int() =&gt; value,</code></td>
+                    <td>12</td><td></td><td>1</td><td><code>        int() =&gt; value,</code></td>
                 </tr>
                 <tr class="lineCov" title="Line 13" id="line13">
-                    <td>13</td><td></td><td>2</td><td><code>        Uint64_native() =&gt; value._value,</code></td>
+                    <td>13</td><td></td><td>1</td><td><code>        Uint64_native() =&gt; value._value,</code></td>
                 </tr>
                 <tr class="lineCov" title="Line 14" id="line14">
-                    <td>14</td><td></td><td>6</td><td><code>        _ =&gt; toBigInt(value).toSigned(64).toInt(),</code></td>
+                    <td>14</td><td></td><td>3</td><td><code>        _ =&gt; toBigInt(value).toSigned(64).toInt(),</code></td>
                 </tr>
                 <tr class="noop" title="Line 15" id="line15">
                     <td>15</td><td></td><td></td><td><code>      };</code></td>
@@ -127,19 +127,19 @@
                     <td>22</td><td></td><td></td><td><code></code></td>
                 </tr>
                 <tr class="lineCov" title="Line 23" id="line23">
-                    <td>23</td><td></td><td>2</td><td><code>  @override</code></td>
+                    <td>23</td><td></td><td>1</td><td><code>  @override</code></td>
                 </tr>
                 <tr class="noop" title="Line 24" id="line24">
                     <td>24</td><td></td><td></td><td><code>  BigInt get value =&gt;</code></td>
                 </tr>
                 <tr class="lineCov" title="Line 25" id="line25">
-                    <td>25</td><td></td><td>6</td><td><code>      $vmOrWasm ? BigInt.from(_value).toUnsigned(64) : unsupported64bit();</code></td>
+                    <td>25</td><td></td><td>3</td><td><code>      $vmOrWasm ? BigInt.from(_value).toUnsigned(64) : unsupported64bit();</code></td>
                 </tr>
                 <tr class="noop" title="Line 26" id="line26">
                     <td>26</td><td></td><td></td><td><code></code></td>
                 </tr>
                 <tr class="lineCov" title="Line 27" id="line27">
-                    <td>27</td><td></td><td>2</td><td><code>  @override</code></td>
+                    <td>27</td><td></td><td>1</td><td><code>  @override</code></td>
                 </tr>
                 <tr class="noop" title="Line 28" id="line28">
                     <td>28</td><td></td><td></td><td><code>  int loadLEBytes(ByteData bytes, int offset, {int fromByte = 0}) {</code></td>
@@ -148,16 +148,16 @@
                     <td>29</td><td></td><td></td><td><code>    if ($vmOrWasm) {</code></td>
                 </tr>
                 <tr class="lineCov" title="Line 30" id="line30">
-                    <td>30</td><td></td><td>2</td><td><code>      final len = bytes.lengthInBytes;</code></td>
+                    <td>30</td><td></td><td>1</td><td><code>      final len = bytes.lengthInBytes;</code></td>
                 </tr>
                 <tr class="lineCov" title="Line 31" id="line31">
-                    <td>31</td><td></td><td>6</td><td><code>      if (fromByte == 0 &amp;&amp; len - offset &gt;= 8) {</code></td>
+                    <td>31</td><td></td><td>3</td><td><code>      if (fromByte == 0 &amp;&amp; len - offset &gt;= 8) {</code></td>
                 </tr>
                 <tr class="lineCov" title="Line 32" id="line32">
-                    <td>32</td><td></td><td>6</td><td><code>        _value = bytes.getUint32(offset, Endian.little) |</code></td>
+                    <td>32</td><td></td><td>3</td><td><code>        _value = bytes.getUint32(offset, Endian.little) |</code></td>
                 </tr>
                 <tr class="lineCov" title="Line 33" id="line33">
-                    <td>33</td><td></td><td>6</td><td><code>            (bytes.getUint32(offset + 4, Endian.little) &lt;&lt; 32);</code></td>
+                    <td>33</td><td></td><td>3</td><td><code>            (bytes.getUint32(offset + 4, Endian.little) &lt;&lt; 32);</code></td>
                 </tr>
                 <tr class="noop" title="Line 34" id="line34">
                     <td>34</td><td></td><td></td><td><code>        return 8;</code></td>
@@ -169,31 +169,31 @@
                     <td>36</td><td></td><td></td><td><code></code></td>
                 </tr>
                 <tr class="lineCov" title="Line 37" id="line37">
-                    <td>37</td><td></td><td>2</td><td><code>      var count = fromByte * 8;</code></td>
+                    <td>37</td><td></td><td>1</td><td><code>      var count = fromByte * 8;</code></td>
                 </tr>
                 <tr class="lineCov" title="Line 38" id="line38">
-                    <td>38</td><td></td><td>4</td><td><code>      var value = (fromByte == 0) ? 0 : _value;</code></td>
+                    <td>38</td><td></td><td>2</td><td><code>      var value = (fromByte == 0) ? 0 : _value;</code></td>
                 </tr>
                 <tr class="lineCov" title="Line 39" id="line39">
-                    <td>39</td><td></td><td>4</td><td><code>      while (count &lt; 64 &amp;&amp; offset &lt; len) {</code></td>
+                    <td>39</td><td></td><td>2</td><td><code>      while (count &lt; 64 &amp;&amp; offset &lt; len) {</code></td>
                 </tr>
                 <tr class="lineCov" title="Line 40" id="line40">
-                    <td>40</td><td></td><td>6</td><td><code>        value |= bytes.getUint8(offset) &lt;&lt; count;</code></td>
+                    <td>40</td><td></td><td>3</td><td><code>        value |= bytes.getUint8(offset) &lt;&lt; count;</code></td>
                 </tr>
                 <tr class="lineCov" title="Line 41" id="line41">
-                    <td>41</td><td></td><td>2</td><td><code>        count += 8;</code></td>
+                    <td>41</td><td></td><td>1</td><td><code>        count += 8;</code></td>
                 </tr>
                 <tr class="lineCov" title="Line 42" id="line42">
-                    <td>42</td><td></td><td>2</td><td><code>        offset++;</code></td>
+                    <td>42</td><td></td><td>1</td><td><code>        offset++;</code></td>
                 </tr>
                 <tr class="noop" title="Line 43" id="line43">
                     <td>43</td><td></td><td></td><td><code>      }</code></td>
                 </tr>
                 <tr class="lineCov" title="Line 44" id="line44">
-                    <td>44</td><td></td><td>2</td><td><code>      _value = value;</code></td>
+                    <td>44</td><td></td><td>1</td><td><code>      _value = value;</code></td>
                 </tr>
                 <tr class="lineCov" title="Line 45" id="line45">
-                    <td>45</td><td></td><td>4</td><td><code>      return count ~/ 8 - fromByte;</code></td>
+                    <td>45</td><td></td><td>2</td><td><code>      return count ~/ 8 - fromByte;</code></td>
                 </tr>
                 <tr class="noop" title="Line 46" id="line46">
                     <td>46</td><td></td><td></td><td><code>    } else {</code></td>
@@ -211,7 +211,7 @@
                     <td>50</td><td></td><td></td><td><code></code></td>
                 </tr>
                 <tr class="lineCov" title="Line 51" id="line51">
-                    <td>51</td><td></td><td>2</td><td><code>  @override</code></td>
+                    <td>51</td><td></td><td>1</td><td><code>  @override</code></td>
                 </tr>
                 <tr class="noop" title="Line 52" id="line52">
                     <td>52</td><td></td><td></td><td><code>  void add(IUint64 other) {</code></td>
@@ -220,7 +220,7 @@
                     <td>53</td><td></td><td></td><td><code>    if ($vmOrWasm) {</code></td>
                 </tr>
                 <tr class="lineCov" title="Line 54" id="line54">
-                    <td>54</td><td></td><td>6</td><td><code>      _value += (other as Uint64_native)._value;</code></td>
+                    <td>54</td><td></td><td>3</td><td><code>      _value += (other as Uint64_native)._value;</code></td>
                 </tr>
                 <tr class="noop" title="Line 55" id="line55">
                     <td>55</td><td></td><td></td><td><code>    } else {</code></td>
@@ -238,7 +238,7 @@
                     <td>59</td><td></td><td></td><td><code></code></td>
                 </tr>
                 <tr class="lineCov" title="Line 60" id="line60">
-                    <td>60</td><td></td><td>2</td><td><code>  @override</code></td>
+                    <td>60</td><td></td><td>1</td><td><code>  @override</code></td>
                 </tr>
                 <tr class="noop" title="Line 61" id="line61">
                     <td>61</td><td></td><td></td><td><code>  void mul(IUint64 other) {</code></td>
@@ -247,19 +247,19 @@
                     <td>62</td><td></td><td></td><td><code>    if ($vmOrWasm) {</code></td>
                 </tr>
                 <tr class="lineCov" title="Line 63" id="line63">
-                    <td>63</td><td></td><td>2</td><td><code>      final b = (other as Uint64_native)._value;</code></td>
+                    <td>63</td><td></td><td>1</td><td><code>      final b = (other as Uint64_native)._value;</code></td>
                 </tr>
                 <tr class="lineCov" title="Line 64" id="line64">
-                    <td>64</td><td></td><td>4</td><td><code>      final aL = _value &amp; mask32;</code></td>
+                    <td>64</td><td></td><td>2</td><td><code>      final aL = _value &amp; mask32;</code></td>
                 </tr>
                 <tr class="lineCov" title="Line 65" id="line65">
-                    <td>65</td><td></td><td>4</td><td><code>      final aH = _value &gt;&gt;&gt; 32;</code></td>
+                    <td>65</td><td></td><td>2</td><td><code>      final aH = _value &gt;&gt;&gt; 32;</code></td>
                 </tr>
                 <tr class="lineCov" title="Line 66" id="line66">
-                    <td>66</td><td></td><td>2</td><td><code>      final bL = b &amp; mask32;</code></td>
+                    <td>66</td><td></td><td>1</td><td><code>      final bL = b &amp; mask32;</code></td>
                 </tr>
                 <tr class="lineCov" title="Line 67" id="line67">
-                    <td>67</td><td></td><td>2</td><td><code>      final bH = b &gt;&gt;&gt; 32;</code></td>
+                    <td>67</td><td></td><td>1</td><td><code>      final bH = b &gt;&gt;&gt; 32;</code></td>
                 </tr>
                 <tr class="noop" title="Line 68" id="line68">
                     <td>68</td><td></td><td></td><td><code></code></td>
@@ -268,7 +268,7 @@
                     <td>69</td><td></td><td></td><td><code>      // (aH*2^32 + aL) * (bH*2^32 + bL) = (aH*bL + aL*bH) &lt;&lt; 32 + aL*bL</code></td>
                 </tr>
                 <tr class="lineCov" title="Line 70" id="line70">
-                    <td>70</td><td></td><td>16</td><td><code>      _value = (aL * bL) + (((aH * bL + aL * bH) &amp; mask32) &lt;&lt; 32);</code></td>
+                    <td>70</td><td></td><td>8</td><td><code>      _value = (aL * bL) + (((aH * bL + aL * bH) &amp; mask32) &lt;&lt; 32);</code></td>
                 </tr>
                 <tr class="noop" title="Line 71" id="line71">
                     <td>71</td><td></td><td></td><td><code>    } else {</code></td>
@@ -286,7 +286,7 @@
                     <td>75</td><td></td><td></td><td><code></code></td>
                 </tr>
                 <tr class="lineCov" title="Line 76" id="line76">
-                    <td>76</td><td></td><td>2</td><td><code>  @override</code></td>
+                    <td>76</td><td></td><td>1</td><td><code>  @override</code></td>
                 </tr>
                 <tr class="noop" title="Line 77" id="line77">
                     <td>77</td><td></td><td></td><td><code>  void rotl(int n) {</code></td>
@@ -295,13 +295,13 @@
                     <td>78</td><td></td><td></td><td><code>    if ($vmOrWasm) {</code></td>
                 </tr>
                 <tr class="lineCov" title="Line 79" id="line79">
-                    <td>79</td><td></td><td>2</td><td><code>      n %= 64;</code></td>
+                    <td>79</td><td></td><td>1</td><td><code>      n %= 64;</code></td>
                 </tr>
                 <tr class="lineCov" title="Line 80" id="line80">
-                    <td>80</td><td></td><td>2</td><td><code>      if (n == 0) return;</code></td>
+                    <td>80</td><td></td><td>1</td><td><code>      if (n == 0) return;</code></td>
                 </tr>
                 <tr class="lineCov" title="Line 81" id="line81">
-                    <td>81</td><td></td><td>14</td><td><code>      _value = (_value &lt;&lt; n) | (_value &gt;&gt;&gt; (64 - n));</code></td>
+                    <td>81</td><td></td><td>7</td><td><code>      _value = (_value &lt;&lt; n) | (_value &gt;&gt;&gt; (64 - n));</code></td>
                 </tr>
                 <tr class="noop" title="Line 82" id="line82">
                     <td>82</td><td></td><td></td><td><code>    } else {</code></td>
@@ -358,7 +358,7 @@
                     <td>99</td><td></td><td></td><td><code></code></td>
                 </tr>
                 <tr class="lineCov" title="Line 100" id="line100">
-                    <td>100</td><td></td><td>2</td><td><code>  @override</code></td>
+                    <td>100</td><td></td><td>1</td><td><code>  @override</code></td>
                 </tr>
                 <tr class="noop" title="Line 101" id="line101">
                     <td>101</td><td></td><td></td><td><code>  void xor(IUint64 other) {</code></td>
@@ -367,7 +367,7 @@
                     <td>102</td><td></td><td></td><td><code>    if ($vmOrWasm) {</code></td>
                 </tr>
                 <tr class="lineCov" title="Line 103" id="line103">
-                    <td>103</td><td></td><td>6</td><td><code>      _value ^= (other as Uint64_native)._value;</code></td>
+                    <td>103</td><td></td><td>3</td><td><code>      _value ^= (other as Uint64_native)._value;</code></td>
                 </tr>
                 <tr class="noop" title="Line 104" id="line104">
                     <td>104</td><td></td><td></td><td><code>    } else {</code></td>
@@ -385,7 +385,7 @@
                     <td>108</td><td></td><td></td><td><code></code></td>
                 </tr>
                 <tr class="lineCov" title="Line 109" id="line109">
-                    <td>109</td><td></td><td>2</td><td><code>  @override</code></td>
+                    <td>109</td><td></td><td>1</td><td><code>  @override</code></td>
                 </tr>
                 <tr class="noop" title="Line 110" id="line110">
                     <td>110</td><td></td><td></td><td><code>  void xshr(int n) {</code></td>
@@ -394,7 +394,7 @@
                     <td>111</td><td></td><td></td><td><code>    if ($vmOrWasm) {</code></td>
                 </tr>
                 <tr class="lineCov" title="Line 112" id="line112">
-                    <td>112</td><td></td><td>2</td><td><code>      if (n &gt;= 64) {</code></td>
+                    <td>112</td><td></td><td>1</td><td><code>      if (n &gt;= 64) {</code></td>
                 </tr>
                 <tr class="lineCov" title="Line 113" id="line113">
                     <td>113</td><td></td><td>2</td><td><code>        _value ^= 0;</code></td>
@@ -403,7 +403,7 @@
                     <td>114</td><td></td><td></td><td><code>      } else {</code></td>
                 </tr>
                 <tr class="lineCov" title="Line 115" id="line115">
-                    <td>115</td><td></td><td>8</td><td><code>        _value ^= (_value &gt;&gt;&gt; n);</code></td>
+                    <td>115</td><td></td><td>4</td><td><code>        _value ^= (_value &gt;&gt;&gt; n);</code></td>
                 </tr>
                 <tr class="noop" title="Line 116" id="line116">
                     <td>116</td><td></td><td></td><td><code>      }</code></td>

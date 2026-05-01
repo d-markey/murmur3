@@ -37,9 +37,9 @@
         <line>
             <code>  /// Creates a new Murmur3 context.</code>
         </line>
-        <line hits="2">
+        <line hits="1">
             <code>  MurmurContext(this.blockSize);</code>
-            <hit count="2" name="&lt;unnamed&gt;"/>
+            <hit count="1" name="&lt;unnamed&gt;"/>
         </line>
         <line>
             <code/>
@@ -125,13 +125,13 @@
         <line>
             <code>  /// Synchronously process the data and returns the hash value.</code>
         </line>
-        <line hits="2">
+        <line hits="1">
             <code>  T hash(Object? data) {</code>
-            <hit count="2" name="&lt;unnamed&gt;"/>
+            <hit count="1" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="2">
+        <line hits="1">
             <code>    if (_completer != null) {</code>
-            <hit count="2" name="&lt;unnamed&gt;"/>
+            <hit count="1" name="&lt;unnamed&gt;"/>
         </line>
         <line hits="0">
             <code>      throw UnsupportedError('Cannot hash data in parallel.');</code>
@@ -142,31 +142,31 @@
         <line>
             <code/>
         </line>
-        <line hits="2">
+        <line hits="1">
             <code>    _pending = 0;</code>
-            <hit count="2" name="&lt;unnamed&gt;"/>
+            <hit count="1" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="2">
+        <line hits="1">
             <code>    _length = 0;</code>
-            <hit count="2" name="&lt;unnamed&gt;"/>
+            <hit count="1" name="&lt;unnamed&gt;"/>
         </line>
         <line>
             <code/>
         </line>
-        <line hits="2">
+        <line hits="1">
             <code>    _handleBody(data);</code>
-            <hit count="2" name="&lt;unnamed&gt;"/>
+            <hit count="1" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="2">
+        <line hits="1">
             <code>    _handleTailAndFinalize();</code>
-            <hit count="2" name="&lt;unnamed&gt;"/>
+            <hit count="1" name="&lt;unnamed&gt;"/>
         </line>
         <line>
             <code/>
         </line>
-        <line hits="2">
+        <line hits="1">
             <code>    return getHash();</code>
-            <hit count="2" name="&lt;unnamed&gt;"/>
+            <hit count="1" name="&lt;unnamed&gt;"/>
         </line>
         <line>
             <code>  }</code>
@@ -177,13 +177,13 @@
         <line>
             <code>  /// Process the data as a [Stream] and returns the hash value.</code>
         </line>
-        <line hits="2">
+        <line hits="1">
             <code>  Future&lt;T&gt; hashStream(Stream&lt;Object?&gt; data) {</code>
-            <hit count="2" name="&lt;unnamed&gt;"/>
+            <hit count="1" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="2">
+        <line hits="1">
             <code>    if (_completer != null) {</code>
-            <hit count="2" name="&lt;unnamed&gt;"/>
+            <hit count="1" name="&lt;unnamed&gt;"/>
         </line>
         <line hits="0">
             <code>      throw UnsupportedError('Cannot hash data in parallel.');</code>
@@ -191,30 +191,30 @@
         <line>
             <code>    }</code>
         </line>
-        <line hits="4">
+        <line hits="2">
             <code>    final completer = _completer = Completer&lt;T&gt;();</code>
-            <hit count="4" name="&lt;unnamed&gt;"/>
+            <hit count="2" name="&lt;unnamed&gt;"/>
         </line>
         <line>
             <code/>
         </line>
-        <line hits="2">
+        <line hits="1">
             <code>    void $handleBody(Object? input) {</code>
-            <hit count="2" name="&lt;unnamed&gt;"/>
+            <hit count="1" name="&lt;unnamed&gt;"/>
         </line>
         <line>
             <code>      try {</code>
         </line>
-        <line hits="2">
+        <line hits="1">
             <code>        _handleBody(input);</code>
-            <hit count="2" name="&lt;unnamed&gt;"/>
+            <hit count="1" name="&lt;unnamed&gt;"/>
         </line>
         <line>
             <code>      } catch (e, st) {</code>
         </line>
-        <line hits="2">
+        <line hits="1">
             <code>        completer.completeError(e, st);</code>
-            <hit count="2" name="&lt;unnamed&gt;"/>
+            <hit count="1" name="&lt;unnamed&gt;"/>
         </line>
         <line>
             <code>      }</code>
@@ -225,9 +225,9 @@
         <line>
             <code/>
         </line>
-        <line hits="2">
+        <line hits="1">
             <code>    void $handleTailAndFinalize() {</code>
-            <hit count="2" name="&lt;unnamed&gt;"/>
+            <hit count="1" name="&lt;unnamed&gt;"/>
         </line>
         <line>
             <code>      try {</code>
@@ -235,13 +235,13 @@
         <line>
             <code>        // process tail &amp; finalize</code>
         </line>
-        <line hits="2">
+        <line hits="1">
             <code>        _handleTailAndFinalize();</code>
-            <hit count="2" name="&lt;unnamed&gt;"/>
+            <hit count="1" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="4">
+        <line hits="2">
             <code>        completer.complete(getHash());</code>
-            <hit count="4" name="&lt;unnamed&gt;"/>
+            <hit count="2" name="&lt;unnamed&gt;"/>
         </line>
         <line>
             <code>      } catch (e, st) {</code>
@@ -258,20 +258,20 @@
         <line>
             <code/>
         </line>
-        <line hits="2">
+        <line hits="1">
             <code>    _pending = 0;</code>
-            <hit count="2" name="&lt;unnamed&gt;"/>
+            <hit count="1" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="2">
+        <line hits="1">
             <code>    _length = 0;</code>
-            <hit count="2" name="&lt;unnamed&gt;"/>
+            <hit count="1" name="&lt;unnamed&gt;"/>
         </line>
         <line>
             <code/>
         </line>
-        <line hits="2">
+        <line hits="1">
             <code>    final sub = data.listen(</code>
-            <hit count="2" name="&lt;unnamed&gt;"/>
+            <hit count="1" name="&lt;unnamed&gt;"/>
         </line>
         <line>
             <code>      $handleBody,</code>
@@ -279,9 +279,9 @@
         <line>
             <code>      onDone: $handleTailAndFinalize,</code>
         </line>
-        <line hits="2">
+        <line hits="1">
             <code>      onError: completer.completeError,</code>
-            <hit count="2" name="&lt;unnamed&gt;"/>
+            <hit count="1" name="&lt;unnamed&gt;"/>
         </line>
         <line>
             <code>      cancelOnError: true,</code>
@@ -292,9 +292,9 @@
         <line>
             <code/>
         </line>
-        <line hits="6">
+        <line hits="3">
             <code>    return completer.future.whenComplete(sub.cancel);</code>
-            <hit count="6" name="&lt;unnamed&gt;"/>
+            <hit count="3" name="&lt;unnamed&gt;"/>
         </line>
         <line>
             <code>  }</code>
@@ -302,13 +302,13 @@
         <line>
             <code/>
         </line>
-        <line hits="2">
+        <line hits="1">
             <code>  void _handleBody(Object? input) {</code>
-            <hit count="2" name="&lt;unnamed&gt;"/>
+            <hit count="1" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="4">
+        <line hits="2">
             <code>    final bytes = getBytesData(input), len = bytes.lengthInBytes;</code>
-            <hit count="4" name="&lt;unnamed&gt;"/>
+            <hit count="2" name="&lt;unnamed&gt;"/>
         </line>
         <line>
             <code>    var idx = 0;</code>
@@ -319,40 +319,40 @@
         <line>
             <code>    // Finish current partial block</code>
         </line>
-        <line hits="4">
+        <line hits="2">
             <code>    if (_pending &gt; 0) {</code>
-            <hit count="4" name="&lt;unnamed&gt;"/>
-        </line>
-        <line hits="8">
-            <code>      while (idx &lt; len &amp;&amp; _pending &lt; blockSize) {</code>
-            <hit count="8" name="&lt;unnamed&gt;"/>
-        </line>
-        <line hits="2">
-            <code>        final count = _loadBlock(bytes, idx);</code>
             <hit count="2" name="&lt;unnamed&gt;"/>
         </line>
         <line hits="4">
-            <code>        _pending += count;</code>
+            <code>      while (idx &lt; len &amp;&amp; _pending &lt; blockSize) {</code>
             <hit count="4" name="&lt;unnamed&gt;"/>
         </line>
+        <line hits="1">
+            <code>        final count = _loadBlock(bytes, idx);</code>
+            <hit count="1" name="&lt;unnamed&gt;"/>
+        </line>
         <line hits="2">
-            <code>        idx += count;</code>
+            <code>        _pending += count;</code>
             <hit count="2" name="&lt;unnamed&gt;"/>
+        </line>
+        <line hits="1">
+            <code>        idx += count;</code>
+            <hit count="1" name="&lt;unnamed&gt;"/>
         </line>
         <line>
             <code>      }</code>
         </line>
-        <line hits="6">
+        <line hits="3">
             <code>      if (_pending == blockSize) {</code>
-            <hit count="6" name="&lt;unnamed&gt;"/>
+            <hit count="3" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="2">
+        <line hits="1">
             <code>        _processBlock();</code>
-            <hit count="2" name="&lt;unnamed&gt;"/>
+            <hit count="1" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="2">
+        <line hits="1">
             <code>        _pending = 0;</code>
-            <hit count="2" name="&lt;unnamed&gt;"/>
+            <hit count="1" name="&lt;unnamed&gt;"/>
         </line>
         <line>
             <code>      }</code>
@@ -366,21 +366,21 @@
         <line>
             <code>    // Process full blocks directly</code>
         </line>
-        <line hits="6">
+        <line hits="3">
             <code>    while (len - idx &gt;= blockSize) {</code>
-            <hit count="6" name="&lt;unnamed&gt;"/>
+            <hit count="3" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="2">
+        <line hits="1">
             <code>      _loadBlock(bytes, idx);</code>
-            <hit count="2" name="&lt;unnamed&gt;"/>
+            <hit count="1" name="&lt;unnamed&gt;"/>
+        </line>
+        <line hits="1">
+            <code>      _processBlock();</code>
+            <hit count="1" name="&lt;unnamed&gt;"/>
         </line>
         <line hits="2">
-            <code>      _processBlock();</code>
-            <hit count="2" name="&lt;unnamed&gt;"/>
-        </line>
-        <line hits="4">
             <code>      idx += blockSize;</code>
-            <hit count="4" name="&lt;unnamed&gt;"/>
+            <hit count="2" name="&lt;unnamed&gt;"/>
         </line>
         <line>
             <code>    }</code>
@@ -391,21 +391,21 @@
         <line>
             <code>    // Load pending partial block</code>
         </line>
-        <line hits="2">
+        <line hits="1">
             <code>    while (idx &lt; len) {</code>
-            <hit count="2" name="&lt;unnamed&gt;"/>
+            <hit count="1" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="2">
+        <line hits="1">
             <code>      final count = _loadBlock(bytes, idx);</code>
-            <hit count="2" name="&lt;unnamed&gt;"/>
-        </line>
-        <line hits="4">
-            <code>      _pending += count;</code>
-            <hit count="4" name="&lt;unnamed&gt;"/>
+            <hit count="1" name="&lt;unnamed&gt;"/>
         </line>
         <line hits="2">
-            <code>      idx += count;</code>
+            <code>      _pending += count;</code>
             <hit count="2" name="&lt;unnamed&gt;"/>
+        </line>
+        <line hits="1">
+            <code>      idx += count;</code>
+            <hit count="1" name="&lt;unnamed&gt;"/>
         </line>
         <line>
             <code>    }</code>
@@ -416,9 +416,9 @@
         <line>
             <code>    // Update length</code>
         </line>
-        <line hits="4">
+        <line hits="2">
             <code>    _length += len;</code>
-            <hit count="4" name="&lt;unnamed&gt;"/>
+            <hit count="2" name="&lt;unnamed&gt;"/>
         </line>
         <line>
             <code>  }</code>
@@ -426,31 +426,31 @@
         <line>
             <code/>
         </line>
-        <line hits="2">
+        <line hits="1">
             <code>  void _handleTailAndFinalize() {</code>
-            <hit count="2" name="&lt;unnamed&gt;"/>
+            <hit count="1" name="&lt;unnamed&gt;"/>
         </line>
         <line>
             <code>    // process tail &amp; finalize</code>
         </line>
-        <line hits="4">
+        <line hits="2">
             <code>    if (_pending &gt; 0) {</code>
-            <hit count="4" name="&lt;unnamed&gt;"/>
+            <hit count="2" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="2">
+        <line hits="1">
             <code>      _pending = 0;</code>
-            <hit count="2" name="&lt;unnamed&gt;"/>
+            <hit count="1" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="2">
+        <line hits="1">
             <code>      _processTail();</code>
-            <hit count="2" name="&lt;unnamed&gt;"/>
+            <hit count="1" name="&lt;unnamed&gt;"/>
         </line>
         <line>
             <code>    }</code>
         </line>
-        <line hits="2">
+        <line hits="1">
             <code>    _finalize();</code>
-            <hit count="2" name="&lt;unnamed&gt;"/>
+            <hit count="1" name="&lt;unnamed&gt;"/>
         </line>
         <line>
             <code>  }</code>
@@ -458,13 +458,13 @@
         <line>
             <code/>
         </line>
-        <line hits="2">
+        <line hits="1">
             <code>  static ByteData getBytesData(Object? data) =&gt;</code>
-            <hit count="2" name="&lt;unnamed&gt;"/>
+            <hit count="1" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="6">
+        <line hits="3">
             <code>      getBytes(data).buffer.asByteData();</code>
-            <hit count="6" name="&lt;unnamed&gt;"/>
+            <hit count="3" name="&lt;unnamed&gt;"/>
         </line>
         <line>
             <code/>
@@ -472,47 +472,47 @@
         <line hits="0">
             <code>  static final _empty = Uint8List(0);</code>
         </line>
-        <line hits="12">
+        <line hits="4">
             <code>  static final _false = Uint8List.fromList([0]);</code>
-            <hit count="12" name="&lt;unnamed&gt;"/>
+            <hit count="4" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="12">
+        <line hits="4">
             <code>  static final _true = Uint8List.fromList([1]);</code>
-            <hit count="12" name="&lt;unnamed&gt;"/>
+            <hit count="4" name="&lt;unnamed&gt;"/>
         </line>
         <line>
             <code/>
         </line>
-        <line hits="3">
+        <line hits="1">
             <code>  static Uint8List getBytes(Object? data) =&gt; switch (data) {</code>
-            <hit count="3" name="&lt;unnamed&gt;"/>
+            <hit count="1" name="&lt;unnamed&gt;"/>
         </line>
         <line hits="0">
             <code>        null =&gt; _empty,</code>
         </line>
-        <line hits="9">
-            <code>        bool() =&gt; data ? _true : _false,</code>
-            <hit count="9" name="&lt;unnamed&gt;"/>
-        </line>
-        <line hits="12">
-            <code>        num() =&gt; Uint8List(1)..[0] = _getByte(data),</code>
-            <hit count="12" name="&lt;unnamed&gt;"/>
-        </line>
         <line hits="3">
-            <code>        Uint8List() =&gt; data,</code>
+            <code>        bool() =&gt; data ? _true : _false,</code>
             <hit count="3" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="6">
+        <line hits="4">
+            <code>        num() =&gt; Uint8List(1)..[0] = _getByte(data),</code>
+            <hit count="4" name="&lt;unnamed&gt;"/>
+        </line>
+        <line hits="1">
+            <code>        Uint8List() =&gt; data,</code>
+            <hit count="1" name="&lt;unnamed&gt;"/>
+        </line>
+        <line hits="2">
             <code>        String() =&gt; utf8.encode(data),</code>
-            <hit count="6" name="&lt;unnamed&gt;"/>
+            <hit count="2" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="12">
+        <line hits="4">
             <code>        Iterable&lt;num&gt;() =&gt; Uint8List.fromList(data.map(_getByte).toList()),</code>
-            <hit count="12" name="&lt;unnamed&gt;"/>
+            <hit count="4" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="9">
+        <line hits="3">
             <code>        _ =&gt; Uint8List.fromList(_getBytes(data).toList())</code>
-            <hit count="9" name="&lt;unnamed&gt;"/>
+            <hit count="3" name="&lt;unnamed&gt;"/>
         </line>
         <line>
             <code>      };</code>
@@ -520,21 +520,21 @@
         <line>
             <code/>
         </line>
-        <line hits="3">
+        <line hits="1">
             <code>  static int _getByte(num n) {</code>
-            <hit count="3" name="&lt;unnamed&gt;"/>
+            <hit count="1" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="6">
+        <line hits="2">
             <code>    final i = n.isFinite ? n.toInt() : -1;</code>
-            <hit count="6" name="&lt;unnamed&gt;"/>
-        </line>
-        <line hits="11">
-            <code>    if (i &lt; 0 || i &gt; 255 || (n is double &amp;&amp; n != i)) {</code>
-            <hit count="11" name="&lt;unnamed&gt;"/>
+            <hit count="2" name="&lt;unnamed&gt;"/>
         </line>
         <line hits="4">
-            <code>      throw TypeException('Not a byte: $n');</code>
+            <code>    if (i &lt; 0 || i &gt; 255 || (n is double &amp;&amp; n != i)) {</code>
             <hit count="4" name="&lt;unnamed&gt;"/>
+        </line>
+        <line hits="2">
+            <code>      throw TypeException('Not a byte: $n');</code>
+            <hit count="2" name="&lt;unnamed&gt;"/>
         </line>
         <line>
             <code>    }</code>
@@ -572,9 +572,9 @@
         <line>
             <code>  /// Otherwise, a [TypeException] is thrown.</code>
         </line>
-        <line hits="3">
+        <line hits="1">
             <code>  static Iterable&lt;int&gt; _getBytes(Object? data) sync* {</code>
-            <hit count="3" name="&lt;unnamed&gt;"/>
+            <hit count="1" name="&lt;unnamed&gt;"/>
         </line>
         <line>
             <code>    switch (data) {</code>
@@ -585,38 +585,38 @@
         <line>
             <code>        break;</code>
         </line>
-        <line hits="3">
+        <line hits="1">
             <code>      case num():</code>
-            <hit count="3" name="&lt;unnamed&gt;"/>
+            <hit count="1" name="&lt;unnamed&gt;"/>
         </line>
         <line hits="0">
             <code>        yield _getByte(data);</code>
         </line>
-        <line hits="3">
+        <line hits="1">
             <code>      case bool():</code>
-            <hit count="3" name="&lt;unnamed&gt;"/>
+            <hit count="1" name="&lt;unnamed&gt;"/>
         </line>
         <line>
             <code>        yield data ? 1 : 0;</code>
         </line>
-        <line hits="3">
+        <line hits="1">
             <code>      case String():</code>
-            <hit count="3" name="&lt;unnamed&gt;"/>
+            <hit count="1" name="&lt;unnamed&gt;"/>
         </line>
         <line hits="0">
             <code>        yield* utf8.encode(data);</code>
         </line>
-        <line hits="3">
+        <line hits="1">
             <code>      case Iterable():</code>
-            <hit count="3" name="&lt;unnamed&gt;"/>
+            <hit count="1" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="6">
+        <line hits="2">
             <code>        for (var item in data) {</code>
-            <hit count="6" name="&lt;unnamed&gt;"/>
+            <hit count="2" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="3">
+        <line hits="1">
             <code>          yield* getBytes(item);</code>
-            <hit count="3" name="&lt;unnamed&gt;"/>
+            <hit count="1" name="&lt;unnamed&gt;"/>
         </line>
         <line>
             <code>        }</code>
@@ -624,9 +624,9 @@
         <line>
             <code>      default:</code>
         </line>
-        <line hits="6">
+        <line hits="3">
             <code>        throw TypeException('Unsupported data type: ${data.runtimeType}');</code>
-            <hit count="6" name="&lt;unnamed&gt;"/>
+            <hit count="3" name="&lt;unnamed&gt;"/>
         </line>
         <line>
             <code>    }</code>

@@ -40,43 +40,43 @@
         <line>
             <code/>
         </line>
-        <line hits="6">
+        <line hits="3">
             <code>  static final _maskLo32 = BigInt.parse('0x00000000FFFFFFFF');</code>
-            <hit count="6" name="&lt;unnamed&gt;"/>
+            <hit count="3" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="6">
+        <line hits="3">
             <code>  static final _maskHi32 = BigInt.parse('0xFFFFFFFF00000000');</code>
-            <hit count="6" name="&lt;unnamed&gt;"/>
+            <hit count="3" name="&lt;unnamed&gt;"/>
         </line>
         <line>
             <code/>
         </line>
-        <line hits="8">
+        <line hits="4">
             <code>  static int _lo32(BigInt n) =&gt; (n &amp; _maskLo32).toInt();</code>
-            <hit count="8" name="&lt;unnamed&gt;"/>
+            <hit count="4" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="10">
+        <line hits="5">
             <code>  static int _hi32(BigInt n) =&gt; ((n &amp; _maskHi32) &gt;&gt; 32).toInt();</code>
-            <hit count="10" name="&lt;unnamed&gt;"/>
+            <hit count="5" name="&lt;unnamed&gt;"/>
         </line>
         <line>
             <code/>
         </line>
-        <line hits="2">
+        <line hits="1">
             <code>  Uint64_int(Object? value) {</code>
+            <hit count="1" name="&lt;unnamed&gt;"/>
+        </line>
+        <line hits="1">
+            <code>    final n = toBigInt(value);</code>
+            <hit count="1" name="&lt;unnamed&gt;"/>
+        </line>
+        <line hits="2">
+            <code>    _lo = _lo32(n);</code>
             <hit count="2" name="&lt;unnamed&gt;"/>
         </line>
         <line hits="2">
-            <code>    final n = toBigInt(value);</code>
-            <hit count="2" name="&lt;unnamed&gt;"/>
-        </line>
-        <line hits="4">
-            <code>    _lo = _lo32(n);</code>
-            <hit count="4" name="&lt;unnamed&gt;"/>
-        </line>
-        <line hits="4">
             <code>    _hi = _hi32(n);</code>
-            <hit count="4" name="&lt;unnamed&gt;"/>
+            <hit count="2" name="&lt;unnamed&gt;"/>
         </line>
         <line>
             <code>  }</code>
@@ -84,13 +84,13 @@
         <line>
             <code/>
         </line>
-        <line hits="2">
+        <line hits="1">
             <code>  @override</code>
-            <hit count="2" name="&lt;unnamed&gt;"/>
+            <hit count="1" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="12">
+        <line hits="6">
             <code>  BigInt get value =&gt; (BigInt.from(_hi) &lt;&lt; 32) | (BigInt.from(_lo));</code>
-            <hit count="12" name="&lt;unnamed&gt;"/>
+            <hit count="6" name="&lt;unnamed&gt;"/>
         </line>
         <line>
             <code>  int _lo = 0;</code>
@@ -101,28 +101,28 @@
         <line>
             <code/>
         </line>
-        <line hits="2">
+        <line hits="1">
             <code>  @override</code>
-            <hit count="2" name="&lt;unnamed&gt;"/>
+            <hit count="1" name="&lt;unnamed&gt;"/>
         </line>
         <line>
             <code>  int loadLEBytes(ByteData bytes, int offset, {int fromByte = 0}) {</code>
         </line>
-        <line hits="2">
+        <line hits="1">
             <code>    final len = bytes.lengthInBytes;</code>
+            <hit count="1" name="&lt;unnamed&gt;"/>
+        </line>
+        <line hits="3">
+            <code>    if (fromByte == 0 &amp;&amp; len - offset &gt;= 8) {</code>
+            <hit count="3" name="&lt;unnamed&gt;"/>
+        </line>
+        <line hits="2">
+            <code>      _lo = bytes.getUint32(offset, Endian.little);</code>
             <hit count="2" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="6">
-            <code>    if (fromByte == 0 &amp;&amp; len - offset &gt;= 8) {</code>
-            <hit count="6" name="&lt;unnamed&gt;"/>
-        </line>
-        <line hits="4">
-            <code>      _lo = bytes.getUint32(offset, Endian.little);</code>
-            <hit count="4" name="&lt;unnamed&gt;"/>
-        </line>
-        <line hits="6">
+        <line hits="3">
             <code>      _hi = bytes.getUint32(offset + 4, Endian.little);</code>
-            <hit count="6" name="&lt;unnamed&gt;"/>
+            <hit count="3" name="&lt;unnamed&gt;"/>
         </line>
         <line>
             <code>      return 8;</code>
@@ -133,67 +133,67 @@
         <line>
             <code/>
         </line>
-        <line hits="2">
+        <line hits="1">
             <code>    var count = fromByte * 8;</code>
-            <hit count="2" name="&lt;unnamed&gt;"/>
+            <hit count="1" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="4">
+        <line hits="2">
             <code>    var lo = (fromByte == 0) ? 0 : _lo;</code>
-            <hit count="4" name="&lt;unnamed&gt;"/>
+            <hit count="2" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="4">
+        <line hits="2">
             <code>    var hi = (fromByte == 0) ? 0 : _hi;</code>
-            <hit count="4" name="&lt;unnamed&gt;"/>
+            <hit count="2" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="4">
+        <line hits="2">
             <code>    while (count &lt; 32 &amp;&amp; offset &lt; len) {</code>
-            <hit count="4" name="&lt;unnamed&gt;"/>
+            <hit count="2" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="6">
+        <line hits="3">
             <code>      lo |= bytes.getUint8(offset) &lt;&lt; count;</code>
-            <hit count="6" name="&lt;unnamed&gt;"/>
+            <hit count="3" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="2">
+        <line hits="1">
             <code>      count += 8;</code>
-            <hit count="2" name="&lt;unnamed&gt;"/>
+            <hit count="1" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="2">
+        <line hits="1">
             <code>      offset++;</code>
-            <hit count="2" name="&lt;unnamed&gt;"/>
+            <hit count="1" name="&lt;unnamed&gt;"/>
         </line>
         <line>
             <code>    }</code>
         </line>
-        <line hits="4">
+        <line hits="2">
             <code>    while (count &lt; 64 &amp;&amp; offset &lt; len) {</code>
+            <hit count="2" name="&lt;unnamed&gt;"/>
+        </line>
+        <line hits="4">
+            <code>      hi |= bytes.getUint8(offset) &lt;&lt; (count - 32);</code>
             <hit count="4" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="8">
-            <code>      hi |= bytes.getUint8(offset) &lt;&lt; (count - 32);</code>
-            <hit count="8" name="&lt;unnamed&gt;"/>
-        </line>
-        <line hits="2">
+        <line hits="1">
             <code>      count += 8;</code>
-            <hit count="2" name="&lt;unnamed&gt;"/>
+            <hit count="1" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="2">
+        <line hits="1">
             <code>      offset++;</code>
-            <hit count="2" name="&lt;unnamed&gt;"/>
+            <hit count="1" name="&lt;unnamed&gt;"/>
         </line>
         <line>
             <code>    }</code>
         </line>
-        <line hits="2">
+        <line hits="1">
             <code>    _hi = hi;</code>
-            <hit count="2" name="&lt;unnamed&gt;"/>
+            <hit count="1" name="&lt;unnamed&gt;"/>
+        </line>
+        <line hits="1">
+            <code>    _lo = lo;</code>
+            <hit count="1" name="&lt;unnamed&gt;"/>
         </line>
         <line hits="2">
-            <code>    _lo = lo;</code>
-            <hit count="2" name="&lt;unnamed&gt;"/>
-        </line>
-        <line hits="4">
             <code>    return count ~/ 8 - fromByte;</code>
-            <hit count="4" name="&lt;unnamed&gt;"/>
+            <hit count="2" name="&lt;unnamed&gt;"/>
         </line>
         <line>
             <code>  }</code>
@@ -201,9 +201,9 @@
         <line>
             <code/>
         </line>
-        <line hits="2">
+        <line hits="1">
             <code>  @override</code>
-            <hit count="2" name="&lt;unnamed&gt;"/>
+            <hit count="1" name="&lt;unnamed&gt;"/>
         </line>
         <line>
             <code>  void add(IUint64 other) {</code>
@@ -211,21 +211,21 @@
         <line>
             <code>    other as Uint64_int;</code>
         </line>
-        <line hits="6">
+        <line hits="3">
             <code>    final slo = _lo + other._lo;</code>
-            <hit count="6" name="&lt;unnamed&gt;"/>
+            <hit count="3" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="10">
+        <line hits="5">
             <code>    final shi = _hi + other._hi + (slo ~/ _max32);</code>
-            <hit count="10" name="&lt;unnamed&gt;"/>
+            <hit count="5" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="4">
+        <line hits="2">
             <code>    _lo = slo &amp; mask32;</code>
-            <hit count="4" name="&lt;unnamed&gt;"/>
+            <hit count="2" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="4">
+        <line hits="2">
             <code>    _hi = shi &amp; mask32;</code>
-            <hit count="4" name="&lt;unnamed&gt;"/>
+            <hit count="2" name="&lt;unnamed&gt;"/>
         </line>
         <line>
             <code>  }</code>
@@ -245,34 +245,34 @@
         <line>
             <code>  // 24 lower bits</code>
         </line>
-        <line hits="4">
+        <line hits="2">
             <code>  static int _lo24(int lo) =&gt; lo &amp; 0x00FFFFFF;</code>
-            <hit count="4" name="&lt;unnamed&gt;"/>
+            <hit count="2" name="&lt;unnamed&gt;"/>
         </line>
         <line>
             <code>  // 24 middle bits</code>
         </line>
-        <line hits="2">
+        <line hits="1">
             <code>  static int _mid24(int lo, int hi) =&gt;</code>
-            <hit count="2" name="&lt;unnamed&gt;"/>
+            <hit count="1" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="10">
+        <line hits="5">
             <code>      ((hi &amp; 0x0000FFFF) &lt;&lt; 8) | ((lo &amp; 0xFF000000) &gt;&gt; 24);</code>
-            <hit count="10" name="&lt;unnamed&gt;"/>
+            <hit count="5" name="&lt;unnamed&gt;"/>
         </line>
         <line>
             <code>  // 16 higher bits</code>
         </line>
-        <line hits="6">
+        <line hits="3">
             <code>  static int _hi16(int hi) =&gt; (hi &amp; 0xFFFF0000) &gt;&gt; 16;</code>
-            <hit count="6" name="&lt;unnamed&gt;"/>
+            <hit count="3" name="&lt;unnamed&gt;"/>
         </line>
         <line>
             <code/>
         </line>
-        <line hits="2">
+        <line hits="1">
             <code>  @override</code>
-            <hit count="2" name="&lt;unnamed&gt;"/>
+            <hit count="1" name="&lt;unnamed&gt;"/>
         </line>
         <line>
             <code>  void mul(IUint64 other) {</code>
@@ -286,17 +286,17 @@
         <line>
             <code>    // decomposing 2x 32-bit into 2x 24-bit + 1x 16-bit</code>
         </line>
-        <line hits="8">
+        <line hits="4">
             <code>    final llo = _lo24(_lo), rlo = _lo24(other._lo);</code>
-            <hit count="8" name="&lt;unnamed&gt;"/>
+            <hit count="4" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="12">
+        <line hits="6">
             <code>    final lmid = _mid24(_lo, _hi), rmid = _mid24(other._lo, other._hi);</code>
-            <hit count="12" name="&lt;unnamed&gt;"/>
+            <hit count="6" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="8">
+        <line hits="4">
             <code>    final lhi = _hi16(_hi), rhi = _hi16(other._hi);</code>
-            <hit count="8" name="&lt;unnamed&gt;"/>
+            <hit count="4" name="&lt;unnamed&gt;"/>
         </line>
         <line>
             <code/>
@@ -358,23 +358,23 @@
         <line>
             <code>    // 24 * 24 --&gt; 48 bits</code>
         </line>
-        <line hits="2">
+        <line hits="1">
             <code>    final lo = llo * rlo;</code>
-            <hit count="2" name="&lt;unnamed&gt;"/>
+            <hit count="1" name="&lt;unnamed&gt;"/>
         </line>
         <line>
             <code>    // 24 * 24 + 24 * 24 + 48 / 24 --&gt; &lt;= 50 bits</code>
         </line>
-        <line hits="10">
+        <line hits="5">
             <code>    final mid = lmid * rlo + llo * rmid + (lo ~/ _max24);</code>
-            <hit count="10" name="&lt;unnamed&gt;"/>
+            <hit count="5" name="&lt;unnamed&gt;"/>
         </line>
         <line>
             <code>    // 16 * 24 + 24 * 24 + 16 * 24 + 50 / 24 --&gt; &lt;= 51 bits</code>
         </line>
-        <line hits="14">
+        <line hits="7">
             <code>    final hi = lhi * rlo + lmid * rmid + llo * rhi + (mid ~/ _max24);</code>
-            <hit count="14" name="&lt;unnamed&gt;"/>
+            <hit count="7" name="&lt;unnamed&gt;"/>
         </line>
         <line>
             <code/>
@@ -382,13 +382,13 @@
         <line>
             <code>    // recomposing 2x 32-bit</code>
         </line>
-        <line hits="10">
+        <line hits="5">
             <code>    _lo = (lo &amp; 0x00FFFFFF) | ((mid &amp; 0x000000FF) &lt;&lt; 24);</code>
-            <hit count="10" name="&lt;unnamed&gt;"/>
+            <hit count="5" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="12">
+        <line hits="6">
             <code>    _hi = ((mid &amp; 0x00FFFF00) &gt;&gt; 8) | ((hi &amp; 0x0000FFFF) &lt;&lt; 16);</code>
-            <hit count="12" name="&lt;unnamed&gt;"/>
+            <hit count="6" name="&lt;unnamed&gt;"/>
         </line>
         <line>
             <code>  }</code>
@@ -396,67 +396,67 @@
         <line>
             <code/>
         </line>
-        <line hits="2">
+        <line hits="1">
             <code>  @override</code>
-            <hit count="2" name="&lt;unnamed&gt;"/>
+            <hit count="1" name="&lt;unnamed&gt;"/>
         </line>
         <line>
             <code>  void rotl(int n) {</code>
         </line>
-        <line hits="2">
+        <line hits="1">
             <code>    n %= 64;</code>
-            <hit count="2" name="&lt;unnamed&gt;"/>
+            <hit count="1" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="2">
+        <line hits="1">
             <code>    var lsh = 32 - n;</code>
-            <hit count="2" name="&lt;unnamed&gt;"/>
+            <hit count="1" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="2">
+        <line hits="1">
             <code>    if (lsh &lt; 0) {</code>
-            <hit count="2" name="&lt;unnamed&gt;"/>
+            <hit count="1" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="2">
+        <line hits="1">
             <code>      final tmp = _hi;</code>
-            <hit count="2" name="&lt;unnamed&gt;"/>
+            <hit count="1" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="4">
+        <line hits="2">
             <code>      _hi = _lo;</code>
-            <hit count="4" name="&lt;unnamed&gt;"/>
+            <hit count="2" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="2">
+        <line hits="1">
             <code>      _lo = tmp;</code>
-            <hit count="2" name="&lt;unnamed&gt;"/>
+            <hit count="1" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="2">
+        <line hits="1">
             <code>      lsh += 32;</code>
-            <hit count="2" name="&lt;unnamed&gt;"/>
+            <hit count="1" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="2">
+        <line hits="1">
             <code>      n -= 32;</code>
-            <hit count="2" name="&lt;unnamed&gt;"/>
+            <hit count="1" name="&lt;unnamed&gt;"/>
         </line>
         <line>
             <code>    }</code>
         </line>
-        <line hits="4">
+        <line hits="2">
             <code>    final m = (mask32 &lt;&lt; lsh) &amp; mask32;</code>
-            <hit count="4" name="&lt;unnamed&gt;"/>
+            <hit count="2" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="6">
+        <line hits="3">
             <code>    final hb = (_hi &amp; m) &gt;&gt; lsh;</code>
-            <hit count="6" name="&lt;unnamed&gt;"/>
+            <hit count="3" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="6">
+        <line hits="3">
             <code>    final lb = (_lo &amp; m) &gt;&gt; lsh;</code>
-            <hit count="6" name="&lt;unnamed&gt;"/>
+            <hit count="3" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="10">
+        <line hits="5">
             <code>    _hi = ((_hi &lt;&lt; n) | lb) &amp; mask32;</code>
-            <hit count="10" name="&lt;unnamed&gt;"/>
+            <hit count="5" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="10">
+        <line hits="5">
             <code>    _lo = ((_lo &lt;&lt; n) | hb) &amp; mask32;</code>
-            <hit count="10" name="&lt;unnamed&gt;"/>
+            <hit count="5" name="&lt;unnamed&gt;"/>
         </line>
         <line>
             <code>  }</code>
@@ -464,9 +464,9 @@
         <line>
             <code/>
         </line>
-        <line hits="2">
+        <line hits="1">
             <code>  @override</code>
-            <hit count="2" name="&lt;unnamed&gt;"/>
+            <hit count="1" name="&lt;unnamed&gt;"/>
         </line>
         <line>
             <code>  void xor(IUint64 other) {</code>
@@ -474,13 +474,13 @@
         <line>
             <code>    other as Uint64_int;</code>
         </line>
-        <line hits="6">
+        <line hits="3">
             <code>    _lo ^= other._lo;</code>
-            <hit count="6" name="&lt;unnamed&gt;"/>
+            <hit count="3" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="6">
+        <line hits="3">
             <code>    _hi ^= other._hi;</code>
-            <hit count="6" name="&lt;unnamed&gt;"/>
+            <hit count="3" name="&lt;unnamed&gt;"/>
         </line>
         <line>
             <code>  }</code>
@@ -535,24 +535,24 @@
         <line>
             <code/>
         </line>
-        <line hits="2">
+        <line hits="1">
             <code>  @override</code>
-            <hit count="2" name="&lt;unnamed&gt;"/>
+            <hit count="1" name="&lt;unnamed&gt;"/>
         </line>
         <line>
             <code>  void xshr(int n) {</code>
         </line>
-        <line hits="2">
+        <line hits="1">
             <code>    final rsh = 32 - n;</code>
-            <hit count="2" name="&lt;unnamed&gt;"/>
+            <hit count="1" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="2">
+        <line hits="1">
             <code>    if (rsh &lt;= 0) {</code>
-            <hit count="2" name="&lt;unnamed&gt;"/>
+            <hit count="1" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="12">
+        <line hits="6">
             <code>      _lo ^= (_hi &gt;&gt; -rsh) &amp; mask32;</code>
-            <hit count="12" name="&lt;unnamed&gt;"/>
+            <hit count="6" name="&lt;unnamed&gt;"/>
         </line>
         <line>
             <code>    } else {</code>

@@ -7,9 +7,9 @@
         <line>
             <code>class TypeException implements Exception {</code>
         </line>
-        <line hits="2">
+        <line hits="1">
             <code>  TypeException([this.message = '']);</code>
-            <hit count="2" name="&lt;unnamed&gt;"/>
+            <hit count="1" name="&lt;unnamed&gt;"/>
         </line>
         <line>
             <code/>
@@ -20,16 +20,16 @@
         <line>
             <code/>
         </line>
-        <line hits="2">
+        <line hits="1">
             <code>  @override</code>
-            <hit count="2" name="&lt;unnamed&gt;"/>
+            <hit count="1" name="&lt;unnamed&gt;"/>
         </line>
         <line>
             <code>  String toString() =&gt;</code>
         </line>
-        <line hits="10">
+        <line hits="5">
             <code>      message.isEmpty ? runtimeType.toString() : '$runtimeType: $message';</code>
-            <hit count="10" name="&lt;unnamed&gt;"/>
+            <hit count="5" name="&lt;unnamed&gt;"/>
         </line>
         <line>
             <code>}</code>

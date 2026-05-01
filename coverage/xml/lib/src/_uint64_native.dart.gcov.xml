@@ -25,28 +25,28 @@
         <line>
             <code>class Uint64_native implements IUint64 {</code>
         </line>
-        <line hits="2">
+        <line hits="1">
             <code>  Uint64_native(Object? value) {</code>
-            <hit count="2" name="&lt;unnamed&gt;"/>
+            <hit count="1" name="&lt;unnamed&gt;"/>
         </line>
         <line>
             <code>    if ($vmOrWasm) {</code>
         </line>
-        <line hits="2">
+        <line hits="1">
             <code>      _value = switch (value) {</code>
-            <hit count="2" name="&lt;unnamed&gt;"/>
+            <hit count="1" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="2">
+        <line hits="1">
             <code>        int() =&gt; value,</code>
-            <hit count="2" name="&lt;unnamed&gt;"/>
+            <hit count="1" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="2">
+        <line hits="1">
             <code>        Uint64_native() =&gt; value._value,</code>
-            <hit count="2" name="&lt;unnamed&gt;"/>
+            <hit count="1" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="6">
+        <line hits="3">
             <code>        _ =&gt; toBigInt(value).toSigned(64).toInt(),</code>
-            <hit count="6" name="&lt;unnamed&gt;"/>
+            <hit count="3" name="&lt;unnamed&gt;"/>
         </line>
         <line>
             <code>      };</code>
@@ -72,23 +72,23 @@
         <line>
             <code/>
         </line>
-        <line hits="2">
+        <line hits="1">
             <code>  @override</code>
-            <hit count="2" name="&lt;unnamed&gt;"/>
+            <hit count="1" name="&lt;unnamed&gt;"/>
         </line>
         <line>
             <code>  BigInt get value =&gt;</code>
         </line>
-        <line hits="6">
+        <line hits="3">
             <code>      $vmOrWasm ? BigInt.from(_value).toUnsigned(64) : unsupported64bit();</code>
-            <hit count="6" name="&lt;unnamed&gt;"/>
+            <hit count="3" name="&lt;unnamed&gt;"/>
         </line>
         <line>
             <code/>
         </line>
-        <line hits="2">
+        <line hits="1">
             <code>  @override</code>
-            <hit count="2" name="&lt;unnamed&gt;"/>
+            <hit count="1" name="&lt;unnamed&gt;"/>
         </line>
         <line>
             <code>  int loadLEBytes(ByteData bytes, int offset, {int fromByte = 0}) {</code>
@@ -96,21 +96,21 @@
         <line>
             <code>    if ($vmOrWasm) {</code>
         </line>
-        <line hits="2">
+        <line hits="1">
             <code>      final len = bytes.lengthInBytes;</code>
-            <hit count="2" name="&lt;unnamed&gt;"/>
+            <hit count="1" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="6">
+        <line hits="3">
             <code>      if (fromByte == 0 &amp;&amp; len - offset &gt;= 8) {</code>
-            <hit count="6" name="&lt;unnamed&gt;"/>
+            <hit count="3" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="6">
+        <line hits="3">
             <code>        _value = bytes.getUint32(offset, Endian.little) |</code>
-            <hit count="6" name="&lt;unnamed&gt;"/>
+            <hit count="3" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="6">
+        <line hits="3">
             <code>            (bytes.getUint32(offset + 4, Endian.little) &lt;&lt; 32);</code>
-            <hit count="6" name="&lt;unnamed&gt;"/>
+            <hit count="3" name="&lt;unnamed&gt;"/>
         </line>
         <line>
             <code>        return 8;</code>
@@ -121,40 +121,40 @@
         <line>
             <code/>
         </line>
-        <line hits="2">
+        <line hits="1">
             <code>      var count = fromByte * 8;</code>
-            <hit count="2" name="&lt;unnamed&gt;"/>
+            <hit count="1" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="4">
+        <line hits="2">
             <code>      var value = (fromByte == 0) ? 0 : _value;</code>
-            <hit count="4" name="&lt;unnamed&gt;"/>
+            <hit count="2" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="4">
+        <line hits="2">
             <code>      while (count &lt; 64 &amp;&amp; offset &lt; len) {</code>
-            <hit count="4" name="&lt;unnamed&gt;"/>
+            <hit count="2" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="6">
+        <line hits="3">
             <code>        value |= bytes.getUint8(offset) &lt;&lt; count;</code>
-            <hit count="6" name="&lt;unnamed&gt;"/>
+            <hit count="3" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="2">
+        <line hits="1">
             <code>        count += 8;</code>
-            <hit count="2" name="&lt;unnamed&gt;"/>
+            <hit count="1" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="2">
+        <line hits="1">
             <code>        offset++;</code>
-            <hit count="2" name="&lt;unnamed&gt;"/>
+            <hit count="1" name="&lt;unnamed&gt;"/>
         </line>
         <line>
             <code>      }</code>
         </line>
-        <line hits="2">
+        <line hits="1">
             <code>      _value = value;</code>
-            <hit count="2" name="&lt;unnamed&gt;"/>
+            <hit count="1" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="4">
+        <line hits="2">
             <code>      return count ~/ 8 - fromByte;</code>
-            <hit count="4" name="&lt;unnamed&gt;"/>
+            <hit count="2" name="&lt;unnamed&gt;"/>
         </line>
         <line>
             <code>    } else {</code>
@@ -171,9 +171,9 @@
         <line>
             <code/>
         </line>
-        <line hits="2">
+        <line hits="1">
             <code>  @override</code>
-            <hit count="2" name="&lt;unnamed&gt;"/>
+            <hit count="1" name="&lt;unnamed&gt;"/>
         </line>
         <line>
             <code>  void add(IUint64 other) {</code>
@@ -181,9 +181,9 @@
         <line>
             <code>    if ($vmOrWasm) {</code>
         </line>
-        <line hits="6">
+        <line hits="3">
             <code>      _value += (other as Uint64_native)._value;</code>
-            <hit count="6" name="&lt;unnamed&gt;"/>
+            <hit count="3" name="&lt;unnamed&gt;"/>
         </line>
         <line>
             <code>    } else {</code>
@@ -200,9 +200,9 @@
         <line>
             <code/>
         </line>
-        <line hits="2">
+        <line hits="1">
             <code>  @override</code>
-            <hit count="2" name="&lt;unnamed&gt;"/>
+            <hit count="1" name="&lt;unnamed&gt;"/>
         </line>
         <line>
             <code>  void mul(IUint64 other) {</code>
@@ -210,25 +210,25 @@
         <line>
             <code>    if ($vmOrWasm) {</code>
         </line>
-        <line hits="2">
+        <line hits="1">
             <code>      final b = (other as Uint64_native)._value;</code>
-            <hit count="2" name="&lt;unnamed&gt;"/>
+            <hit count="1" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="4">
+        <line hits="2">
             <code>      final aL = _value &amp; mask32;</code>
-            <hit count="4" name="&lt;unnamed&gt;"/>
+            <hit count="2" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="4">
+        <line hits="2">
             <code>      final aH = _value &gt;&gt;&gt; 32;</code>
-            <hit count="4" name="&lt;unnamed&gt;"/>
+            <hit count="2" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="2">
+        <line hits="1">
             <code>      final bL = b &amp; mask32;</code>
-            <hit count="2" name="&lt;unnamed&gt;"/>
+            <hit count="1" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="2">
+        <line hits="1">
             <code>      final bH = b &gt;&gt;&gt; 32;</code>
-            <hit count="2" name="&lt;unnamed&gt;"/>
+            <hit count="1" name="&lt;unnamed&gt;"/>
         </line>
         <line>
             <code/>
@@ -236,9 +236,9 @@
         <line>
             <code>      // (aH*2^32 + aL) * (bH*2^32 + bL) = (aH*bL + aL*bH) &lt;&lt; 32 + aL*bL</code>
         </line>
-        <line hits="16">
+        <line hits="8">
             <code>      _value = (aL * bL) + (((aH * bL + aL * bH) &amp; mask32) &lt;&lt; 32);</code>
-            <hit count="16" name="&lt;unnamed&gt;"/>
+            <hit count="8" name="&lt;unnamed&gt;"/>
         </line>
         <line>
             <code>    } else {</code>
@@ -255,9 +255,9 @@
         <line>
             <code/>
         </line>
-        <line hits="2">
+        <line hits="1">
             <code>  @override</code>
-            <hit count="2" name="&lt;unnamed&gt;"/>
+            <hit count="1" name="&lt;unnamed&gt;"/>
         </line>
         <line>
             <code>  void rotl(int n) {</code>
@@ -265,17 +265,17 @@
         <line>
             <code>    if ($vmOrWasm) {</code>
         </line>
-        <line hits="2">
+        <line hits="1">
             <code>      n %= 64;</code>
-            <hit count="2" name="&lt;unnamed&gt;"/>
+            <hit count="1" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="2">
+        <line hits="1">
             <code>      if (n == 0) return;</code>
-            <hit count="2" name="&lt;unnamed&gt;"/>
+            <hit count="1" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="14">
+        <line hits="7">
             <code>      _value = (_value &lt;&lt; n) | (_value &gt;&gt;&gt; (64 - n));</code>
-            <hit count="14" name="&lt;unnamed&gt;"/>
+            <hit count="7" name="&lt;unnamed&gt;"/>
         </line>
         <line>
             <code>    } else {</code>
@@ -335,9 +335,9 @@
         <line>
             <code/>
         </line>
-        <line hits="2">
+        <line hits="1">
             <code>  @override</code>
-            <hit count="2" name="&lt;unnamed&gt;"/>
+            <hit count="1" name="&lt;unnamed&gt;"/>
         </line>
         <line>
             <code>  void xor(IUint64 other) {</code>
@@ -345,9 +345,9 @@
         <line>
             <code>    if ($vmOrWasm) {</code>
         </line>
-        <line hits="6">
+        <line hits="3">
             <code>      _value ^= (other as Uint64_native)._value;</code>
-            <hit count="6" name="&lt;unnamed&gt;"/>
+            <hit count="3" name="&lt;unnamed&gt;"/>
         </line>
         <line>
             <code>    } else {</code>
@@ -364,9 +364,9 @@
         <line>
             <code/>
         </line>
-        <line hits="2">
+        <line hits="1">
             <code>  @override</code>
-            <hit count="2" name="&lt;unnamed&gt;"/>
+            <hit count="1" name="&lt;unnamed&gt;"/>
         </line>
         <line>
             <code>  void xshr(int n) {</code>
@@ -374,9 +374,9 @@
         <line>
             <code>    if ($vmOrWasm) {</code>
         </line>
-        <line hits="2">
+        <line hits="1">
             <code>      if (n &gt;= 64) {</code>
-            <hit count="2" name="&lt;unnamed&gt;"/>
+            <hit count="1" name="&lt;unnamed&gt;"/>
         </line>
         <line hits="2">
             <code>        _value ^= 0;</code>
@@ -385,9 +385,9 @@
         <line>
             <code>      } else {</code>
         </line>
-        <line hits="8">
+        <line hits="4">
             <code>        _value ^= (_value &gt;&gt;&gt; n);</code>
-            <hit count="8" name="&lt;unnamed&gt;"/>
+            <hit count="4" name="&lt;unnamed&gt;"/>
         </line>
         <line>
             <code>      }</code>

@@ -55,9 +55,9 @@
         <line>
             <code>class MurmurHashV3 {</code>
         </line>
-        <line hits="5">
+        <line hits="1">
             <code>  const MurmurHashV3({FUint32? uint32, FUint64? uint64})</code>
-            <hit count="5" name="&lt;unnamed&gt;"/>
+            <hit count="1" name="&lt;unnamed&gt;"/>
         </line>
         <line>
             <code>      : _uint32 = uint32 ?? Uint32_int_48bit_mul.new,</code>

@@ -10,9 +10,9 @@
         <line>
             <code/>
         </line>
-        <line hits="9">
+        <line hits="3">
             <code>final mask64 = BigInt.parse('0xFFFFFFFFFFFFFFFF');</code>
-            <hit count="9" name="&lt;unnamed&gt;"/>
+            <hit count="3" name="&lt;unnamed&gt;"/>
         </line>
         <line>
             <code>const mask32 = 0xFFFFFFFF;</code>
@@ -20,43 +20,43 @@
         <line>
             <code/>
         </line>
-        <line hits="4">
+        <line hits="2">
             <code>int clamp32(int n) =&gt; n &amp; mask32;</code>
-            <hit count="4" name="&lt;unnamed&gt;"/>
+            <hit count="2" name="&lt;unnamed&gt;"/>
         </line>
         <line>
             <code/>
         </line>
-        <line hits="3">
+        <line hits="1">
             <code>BigInt clamp64(BigInt n) =&gt;</code>
-            <hit count="3" name="&lt;unnamed&gt;"/>
+            <hit count="1" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="18">
+        <line hits="6">
             <code>    (BigInt.zero &lt;= n &amp;&amp; n &lt;= mask64) ? n : (n &amp; mask64);</code>
-            <hit count="18" name="&lt;unnamed&gt;"/>
+            <hit count="6" name="&lt;unnamed&gt;"/>
         </line>
         <line>
             <code/>
         </line>
-        <line hits="6">
+        <line hits="2">
             <code>BigInt toBigInt(Object? value) =&gt; clamp64(switch (value) {</code>
-            <hit count="6" name="&lt;unnamed&gt;"/>
+            <hit count="2" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="3">
+        <line hits="1">
             <code>      BigInt() =&gt; value,</code>
-            <hit count="3" name="&lt;unnamed&gt;"/>
+            <hit count="1" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="3">
+        <line hits="1">
             <code>      IUint64() =&gt; value.value,</code>
-            <hit count="3" name="&lt;unnamed&gt;"/>
+            <hit count="1" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="5">
+        <line hits="2">
             <code>      String() =&gt; BigInt.parse(value),</code>
-            <hit count="5" name="&lt;unnamed&gt;"/>
+            <hit count="2" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="6">
+        <line hits="2">
             <code>      num() =&gt; BigInt.from(value),</code>
-            <hit count="6" name="&lt;unnamed&gt;"/>
+            <hit count="2" name="&lt;unnamed&gt;"/>
         </line>
         <line hits="0">
             <code>      _ =&gt; throw TypeException('Cannot handle ${value.runtimeType}')</code>

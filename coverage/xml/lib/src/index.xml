@@ -1,38 +1,38 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?xml-stylesheet type="text/xsl" href="../../jgenhtml.xsl"?><coverage branch-rate="NaN" branches-covered="0" branches-valid="0" complexity="0" date="2026-05-01" filename="index" function-rate="NaN" functions-covered="0" functions-valid="0" line-rate="0.9375" lines-covered="420" lines-valid="448" package="/lib/src" testname="lcov.info" version="1.5">
     <sources>
-        <source branches-hit="0" branches-valid="0" filename="_helpers.dart" functions-hit="0" functions-valid="0" lines-hit="9" lines-valid="12" prefix="/_Projects/github/murmur3">
+        <source branches-hit="0" branches-valid="0" filename="_helpers.dart" functions-hit="0" functions-valid="0" lines-hit="9" lines-valid="12" prefix="/home/runner/work/murmur3/murmur3">
             <testCase branch-hit="0" function-hit="0" line-hit="9" name="&lt;unnamed&gt;"/>
         </source>
-        <source branches-hit="0" branches-valid="0" filename="_murmur_context.dart" functions-hit="0" functions-valid="0" lines-hit="69" lines-valid="76" prefix="/_Projects/github/murmur3">
-            <testCase branch-hit="0" function-hit="0" line-hit="69" name="&lt;unnamed&gt;"/>
-        </source>
-        <source branches-hit="0" branches-valid="0" filename="_uint64_bigint.dart" functions-hit="0" functions-valid="0" lines-hit="36" lines-valid="36" prefix="/_Projects/github/murmur3">
-            <testCase branch-hit="0" function-hit="0" line-hit="36" name="&lt;unnamed&gt;"/>
-        </source>
-        <source branches-hit="0" branches-valid="0" filename="type_exception.dart" functions-hit="0" functions-valid="0" lines-hit="3" lines-valid="3" prefix="/_Projects/github/murmur3">
-            <testCase branch-hit="0" function-hit="0" line-hit="3" name="&lt;unnamed&gt;"/>
-        </source>
-        <source branches-hit="0" branches-valid="0" filename="murmur_hash_v3.dart" functions-hit="0" functions-valid="0" lines-hit="16" lines-valid="18" prefix="/_Projects/github/murmur3">
-            <testCase branch-hit="0" function-hit="0" line-hit="16" name="&lt;unnamed&gt;"/>
-        </source>
-        <source branches-hit="0" branches-valid="0" filename="_murmur_context_3a.dart" functions-hit="0" functions-valid="0" lines-hit="37" lines-valid="37" prefix="/_Projects/github/murmur3">
-            <testCase branch-hit="0" function-hit="0" line-hit="37" name="&lt;unnamed&gt;"/>
-        </source>
-        <source branches-hit="0" branches-valid="0" filename="_uint32_int_48bit_mul.dart" functions-hit="0" functions-valid="0" lines-hit="30" lines-valid="30" prefix="/_Projects/github/murmur3">
-            <testCase branch-hit="0" function-hit="0" line-hit="30" name="&lt;unnamed&gt;"/>
-        </source>
-        <source branches-hit="0" branches-valid="0" filename="_murmur_context_3f.dart" functions-hit="0" functions-valid="0" lines-hit="70" lines-valid="70" prefix="/_Projects/github/murmur3">
-            <testCase branch-hit="0" function-hit="0" line-hit="70" name="&lt;unnamed&gt;"/>
-        </source>
-        <source branches-hit="0" branches-valid="0" filename="_uint64_native.dart" functions-hit="0" functions-valid="0" lines-hit="43" lines-valid="51" prefix="/_Projects/github/murmur3">
-            <testCase branch-hit="0" function-hit="0" line-hit="43" name="&lt;unnamed&gt;"/>
-        </source>
-        <source branches-hit="0" branches-valid="0" filename="_uint32_int_64bit_mul.dart" functions-hit="0" functions-valid="0" lines-hit="28" lines-valid="36" prefix="/_Projects/github/murmur3">
+        <source branches-hit="0" branches-valid="0" filename="_uint32_int_64bit_mul.dart" functions-hit="0" functions-valid="0" lines-hit="28" lines-valid="36" prefix="/home/runner/work/murmur3/murmur3">
             <testCase branch-hit="0" function-hit="0" line-hit="28" name="&lt;unnamed&gt;"/>
         </source>
-        <source branches-hit="0" branches-valid="0" filename="_uint64_int.dart" functions-hit="0" functions-valid="0" lines-hit="79" lines-valid="79" prefix="/_Projects/github/murmur3">
+        <source branches-hit="0" branches-valid="0" filename="_uint64_bigint.dart" functions-hit="0" functions-valid="0" lines-hit="36" lines-valid="36" prefix="/home/runner/work/murmur3/murmur3">
+            <testCase branch-hit="0" function-hit="0" line-hit="36" name="&lt;unnamed&gt;"/>
+        </source>
+        <source branches-hit="0" branches-valid="0" filename="murmur_hash_v3.dart" functions-hit="0" functions-valid="0" lines-hit="16" lines-valid="18" prefix="/home/runner/work/murmur3/murmur3">
+            <testCase branch-hit="0" function-hit="0" line-hit="16" name="&lt;unnamed&gt;"/>
+        </source>
+        <source branches-hit="0" branches-valid="0" filename="type_exception.dart" functions-hit="0" functions-valid="0" lines-hit="3" lines-valid="3" prefix="/home/runner/work/murmur3/murmur3">
+            <testCase branch-hit="0" function-hit="0" line-hit="3" name="&lt;unnamed&gt;"/>
+        </source>
+        <source branches-hit="0" branches-valid="0" filename="_murmur_context.dart" functions-hit="0" functions-valid="0" lines-hit="69" lines-valid="76" prefix="/home/runner/work/murmur3/murmur3">
+            <testCase branch-hit="0" function-hit="0" line-hit="69" name="&lt;unnamed&gt;"/>
+        </source>
+        <source branches-hit="0" branches-valid="0" filename="_murmur_context_3f.dart" functions-hit="0" functions-valid="0" lines-hit="70" lines-valid="70" prefix="/home/runner/work/murmur3/murmur3">
+            <testCase branch-hit="0" function-hit="0" line-hit="70" name="&lt;unnamed&gt;"/>
+        </source>
+        <source branches-hit="0" branches-valid="0" filename="_uint64_int.dart" functions-hit="0" functions-valid="0" lines-hit="79" lines-valid="79" prefix="/home/runner/work/murmur3/murmur3">
             <testCase branch-hit="0" function-hit="0" line-hit="79" name="&lt;unnamed&gt;"/>
+        </source>
+        <source branches-hit="0" branches-valid="0" filename="_uint64_native.dart" functions-hit="0" functions-valid="0" lines-hit="43" lines-valid="51" prefix="/home/runner/work/murmur3/murmur3">
+            <testCase branch-hit="0" function-hit="0" line-hit="43" name="&lt;unnamed&gt;"/>
+        </source>
+        <source branches-hit="0" branches-valid="0" filename="_uint32_int_48bit_mul.dart" functions-hit="0" functions-valid="0" lines-hit="30" lines-valid="30" prefix="/home/runner/work/murmur3/murmur3">
+            <testCase branch-hit="0" function-hit="0" line-hit="30" name="&lt;unnamed&gt;"/>
+        </source>
+        <source branches-hit="0" branches-valid="0" filename="_murmur_context_3a.dart" functions-hit="0" functions-valid="0" lines-hit="37" lines-valid="37" prefix="/home/runner/work/murmur3/murmur3">
+            <testCase branch-hit="0" function-hit="0" line-hit="37" name="&lt;unnamed&gt;"/>
         </source>
     </sources>
     <config branch-coverage="true" description-file="false" function-coverage="true" genhtml_hi_limit="90" genhtml_med_limit="75" legend="false" no-sort="false" no-source="false"/>
