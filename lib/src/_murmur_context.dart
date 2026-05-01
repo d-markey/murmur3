@@ -25,7 +25,7 @@ abstract class MurmurContext<T> {
   T getHash();
 
   /// Loads a block. Returns the number of bytes used.
-  int _loadBlock(List<int> bytes, int offset);
+  int _loadBlock(ByteData bytes, int offset);
 
   /// Processes a block.
   void _processBlock();
@@ -36,8 +36,14 @@ abstract class MurmurContext<T> {
   /// Finalizes the hash computation.
   void _finalize();
 
+  Completer<T>? _completer;
+
   /// Synchronously process the data and returns the hash value.
-  FutureOr<T> process(dynamic data) {
+  T hash(Object? data) {
+    if (_completer != null) {
+      throw UnsupportedError('Cannot hash data in parallel.');
+    }
+
     _pending = 0;
     _length = 0;
 
@@ -47,81 +53,104 @@ abstract class MurmurContext<T> {
     return getHash();
   }
 
-  Completer<T>? _completer;
-
   /// Process the data as a [Stream] and returns the hash value.
-  Future<T> processStream(Stream data) {
-    _completer = Completer<T>();
+  Future<T> hashStream(Stream<Object?> data) {
+    if (_completer != null) {
+      throw UnsupportedError('Cannot hash data in parallel.');
+    }
+    final completer = _completer = Completer<T>();
+
+    void $handleBody(Object? input) {
+      try {
+        _handleBody(input);
+      } catch (e, st) {
+        completer.completeError(e, st);
+      }
+    }
+
+    void $handleTailAndFinalize() {
+      try {
+        // process tail & finalize
+        _handleTailAndFinalize();
+        completer.complete(getHash());
+      } catch (e, st) {
+        completer.completeError(e, st);
+      }
+    }
+
     _pending = 0;
     _length = 0;
 
     final sub = data.listen(
-      _handleBody,
-      onDone: _handleTailAndFinalize,
-      onError: _handleError,
+      $handleBody,
+      onDone: $handleTailAndFinalize,
+      onError: completer.completeError,
       cancelOnError: true,
     );
 
-    return _completer!.future.whenComplete(sub.cancel);
+    return completer.future.whenComplete(sub.cancel);
   }
 
-  void _handleBody(dynamic input) {
-    try {
-      final bytes = getBytes(input);
-      final len = bytes.length;
-      var idx = 0;
-      while (idx < len) {
+  void _handleBody(Object? input) {
+    final bytes = getBytesData(input), len = bytes.lengthInBytes;
+    var idx = 0;
+
+    // Finish current partial block
+    if (_pending > 0) {
+      while (idx < len && _pending < blockSize) {
         final count = _loadBlock(bytes, idx);
         _pending += count;
-        _length += count;
         idx += count;
-        if (_pending == blockSize) {
-          _processBlock();
-          _pending = 0;
-        }
       }
-    } catch (e, st) {
-      if (_completer == null) {
-        rethrow;
-      } else {
-        _completer!.completeError(e, st);
+      if (_pending == blockSize) {
+        _processBlock();
+        _pending = 0;
       }
     }
+
+    // Process full blocks directly
+    while (len - idx >= blockSize) {
+      _loadBlock(bytes, idx);
+      _processBlock();
+      idx += blockSize;
+    }
+
+    // Load pending partial block
+    while (idx < len) {
+      final count = _loadBlock(bytes, idx);
+      _pending += count;
+      idx += count;
+    }
+
+    // Update length
+    _length += len;
   }
 
   void _handleTailAndFinalize() {
-    try {
-      // process tail & finalize
-      if (_pending > 0) {
-        _pending = 0;
-        _processTail();
-      }
-      _finalize();
-
-      // done
-      _completer?.complete(getHash());
-    } catch (e, st) {
-      if (_completer == null) {
-        rethrow;
-      } else {
-        _completer!.completeError(e, st);
-      }
+    // process tail & finalize
+    if (_pending > 0) {
+      _pending = 0;
+      _processTail();
     }
+    _finalize();
   }
 
-  void _handleError(Object error, StackTrace st) {
-    _completer!.completeError(error, st);
-  }
+  static ByteData getBytesData(Object? data) =>
+      getBytes(data).buffer.asByteData();
 
-  static Uint8List getBytes(dynamic data) {
-    if (data is Uint8List) {
-      return data;
-    } else if (data is Iterable<num>) {
-      return Uint8List.fromList(data.map(_getByte).toList());
-    } else {
-      return Uint8List.fromList(_getBytes(data).toList());
-    }
-  }
+  static final _empty = Uint8List(0);
+  static final _false = Uint8List.fromList([0]);
+  static final _true = Uint8List.fromList([1]);
+
+  static Uint8List getBytes(Object? data) => switch (data) {
+        null => _empty,
+        bool() => data ? _true : _false,
+        num() => Uint8List(1)..[0] = _getByte(data),
+        Uint8List() => data,
+        String() => utf8.encode(data),
+        Iterable<num>() => Uint8List.fromList(data.map(_getByte).toList()),
+        _ => Uint8List.fromList(_getBytes(data).toList())
+      };
 
   static int _getByte(num n) {
     final i = n.isFinite ? n.toInt() : -1;
@@ -139,21 +168,22 @@ abstract class MurmurContext<T> {
   /// * [String] --> yields the string's UTF-8 bytes.
   /// * [Iterable] --> yields all bytes obtained by applying [getBytes] to each item in [data].
   /// Otherwise, a [TypeException] is thrown.
-  static Iterable<int> _getBytes(dynamic data) sync* {
-    if (data == null) {
-      // yield nothing
-    } else if (data is num) {
-      yield _getByte(data);
-    } else if (data is bool) {
-      yield data ? 1 : 0;
-    } else if (data is String) {
-      yield* utf8.encode(data);
-    } else if (data is Iterable) {
-      for (var item in data) {
-        yield* getBytes(item);
-      }
-    } else {
-      throw TypeException('Unsupported data type: ${data.runtimeType}');
+  static Iterable<int> _getBytes(Object? data) sync* {
+    switch (data) {
+      case null:
+        break;
+      case num():
+        yield _getByte(data);
+      case bool():
+        yield data ? 1 : 0;
+      case String():
+        yield* utf8.encode(data);
+      case Iterable():
+        for (var item in data) {
+          yield* getBytes(item);
+        }
+      default:
+        throw TypeException('Unsupported data type: ${data.runtimeType}');
     }
   }
 }

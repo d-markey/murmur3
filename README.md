@@ -24,14 +24,14 @@ Supports array and stream data sources, on native and browser platforms.
 
 ```dart
 void main() async {
-  final hash32 = murmur3a('div200').toHex(32);
-  print('murmur3a(\'div2000\') = 0x$hash32');
+  final hash32 = murmur3.murmur3aSync('div200').toHex(32);
+  print('murmur3a(\'div2000\') = $hash32');
 
-  final hash128x64 = murmur3f('div200').toHex(128);
-  print('murmur3f(\'div2000\') = 0x$hash128x64');
+  final hash128x64 = murmur3.murmur3fSync('div200').toHex(128);
+  print('murmur3f(\'div2000\') = $hash128x64');
 
   final pkBytes = Stream.fromIterable([0x08, 'div200', 0x00]);
-  final pkHash = encodeHash((await murmur3a(pkBytes)).toDouble());
-  print('div200 pk hash = ${pkHash.map((b) => b.toHex(8)).join()}');
+  final pkHash = encodeHash((await murmur3.murmur3a(pkBytes)).toDouble());
+  print('div200 pk hash = ${pkHash.map((b) => b.toHex(8)).join(' ')}');
 }
 ```

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<?xml-stylesheet type="text/xsl" href="../../jgenhtml.xsl"?><coverage branch-rate="NaN" branches-covered="0" branches-valid="0" complexity="0" date="2026-05-01" filename="_uint32_int_64bit_mul.dart" function-rate="NaN" functions-covered="0" functions-valid="0" line-rate="0.7777778" lines-covered="28" lines-valid="36" package="/lib/src" testname="lcov.info" version="1.5">
+<?xml-stylesheet type="text/xsl" href="../../jgenhtml.xsl"?><coverage branch-rate="NaN" branches-covered="0" branches-valid="0" complexity="0" date="2026-05-01" filename="_uint64_native.dart" function-rate="NaN" functions-covered="0" functions-valid="0" line-rate="0.84313726" lines-covered="43" lines-valid="51" package="/lib/src" testname="lcov.info" version="1.5">
     <lines>
         <line>
             <code>import 'dart:typed_data';</code>
@@ -8,42 +8,48 @@
             <code/>
         </line>
         <line>
-            <code>import 'package:murmur3/src/_helpers.dart';</code>
+            <code>import '_helpers.dart';</code>
+        </line>
+        <line>
+            <code>import 'uint.dart';</code>
         </line>
         <line>
             <code/>
         </line>
         <line>
-            <code>import 'uint.dart' show IUint32;</code>
-        </line>
-        <line>
-            <code/>
-        </line>
-        <line>
-            <code>/// 32-bit arithmetic based on a 32-bit int value. This implementation uses</code>
-        </line>
-        <line>
-            <code>/// multiplication on 64-bit numbers and is not compatible with browser platforms</code>
-        </line>
-        <line>
-            <code>/// where integer values are safe up to `pow(2, 53)` only.</code>
+            <code>/// 64-bit arithmetic based on a native 64-bit int.</code>
         </line>
         <line>
             <code>// ignore: camel_case_types</code>
         </line>
         <line>
-            <code>class Uint32_int_64bit_mul implements IUint32 {</code>
+            <code>class Uint64_native implements IUint64 {</code>
         </line>
         <line hits="2">
-            <code>  Uint32_int_64bit_mul(int value) {</code>
+            <code>  Uint64_native(Object? value) {</code>
             <hit count="2" name="&lt;unnamed&gt;"/>
         </line>
         <line>
             <code>    if ($vmOrWasm) {</code>
         </line>
-        <line hits="4">
-            <code>      _value = clamp32(value);</code>
-            <hit count="4" name="&lt;unnamed&gt;"/>
+        <line hits="2">
+            <code>      _value = switch (value) {</code>
+            <hit count="2" name="&lt;unnamed&gt;"/>
+        </line>
+        <line hits="2">
+            <code>        int() =&gt; value,</code>
+            <hit count="2" name="&lt;unnamed&gt;"/>
+        </line>
+        <line hits="2">
+            <code>        Uint64_native() =&gt; value._value,</code>
+            <hit count="2" name="&lt;unnamed&gt;"/>
+        </line>
+        <line hits="6">
+            <code>        _ =&gt; toBigInt(value).toSigned(64).toInt(),</code>
+            <hit count="6" name="&lt;unnamed&gt;"/>
+        </line>
+        <line>
+            <code>      };</code>
         </line>
         <line>
             <code>    } else {</code>
@@ -60,16 +66,22 @@
         <line>
             <code/>
         </line>
+        <line>
+            <code>  int _value = 0;</code>
+        </line>
+        <line>
+            <code/>
+        </line>
         <line hits="2">
             <code>  @override</code>
             <hit count="2" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="2">
-            <code>  int get value =&gt; $vmOrWasm ? _value : unsupported64bit();</code>
-            <hit count="2" name="&lt;unnamed&gt;"/>
-        </line>
         <line>
-            <code>  int _value = 0;</code>
+            <code>  BigInt get value =&gt;</code>
+        </line>
+        <line hits="6">
+            <code>      $vmOrWasm ? BigInt.from(_value).toUnsigned(64) : unsupported64bit();</code>
+            <hit count="6" name="&lt;unnamed&gt;"/>
         </line>
         <line>
             <code/>
@@ -89,15 +101,19 @@
             <hit count="2" name="&lt;unnamed&gt;"/>
         </line>
         <line hits="6">
-            <code>      if (fromByte == 0 &amp;&amp; len - offset &gt;= 4) {</code>
+            <code>      if (fromByte == 0 &amp;&amp; len - offset &gt;= 8) {</code>
             <hit count="6" name="&lt;unnamed&gt;"/>
         </line>
-        <line hits="4">
-            <code>        _value = bytes.getUint32(offset, Endian.little);</code>
-            <hit count="4" name="&lt;unnamed&gt;"/>
+        <line hits="6">
+            <code>        _value = bytes.getUint32(offset, Endian.little) |</code>
+            <hit count="6" name="&lt;unnamed&gt;"/>
+        </line>
+        <line hits="6">
+            <code>            (bytes.getUint32(offset + 4, Endian.little) &lt;&lt; 32);</code>
+            <hit count="6" name="&lt;unnamed&gt;"/>
         </line>
         <line>
-            <code>        return 4;</code>
+            <code>        return 8;</code>
         </line>
         <line>
             <code>      }</code>
@@ -114,7 +130,7 @@
             <hit count="4" name="&lt;unnamed&gt;"/>
         </line>
         <line hits="4">
-            <code>      while (count &lt; 32 &amp;&amp; offset &lt; len) {</code>
+            <code>      while (count &lt; 64 &amp;&amp; offset &lt; len) {</code>
             <hit count="4" name="&lt;unnamed&gt;"/>
         </line>
         <line hits="6">
@@ -160,14 +176,14 @@
             <hit count="2" name="&lt;unnamed&gt;"/>
         </line>
         <line>
-            <code>  void add(IUint32 other) {</code>
+            <code>  void add(IUint64 other) {</code>
         </line>
         <line>
             <code>    if ($vmOrWasm) {</code>
         </line>
-        <line hits="10">
-            <code>      _value = clamp32(_value + other.value);</code>
-            <hit count="10" name="&lt;unnamed&gt;"/>
+        <line hits="6">
+            <code>      _value += (other as Uint64_native)._value;</code>
+            <hit count="6" name="&lt;unnamed&gt;"/>
         </line>
         <line>
             <code>    } else {</code>
@@ -189,17 +205,40 @@
             <hit count="2" name="&lt;unnamed&gt;"/>
         </line>
         <line>
-            <code>  // requires 64-bit arithmetic</code>
-        </line>
-        <line>
-            <code>  void mul(IUint32 other) {</code>
+            <code>  void mul(IUint64 other) {</code>
         </line>
         <line>
             <code>    if ($vmOrWasm) {</code>
         </line>
-        <line hits="10">
-            <code>      _value = clamp32(_value * other.value);</code>
-            <hit count="10" name="&lt;unnamed&gt;"/>
+        <line hits="2">
+            <code>      final b = (other as Uint64_native)._value;</code>
+            <hit count="2" name="&lt;unnamed&gt;"/>
+        </line>
+        <line hits="4">
+            <code>      final aL = _value &amp; mask32;</code>
+            <hit count="4" name="&lt;unnamed&gt;"/>
+        </line>
+        <line hits="4">
+            <code>      final aH = _value &gt;&gt;&gt; 32;</code>
+            <hit count="4" name="&lt;unnamed&gt;"/>
+        </line>
+        <line hits="2">
+            <code>      final bL = b &amp; mask32;</code>
+            <hit count="2" name="&lt;unnamed&gt;"/>
+        </line>
+        <line hits="2">
+            <code>      final bH = b &gt;&gt;&gt; 32;</code>
+            <hit count="2" name="&lt;unnamed&gt;"/>
+        </line>
+        <line>
+            <code/>
+        </line>
+        <line>
+            <code>      // (aH*2^32 + aL) * (bH*2^32 + bL) = (aH*bL + aL*bH) &lt;&lt; 32 + aL*bL</code>
+        </line>
+        <line hits="16">
+            <code>      _value = (aL * bL) + (((aH * bL + aL * bH) &amp; mask32) &lt;&lt; 32);</code>
+            <hit count="16" name="&lt;unnamed&gt;"/>
         </line>
         <line>
             <code>    } else {</code>
@@ -226,9 +265,17 @@
         <line>
             <code>    if ($vmOrWasm) {</code>
         </line>
-        <line hits="16">
-            <code>      _value = clamp32(_value &lt;&lt; n) | (_value &gt;&gt; (32 - n));</code>
-            <hit count="16" name="&lt;unnamed&gt;"/>
+        <line hits="2">
+            <code>      n %= 64;</code>
+            <hit count="2" name="&lt;unnamed&gt;"/>
+        </line>
+        <line hits="2">
+            <code>      if (n == 0) return;</code>
+            <hit count="2" name="&lt;unnamed&gt;"/>
+        </line>
+        <line hits="14">
+            <code>      _value = (_value &lt;&lt; n) | (_value &gt;&gt;&gt; (64 - n));</code>
+            <hit count="14" name="&lt;unnamed&gt;"/>
         </line>
         <line>
             <code>    } else {</code>
@@ -255,9 +302,23 @@
         <line>
             <code>    if ($vmOrWasm) {</code>
         </line>
-        <line hits="4">
-            <code>      _value = clamp32(_value &lt;&lt; n);</code>
-            <hit count="4" name="&lt;unnamed&gt;"/>
+        <line hits="1">
+            <code>      if (n &gt;= 64) {</code>
+            <hit count="1" name="&lt;unnamed&gt;"/>
+        </line>
+        <line hits="1">
+            <code>        _value = 0;</code>
+            <hit count="1" name="&lt;unnamed&gt;"/>
+        </line>
+        <line>
+            <code>      } else {</code>
+        </line>
+        <line hits="2">
+            <code>        _value &lt;&lt;= n;</code>
+            <hit count="2" name="&lt;unnamed&gt;"/>
+        </line>
+        <line>
+            <code>      }</code>
         </line>
         <line>
             <code>    } else {</code>
@@ -279,13 +340,13 @@
             <hit count="2" name="&lt;unnamed&gt;"/>
         </line>
         <line>
-            <code>  void xor(IUint32 other) {</code>
+            <code>  void xor(IUint64 other) {</code>
         </line>
         <line>
             <code>    if ($vmOrWasm) {</code>
         </line>
         <line hits="6">
-            <code>      _value ^= other.value;</code>
+            <code>      _value ^= (other as Uint64_native)._value;</code>
             <hit count="6" name="&lt;unnamed&gt;"/>
         </line>
         <line>
@@ -313,9 +374,23 @@
         <line>
             <code>    if ($vmOrWasm) {</code>
         </line>
+        <line hits="2">
+            <code>      if (n &gt;= 64) {</code>
+            <hit count="2" name="&lt;unnamed&gt;"/>
+        </line>
+        <line hits="2">
+            <code>        _value ^= 0;</code>
+            <hit count="2" name="&lt;unnamed&gt;"/>
+        </line>
+        <line>
+            <code>      } else {</code>
+        </line>
         <line hits="8">
-            <code>      _value ^= (_value &gt;&gt; n);</code>
+            <code>        _value ^= (_value &gt;&gt;&gt; n);</code>
             <hit count="8" name="&lt;unnamed&gt;"/>
+        </line>
+        <line>
+            <code>      }</code>
         </line>
         <line>
             <code>    } else {</code>

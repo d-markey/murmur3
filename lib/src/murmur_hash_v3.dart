@@ -5,26 +5,43 @@ import '_murmur_context.dart';
 import 'type_exception.dart';
 import 'uint.dart';
 
+typedef HashFunction<T> = Future<T> Function(Object? data, {T? seed});
+typedef HashFunction32 = HashFunction<int>;
+typedef HashFunction128 = HashFunction<BigInt>;
+
+typedef HashFunctionSync<T> = T Function(Object? data, {T? seed});
+typedef HashFunctionSync32 = HashFunctionSync<int>;
+typedef HashFunctionSync128 = HashFunctionSync<BigInt>;
+
 /// MurmurHash3 for x64 (Little Endian).
 /// Reference: https://en.wikipedia.org/wiki/MurmurHash
 class MurmurHashV3 {
+  const MurmurHashV3({FUint32? uint32, FUint64? uint64})
+      : _uint32 = uint32 ?? Uint32_int_48bit_mul.new,
+        _uint64 = uint64 ?? Uint64_int.new;
+
   ///////////////////////////////////
   //
   // 32-bit implementation (murmur3a)
   //
   ///////////////////////////////////
 
-  /// Sets the IUInt64 implementation to use. Defaults to [Uint32_int_xplat.new].
-  static void useUInt32Impl(IUint32 Function(int n) uint32) => _uint32 = uint32;
-
-  static IUint32 Function(int n) _uint32 = Uint32_int_xplat.new;
+  final FUint32 _uint32;
 
   /// MurmurHash3 32-bit implementation.
-  static FutureOr<int> murmur3a(dynamic data, {int seed = 0}) {
-    final context = MurmurContext3a(_uint32, seed);
-    return (data is Stream)
-        ? context.processStream(data)
-        : context.process(data);
+  Future<int> murmur3a(Object? data, {int? seed}) {
+    final context = MurmurContext3a(_uint32, seed ?? 0);
+    return switch (data) {
+      Stream() => context.hashStream(data),
+      _ => Future.value(context.hash(data))
+    };
+  }
+
+  int murmur3aSync(Object? data, {int? seed}) {
+    if (data is Stream) {
+      throw UnsupportedError('Streams cannot be hashed synchronously');
+    }
+    return MurmurContext3a(_uint32, seed ?? 0).hash(data);
   }
 
   ////////////////////////////////////////
@@ -33,19 +50,23 @@ class MurmurHashV3 {
   //
   ////////////////////////////////////////
 
-  /// Sets the IUInt64 implementation to use. Defaults to [Uint64_int.new].
-  static void useUInt64Impl(IUint64 Function(dynamic n) uint64) =>
-      _uint64 = uint64;
-
-  static IUint64 Function(dynamic n) _uint64 = Uint64_int.new;
+  final FUint64 _uint64;
 
   /// MurmurHash3 128-bit x64 implementation, converting the input data via [_getBytes].
   // ignore: non_constant_identifier_names
-  static FutureOr<BigInt> murmur3f(dynamic data, {BigInt? seed}) {
+  Future<BigInt> murmur3f(Object? data, {BigInt? seed}) {
     final context = MurmurContext3f(_uint64, seed ?? BigInt.zero);
-    return (data is Stream)
-        ? context.processStream(data)
-        : context.process(data);
+    return switch (data) {
+      Stream() => context.hashStream(data),
+      _ => Future.value(context.hash(data))
+    };
+  }
+
+  BigInt murmur3fSync(Object? data, {BigInt? seed}) {
+    if (data is Stream) {
+      throw UnsupportedError('Streams cannot be hashed synchronously');
+    }
+    return MurmurContext3f(_uint64, seed ?? BigInt.zero).hash(data);
   }
 
   /// Get bytes from [data]. Conversion depends on [data]'s type:
@@ -57,5 +78,5 @@ class MurmurHashV3 {
   /// * [String] --> returns an array containing [data]'s UTF-8 bytes.
   /// * [Iterable] --> returns an array containing all bytes obtained by applying [getBytes] to each item in [data].
   /// Otherwise, a [TypeException] is thrown.
-  static Uint8List getBytes(dynamic data) => MurmurContext.getBytes(data);
+  static Uint8List getBytes(Object? data) => MurmurContext.getBytes(data);
 }

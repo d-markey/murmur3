@@ -1,3 +1,7 @@
+import 'dart:typed_data';
+
+import 'package:murmur3/src/_helpers.dart';
+
 import 'uint.dart' show IUint32;
 
 /// 32-bit arithmetic based on a 32-bit int value. This implementation uses
@@ -5,52 +9,93 @@ import 'uint.dart' show IUint32;
 /// where integer values are safe up to `pow(2, 53)` only.
 // ignore: camel_case_types
 class Uint32_int_64bit_mul implements IUint32 {
-  static const _mask = 0xFFFFFFFF;
-
-  static int _clamp(int n) => n & _mask;
-
-  Uint32_int_64bit_mul(int num) : _num = _clamp(num);
-
-  @override
-  int get value => _num;
-  int _num;
-
-  @override
-  int loadLEBytes(List<int> bytes, int offset, {int fromByte = 0}) {
-    var idx = offset, len = bytes.length, count = 0;
-    if (fromByte == 0) {
-      _num = 0;
+  Uint32_int_64bit_mul(int value) {
+    if ($vmOrWasm) {
+      _value = clamp32(value);
+    } else {
+      unsupported64bit();
     }
-    var n = fromByte * 8;
-    while (idx < len && n < 32) {
-      _num |= bytes[idx] << n;
-      count++;
-      idx++;
-      n += 8;
-    }
-    return count;
   }
 
   @override
-  void add(IUint32 other) => _num = _clamp(_num + other.value);
+  int get value => $vmOrWasm ? _value : unsupported64bit();
+  int _value = 0;
+
+  @override
+  int loadLEBytes(ByteData bytes, int offset, {int fromByte = 0}) {
+    if ($vmOrWasm) {
+      final len = bytes.lengthInBytes;
+      if (fromByte == 0 && len - offset >= 4) {
+        _value = bytes.getUint32(offset, Endian.little);
+        return 4;
+      }
+
+      var count = fromByte * 8;
+      var value = (fromByte == 0) ? 0 : _value;
+      while (count < 32 && offset < len) {
+        value |= bytes.getUint8(offset) << count;
+        count += 8;
+        offset++;
+      }
+      _value = value;
+      return count ~/ 8 - fromByte;
+    } else {
+      unsupported64bit();
+    }
+  }
+
+  @override
+  void add(IUint32 other) {
+    if ($vmOrWasm) {
+      _value = clamp32(_value + other.value);
+    } else {
+      unsupported64bit();
+    }
+  }
 
   @override
   // requires 64-bit arithmetic
-  void mul(IUint32 other) => _num = _clamp(_num * other.value);
+  void mul(IUint32 other) {
+    if ($vmOrWasm) {
+      _value = clamp32(_value * other.value);
+    } else {
+      unsupported64bit();
+    }
+  }
 
   @override
-  void rotl(int n) => _num = _clamp(_num << n) | (_num >> (32 - n));
+  void rotl(int n) {
+    if ($vmOrWasm) {
+      _value = clamp32(_value << n) | (_value >> (32 - n));
+    } else {
+      unsupported64bit();
+    }
+  }
 
   @override
-  void shl(int n) => _num = _clamp(_num << n);
+  void shl(int n) {
+    if ($vmOrWasm) {
+      _value = clamp32(_value << n);
+    } else {
+      unsupported64bit();
+    }
+  }
 
   @override
-  void xor(IUint32 other) => _num ^= other.value;
+  void xor(IUint32 other) {
+    if ($vmOrWasm) {
+      _value ^= other.value;
+    } else {
+      unsupported64bit();
+    }
+  }
 
   @override
-  void xshr(int n) => _num ^= (_num >> n);
+  void xshr(int n) {
+    if ($vmOrWasm) {
+      _value ^= (_value >> n);
+    } else {
+      unsupported64bit();
+    }
+  }
 }
-
-/// Type definition for platform-specific implementation
-// ignore: camel_case_types
-typedef Uint32_int_xplat = Uint32_int_64bit_mul;

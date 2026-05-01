@@ -1,5 +1,10 @@
-platforms: 
+platforms:
   - vm
   - chrome
+
+compilers:
+  - kernel
+  - dart2js
+  - dart2wasm
 
 chain_stack_traces: true

@@ -7,23 +7,18 @@ import 'helpers/_helpers.dart';
 import 'helpers/test_case_3a.dart';
 
 void main() {
-  group('Uint32_int_48bit_mul - ', () {
-    MurmurHashV3.useUInt32Impl(Uint32_int_48bit_mul.new);
-    run();
+  group('[$platform] $Uint32_int_48bit_mul - ', () {
+    run(Uint32_int_48bit_mul.new);
   });
 
-  group('Uint32_int_64bit_mul - ', () {
-    MurmurHashV3.useUInt32Impl(Uint32_int_64bit_mul.new);
-    run();
-  });
-
-  group('Uint32_int_xplat - ', () {
-    MurmurHashV3.useUInt32Impl(Uint32_int_xplat.new);
-    run();
-  });
+  group('[$platform] $Uint32_int_64bit_mul - ', () {
+    run(Uint32_int_64bit_mul.new);
+  }, onPlatform: skipOnDart2Js);
 }
 
-void run() {
+void run(FUint32 uint32) {
+  final hash = MurmurHashV3(uint32: uint32);
+
   // test cases found or built from
   // https://gist.github.com/vladimirgamalyan/defb2482feefbf5c3ea25b14c557753b
   // https://github.com/spaolacci/murmur3/blob/master/murmur_test.go
@@ -117,68 +112,68 @@ void run() {
 
   test('murmur3a - no stream - empty', () async {
     for (var testCase in emptyTestCases) {
-      await testCase.check();
+      await testCase.check(hash);
     }
   });
 
   test('murmur3a - no stream - tail only', () async {
     for (var testCase in tailTestCases) {
-      await testCase.check();
+      await testCase.check(hash);
     }
   });
 
   test('murmur3a - no stream - no tail', () async {
     for (var testCase in noTailTestCases) {
-      await testCase.check();
+      await testCase.check(hash);
     }
   });
 
   test('murmur3a - no stream - body + tail', () async {
     for (var testCase in bodyAndTailTestCases) {
-      await testCase.check();
+      await testCase.check(hash);
     }
   });
 
   test('murmur3a - no stream - mixed input', () async {
     for (var testCase in mixedInputTestCases) {
-      await testCase.check();
+      await testCase.check(hash);
     }
   });
 
   test('murmur3a - stream - empty', () async {
     for (var testCase in emptyTestCases) {
-      await testCase.asStream().check();
+      await testCase.asStream().check(hash);
     }
   });
 
   test('murmur3a - stream - tail only', () async {
     for (var testCase in tailTestCases) {
-      await testCase.asStream().check();
+      await testCase.asStream().check(hash);
     }
   });
 
   test('murmur3a - stream - no tail', () async {
     for (var testCase in noTailTestCases) {
-      await testCase.asStream().check();
+      await testCase.asStream().check(hash);
     }
   });
 
   test('murmur3a - stream - body + tail', () async {
     for (var testCase in bodyAndTailTestCases) {
-      await testCase.asStream().check();
+      await testCase.asStream().check(hash);
     }
   });
 
   test('murmur3a - stream - mixed input', () async {
     for (var testCase in mixedInputTestCases) {
-      await testCase.asStream().check();
+      await testCase.asStream().check(hash);
     }
   });
 
   test('murmur3a - invalid data', () async {
     try {
-      murmur3a(256);
-      throw Exception('Managed to compute hash for non-byte data');
+      hash.murmur3aSync(256);
+      throw Exception('Unexpected: hash computed for non-byte data');
     } on TypeException catch (ex) {
       expect(ex.message.toLowerCase(), contains('not a byte'));
       expect(ex.toString(), contains('TypeException'));
@@ -186,13 +181,13 @@ void run() {
     }
 
     try {
-      murmur3a([
+      hash.murmur3aSync([
         0,
         [1, 2],
         256,
         4
       ]);
-      throw Exception('Managed to compute hash for non-byte data');
+      throw Exception('Unexpected: hash computed for non-byte data');
     } on TypeException catch (ex) {
       expect(ex.message.toLowerCase(), contains('not a byte'));
       expect(ex.toString(), contains('TypeException'));
@@ -200,13 +195,13 @@ void run() {
     }
 
     try {
-      murmur3a([
+      hash.murmur3aSync([
         0,
         [1, 2],
         Object(),
         256
       ]);
-      throw Exception('Managed to compute hash for non-byte data');
+      throw Exception('Unexpected: hash computed for non-byte data');
     } on TypeException catch (ex) {
       expect(ex.message.toLowerCase(), contains('unsupported'));
       expect(ex.toString(), contains('TypeException'));
@@ -214,13 +209,13 @@ void run() {
     }
 
     try {
-      murmur3a([
+      hash.murmur3aSync([
         0,
         [1, 2],
         256,
         Object()
       ]);
-      throw Exception('Managed to compute hash for non-byte data');
+      throw Exception('Unexpected: hash computed for non-byte data');
     } on TypeException catch (ex) {
       expect(ex.message.toLowerCase(), contains('not a byte'));
       expect(ex.toString(), contains('TypeException'));
@@ -228,8 +223,8 @@ void run() {
     }
 
     try {
-      murmur3a(Object());
-      throw Exception('Managed to compute hash for non-byte data');
+      hash.murmur3aSync(Object());
+      throw Exception('Unexpected: hash computed for non-byte data');
     } on TypeException catch (ex) {
       expect(ex.message.toLowerCase(), contains('unsupported'));
       expect(ex.toString(), contains('TypeException'));
@@ -237,8 +232,8 @@ void run() {
     }
 
     try {
-      await murmur3a(Stream.fromIterable([0, 1, 2, 256, 4]));
-      throw Exception('Managed to compute hash for non-byte data');
+      await hash.murmur3a(Stream.fromIterable([0, 1, 2, 256, 4]));
+      throw Exception('Unexpected: hash computed for non-byte data');
     } on TypeException catch (ex) {
       expect(ex.message.toLowerCase(), contains('not a byte'));
       expect(ex.toString(), contains('TypeException'));
@@ -246,8 +241,8 @@ void run() {
     }
 
     try {
-      await murmur3a(Stream.fromIterable(<num>[0, 1, 2.4, 256, 4]));
-      throw Exception('Managed to compute hash for non-byte data');
+      await hash.murmur3a(Stream.fromIterable(<num>[0, 1, 2.4, 256, 4]));
+      throw Exception('Unexpected: hash computed for non-byte data');
     } on TypeException catch (ex) {
       expect(ex.message.toLowerCase(), contains('not a byte'));
       expect(ex.toString(), contains('TypeException'));
@@ -255,13 +250,13 @@ void run() {
     }
 
     try {
-      await murmur3a(Stream.fromIterable([
+      await hash.murmur3a(Stream.fromIterable([
         0,
         1,
         2,
         [Object(), 4]
       ]));
-      throw Exception('Managed to compute hash for non-byte data');
+      throw Exception('Unexpected: hash computed for non-byte data');
     } on TypeException catch (ex) {
       expect(ex.message.toLowerCase(), contains('unsupported'));
       expect(ex.toString(), contains('TypeException'));
@@ -269,13 +264,13 @@ void run() {
     }
 
     try {
-      await murmur3a(Stream.fromIterable([
+      await hash.murmur3a(Stream.fromIterable([
         0,
         1,
         2,
         [256, Object(), 4]
       ]));
-      throw Exception('Managed to compute hash for non-byte data');
+      throw Exception('Unexpected: hash computed for non-byte data');
     } on TypeException catch (ex) {
       expect(ex.message.toLowerCase(), contains('not a byte'));
       expect(ex.toString(), contains('TypeException'));
@@ -289,8 +284,8 @@ void run() {
         throw Exception(intendedError);
       }
 
-      await murmur3a(errorStream());
-      throw Exception('Managed to compute hash for a stream with errors');
+      await hash.murmur3a(errorStream());
+      throw Exception('Unexpected: hash computed for a stream with errors');
     } catch (ex) {
       expect(ex.toString(), contains(intendedError));
     }

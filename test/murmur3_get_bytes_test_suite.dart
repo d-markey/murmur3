@@ -4,8 +4,10 @@ import 'dart:typed_data';
 import 'package:murmur3/murmur3.dart';
 import 'package:test/test.dart';
 
+import 'helpers/_helpers.dart';
+
 void main() {
-  group('Byte conversions - ', () {
+  group('[$platform] Byte conversions - ', () {
     test('byte', () {
       for (var i = 0; i <= 255; i++) {
         var array = MurmurHashV3.getBytes(i);

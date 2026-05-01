@@ -20,7 +20,7 @@ class MurmurContext3f extends MurmurContext<BigInt> {
   late final IUint64 _k1 = _uint64(0);
   late final IUint64 _k2 = _uint64(0);
 
-  final IUint64 Function(dynamic num) _uint64;
+  final FUint64 _uint64;
 
   late final _c1 = _uint64('0x87C37B91114253D5');
   late final _c2 = _uint64('0x4CF5AD432745937F');
@@ -32,7 +32,7 @@ class MurmurContext3f extends MurmurContext<BigInt> {
   late final _five = _uint64(5);
 
   @override
-  int _loadBlock(List<int> bytes, int offset) {
+  int _loadBlock(ByteData bytes, int offset) {
     var count = 0;
     if (_pending < 8) {
       count += _k1.loadLEBytes(bytes, offset, fromByte: _pending);

@@ -18,7 +18,7 @@
                     <dt>Test</dt>
                     <dd>lcov.info</dd>
                     <dt>Date</dt>
-                    <dd>2023-05-13</dd>
+                    <dd>2026-05-01</dd>
                     <dt class="legend">Legend</dt>
                     <dd class="legend">
                         <dl class="legend">
@@ -40,7 +40,7 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <th scope="row">Lines</th><td>3</td><td>4</td><td class="med">75.0%</td>
+                            <th scope="row">Lines</th><td>3</td><td>3</td><td class="high">100.0%</td>
                         </tr>
                         <tr>
                             <th scope="row">Functions</th><td>0</td><td>0</td><td class="high">-</td>
@@ -67,7 +67,7 @@
                     <td>2</td><td></td><td></td><td><code>class TypeException implements Exception {</code></td>
                 </tr>
                 <tr class="lineCov" title="Line 3" id="line3">
-                    <td>3</td><td></td><td>4</td><td><code>  TypeException([this.message = '']);</code></td>
+                    <td>3</td><td></td><td>2</td><td><code>  TypeException([this.message = '']);</code></td>
                 </tr>
                 <tr class="noop" title="Line 4" id="line4">
                     <td>4</td><td></td><td></td><td><code></code></td>
@@ -81,11 +81,11 @@
                 <tr class="lineCov" title="Line 7" id="line7">
                     <td>7</td><td></td><td>2</td><td><code>  @override</code></td>
                 </tr>
-                <tr class="lineNoCov" title="Line 8" id="line8">
-                    <td>8</td><td></td><td>0</td><td><code>  String toString() =&gt;</code></td>
+                <tr class="noop" title="Line 8" id="line8">
+                    <td>8</td><td></td><td></td><td><code>  String toString() =&gt;</code></td>
                 </tr>
                 <tr class="lineCov" title="Line 9" id="line9">
-                    <td>9</td><td></td><td>8</td><td><code>      message.isEmpty ? 'TypeException' : 'TypeException: $message';</code></td>
+                    <td>9</td><td></td><td>10</td><td><code>      message.isEmpty ? runtimeType.toString() : '$runtimeType: $message';</code></td>
                 </tr>
                 <tr class="noop" title="Line 10" id="line10">
                     <td>10</td><td></td><td></td><td><code>}</code></td>

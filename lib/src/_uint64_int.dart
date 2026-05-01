@@ -1,10 +1,11 @@
+import 'dart:typed_data';
+
+import '_helpers.dart';
 import 'uint.dart' show IUint64;
 
 /// 64-bit arithmetic based on two 32-bit int values.
 // ignore: camel_case_types
 class Uint64_int implements IUint64 {
-  static const _mask32 = 0xFFFFFFFF;
-
   // 33rd bit set: dividing by this number is equivalent to >> 32
   static const _max32 = 0x100000000;
   // 25th bit set, dividing by this number is equivalent to >> 24
@@ -16,12 +17,8 @@ class Uint64_int implements IUint64 {
   static int _lo32(BigInt n) => (n & _maskLo32).toInt();
   static int _hi32(BigInt n) => ((n & _maskHi32) >> 32).toInt();
 
-  Uint64_int(dynamic num) {
-    final n = (num is BigInt)
-        ? num
-        : (num is String)
-            ? BigInt.parse(num)
-            : BigInt.from(num);
+  Uint64_int(Object? value) {
+    final n = toBigInt(value);
     _lo = _lo32(n);
     _hi = _hi32(n);
   }
@@ -32,60 +29,60 @@ class Uint64_int implements IUint64 {
   int _hi = 0;
 
   @override
-  int loadLEBytes(List<int> bytes, int offset, {int fromByte = 0}) {
-    var idx = offset, len = bytes.length, count = 0;
-    if (fromByte == 0) {
-      _lo = 0;
-      _hi = 0;
+  int loadLEBytes(ByteData bytes, int offset, {int fromByte = 0}) {
+    final len = bytes.lengthInBytes;
+    if (fromByte == 0 && len - offset >= 8) {
+      _lo = bytes.getUint32(offset, Endian.little);
+      _hi = bytes.getUint32(offset + 4, Endian.little);
+      return 8;
     }
-    if (fromByte < 4) {
-      var n = fromByte * 8;
-      while (idx < len && n < 32) {
-        _lo |= bytes[idx] << n;
-        count++;
-        idx++;
-        n += 8;
-      }
-      fromByte = 4;
+
+    var count = fromByte * 8;
+    var lo = (fromByte == 0) ? 0 : _lo;
+    var hi = (fromByte == 0) ? 0 : _hi;
+    while (count < 32 && offset < len) {
+      lo |= bytes.getUint8(offset) << count;
+      count += 8;
+      offset++;
     }
-    if (fromByte >= 4) {
-      var n = (fromByte - 4) * 8;
-      while (idx < len && n < 32) {
-        _hi |= bytes[idx] << n;
-        count++;
-        idx++;
-        n += 8;
-      }
+    while (count < 64 && offset < len) {
+      hi |= bytes.getUint8(offset) << (count - 32);
+      count += 8;
+      offset++;
     }
-    return count;
+    _hi = hi;
+    _lo = lo;
+    return count ~/ 8 - fromByte;
   }
 
   @override
   void add(IUint64 other) {
-    other = other as Uint64_int;
+    other as Uint64_int;
     final slo = _lo + other._lo;
     final shi = _hi + other._hi + (slo ~/ _max32);
-    _lo = slo & _mask32;
-    _hi = shi & _mask32;
+    _lo = slo & mask32;
+    _hi = shi & mask32;
   }
 
   // decomposition of 2x 32-bit = 2x 24-bit + 1x 16-bit
   // _lo | (_hi << 32) = _lo24 | (_mid24 << 24) | (_hi16 << 48)
 
   // 24 lower bits
-  int get _lo24 => _lo & 0x00FFFFFF;
+  static int _lo24(int lo) => lo & 0x00FFFFFF;
   // 24 middle bits
-  int get _mid24 => ((_hi & 0x0000FFFF) << 8) | ((_lo & 0xFF000000) >> 24);
+  static int _mid24(int lo, int hi) =>
+      ((hi & 0x0000FFFF) << 8) | ((lo & 0xFF000000) >> 24);
   // 16 higher bits
-  int get _hi16 => (_hi & 0xFFFF0000) >> 16;
+  static int _hi16(int hi) => (hi & 0xFFFF0000) >> 16;
 
   @override
   void mul(IUint64 other) {
-    other = other as Uint64_int;
+    other as Uint64_int;
 
     // decomposing 2x 32-bit into 2x 24-bit + 1x 16-bit
-    final llo = _lo24, lmid = _mid24, lhi = _hi16;
-    final rlo = other._lo24, rmid = other._mid24, rhi = other._hi16;
+    final llo = _lo24(_lo), rlo = _lo24(other._lo);
+    final lmid = _mid24(_lo, _hi), rmid = _mid24(other._lo, other._hi);
+    final lhi = _hi16(_hi), rhi = _hi16(other._hi);
 
     // on browser platforms, JavaScript ints are safe up to 2^53
     // as a result:
@@ -128,16 +125,16 @@ class Uint64_int implements IUint64 {
       lsh += 32;
       n -= 32;
     }
-    final m = (_mask32 << lsh) & _mask32;
+    final m = (mask32 << lsh) & mask32;
     final hb = (_hi & m) >> lsh;
     final lb = (_lo & m) >> lsh;
-    _hi = ((_hi << n) | lb) & _mask32;
-    _lo = ((_lo << n) | hb) & _mask32;
+    _hi = ((_hi << n) | lb) & mask32;
+    _lo = ((_lo << n) | hb) & mask32;
   }
 
   @override
   void xor(IUint64 other) {
-    other = other as Uint64_int;
+    other as Uint64_int;
     _lo ^= other._lo;
     _hi ^= other._hi;
   }
@@ -146,12 +143,12 @@ class Uint64_int implements IUint64 {
   void shl(int n) {
     final lsh = 32 - n;
     if (lsh <= 0) {
-      _hi = (_lo << -lsh) & _mask32;
+      _hi = (_lo << -lsh) & mask32;
       _lo = 0;
     } else {
-      final m = (_mask32 << lsh) & _mask32;
-      _hi = ((_hi << n) | ((_lo & m) >> lsh)) & _mask32;
-      _lo = (_lo << n) & _mask32;
+      final m = (mask32 << lsh) & mask32;
+      _hi = ((_hi << n) | ((_lo & m) >> lsh)) & mask32;
+      _lo = (_lo << n) & mask32;
     }
   }
 
@@ -159,11 +156,11 @@ class Uint64_int implements IUint64 {
   void xshr(int n) {
     final rsh = 32 - n;
     if (rsh <= 0) {
-      _lo ^= (_hi >> -rsh) & _mask32;
+      _lo ^= (_hi >> -rsh) & mask32;
     } else {
-      final m = (_mask32 >> rsh) & _mask32;
-      _lo ^= ((_lo >> n) | ((_hi & m) << rsh)) & _mask32;
-      _hi ^= (_hi >> n) & _mask32;
+      final m = (mask32 >> rsh) & mask32;
+      _lo ^= ((_lo >> n) | ((_hi & m) << rsh)) & mask32;
+      _hi ^= (_hi >> n) & mask32;
     }
   }
 }

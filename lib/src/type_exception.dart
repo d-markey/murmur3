@@ -6,5 +6,5 @@ class TypeException implements Exception {
 
   @override
   String toString() =>
-      message.isEmpty ? 'TypeException' : 'TypeException: $message';
+      message.isEmpty ? runtimeType.toString() : '$runtimeType: $message';
 }

@@ -12,7 +12,7 @@ class MurmurContext3a extends MurmurContext<int> {
   late final IUint32 _hash;
   late final IUint32 _k = _uint32(0);
 
-  final IUint32 Function(int num) _uint32;
+  final FUint32 _uint32;
 
   late final _c1 = _uint32(0xCC9E2D51);
   late final _c2 = _uint32(0x1B873593);
@@ -23,7 +23,7 @@ class MurmurContext3a extends MurmurContext<int> {
   late final _five = _uint32(5);
 
   @override
-  int _loadBlock(List<int> bytes, int offset) =>
+  int _loadBlock(ByteData bytes, int offset) =>
       _k.loadLEBytes(bytes, offset, fromByte: _pending);
 
   @override
@@ -49,13 +49,11 @@ class MurmurContext3a extends MurmurContext<int> {
   }
 
   @override
-  void _finalize() {
-    _hash
-      ..xor(_uint32(_length))
-      ..xshr(16)
-      ..mul(_c4)
-      ..xshr(13)
-      ..mul(_c5)
-      ..xshr(16);
-  }
+  void _finalize() => _hash
+    ..xor(_uint32(_length))
+    ..xshr(16)
+    ..mul(_c4)
+    ..xshr(13)
+    ..mul(_c5)
+    ..xshr(16);
 }

@@ -1,9 +1,14 @@
-export '_uint32_int_48bit_mul.dart' show Uint32_int_48bit_mul;
-export '_uint32_int_64bit_mul.dart' show Uint32_int_64bit_mul;
-export '_uint32_int_64bit_mul.dart'
-    if (dart.library.js) '_uint32_int_48bit_mul.dart' show Uint32_int_xplat;
+import 'dart:typed_data';
+
+export '_uint32_int_48bit_mul.dart';
+export '_uint32_int_64bit_mul.dart';
+
 export '_uint64_bigint.dart';
 export '_uint64_int.dart';
+export '_uint64_native.dart';
+
+typedef FUint32 = IUint32 Function(int);
+typedef FUint64 = IUint64 Function(Object);
 
 /// Contract for 32-bit arithmetic used in MurmurHash v3 - 32-bit.
 abstract class IUint32 extends IUint<IUint32, int> {}
@@ -18,7 +23,7 @@ abstract class IUint<T, V> {
 
   /// Loads bytes into the internal register (little-endian). Returns the number
   /// of bytes that have been loaded.
-  int loadLEBytes(List<int> bytes, int offset, {int fromByte = 0});
+  int loadLEBytes(ByteData bytes, int offset, {int fromByte = 0});
 
   /// In-place addition. The value stored in this instance is replaced with the
   /// result.

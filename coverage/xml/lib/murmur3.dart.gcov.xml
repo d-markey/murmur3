@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?xml-stylesheet type="text/xsl" href="../jgenhtml.xsl"?><coverage branch-rate="NaN" branches-covered="0" branches-valid="0" complexity="0" date="2026-05-01" filename="murmur3.dart" function-rate="NaN" functions-covered="0" functions-valid="0" line-rate="0.0" lines-covered="0" lines-valid="4" package="/lib" testname="lcov.info" version="1.5">
+    <lines>
+        <line>
+            <code>import 'src/murmur_hash_v3.dart';</code>
+        </line>
+        <line>
+            <code/>
+        </line>
+        <line>
+            <code>export 'src/murmur_hash_v3.dart';</code>
+        </line>
+        <line>
+            <code>export 'src/type_exception.dart';</code>
+        </line>
+        <line>
+            <code>export 'src/uint.dart';</code>
+        </line>
+        <line>
+            <code/>
+        </line>
+        <line>
+            <code>/// Default [MurmurHashV3] instance. It uses [Uint32_int_48bit_mul] and [Uint64_int] (cross-platform).</code>
+        </line>
+        <line>
+            <code>const murmur3 = MurmurHashV3();</code>
+        </line>
+        <line>
+            <code/>
+        </line>
+        <line>
+            <code>/// MurmurHash3 32-bit implementation.</code>
+        </line>
+        <line>
+            <code>/// The data is converted using [MurmurHashV3.getBytes].</code>
+        </line>
+        <line hits="0">
+            <code>final murmur3_32 = murmur3.murmur3a;</code>
+        </line>
+        <line>
+            <code/>
+        </line>
+        <line>
+            <code>/// MurmurHash3 128-bit x64 implementation.</code>
+        </line>
+        <line>
+            <code>/// The data is converted using [MurmurHashV3.getBytes].</code>
+        </line>
+        <line hits="0">
+            <code>final murmur3_128x64 = murmur3.murmur3f;</code>
+        </line>
+        <line>
+            <code/>
+        </line>
+        <line>
+            <code>/// MurmurHash3 32-bit implementation.</code>
+        </line>
+        <line>
+            <code>/// The data is converted using [MurmurHashV3.getBytes].</code>
+        </line>
+        <line hits="0">
+            <code>final murmur3a = murmur3.murmur3a;</code>
+        </line>
+        <line>
+            <code/>
+        </line>
+        <line>
+            <code>/// MurmurHash3 128-bit x64 implementation.</code>
+        </line>
+        <line>
+            <code>/// The data is converted using [MurmurHashV3.getBytes].</code>
+        </line>
+        <line hits="0">
+            <code>final murmur3f = murmur3.murmur3f;</code>
+        </line>
+    </lines>
+    <config branch-coverage="true" description-file="false" function-coverage="true" genhtml_hi_limit="90" genhtml_med_limit="75" legend="false" no-sort="false" no-source="false"/>
+    <base href="../"/>
+    <base href="../"/>
+</coverage>

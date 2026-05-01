@@ -1,3 +1,6 @@
+import 'dart:typed_data';
+
+import '_helpers.dart';
 import 'uint.dart' show IUint32;
 
 /// 32-bit arithmetic based on a 32-bit int value. This implementation uses
@@ -6,34 +9,34 @@ import 'uint.dart' show IUint32;
 // ignore: camel_case_types
 class Uint32_int_48bit_mul implements IUint32 {
   static const _mask16 = 0x0000FFFF;
-  static const _mask32 = 0xFFFFFFFF;
 
-  static int _clamp(int n) => n & _mask32;
-
-  Uint32_int_48bit_mul(int num) : _num = _clamp(num);
+  Uint32_int_48bit_mul(int value) : _value = clamp32(value);
 
   @override
-  int get value => _num;
-  int _num;
+  int get value => _value;
+  int _value;
 
   @override
-  int loadLEBytes(List<int> bytes, int offset, {int fromByte = 0}) {
-    var idx = offset, len = bytes.length, count = 0;
-    if (fromByte == 0) {
-      _num = 0;
+  int loadLEBytes(ByteData bytes, int offset, {int fromByte = 0}) {
+    final len = bytes.lengthInBytes;
+    if (fromByte == 0 && len - offset >= 4) {
+      _value = bytes.getUint32(offset, Endian.little);
+      return 4;
     }
-    var n = fromByte * 8;
-    while (idx < len && n < 32) {
-      _num |= bytes[idx] << n;
-      count++;
-      idx++;
-      n += 8;
+
+    var count = fromByte * 8;
+    var value = (fromByte == 0) ? 0 : _value;
+    while (count < 32 && offset < len) {
+      value |= bytes.getUint8(offset) << count;
+      count += 8;
+      offset++;
     }
-    return count;
+    _value = value;
+    return count ~/ 8 - fromByte;
   }
 
   @override
-  void add(IUint32 other) => _num = _clamp(_num + other.value);
+  void add(IUint32 other) => _value = clamp32(_value + other.value);
 
   @override
   void mul(IUint32 other) {
@@ -42,25 +45,21 @@ class Uint32_int_48bit_mul implements IUint32 {
     // 32-bit multiplication
     // on browser platforms, ints are safe up to 53-bit
     // decomposing multiplication as 32-bit * 16-bit yielding 48-bits
-    final lo = (_num * (n & _mask16)) & _mask32;
-    final hi = (_num * (n >> 16)) & _mask16;
+    final lo = (_value * (n & _mask16)) & mask32;
+    final hi = (_value * (n >> 16)) & _mask16;
 
-    _num = _clamp(lo + (hi << 16));
+    _value = clamp32(lo + (hi << 16));
   }
 
   @override
-  void rotl(int n) => _num = _clamp(_num << n) | (_num >> (32 - n));
+  void rotl(int n) => _value = clamp32(_value << n) | (_value >> (32 - n));
 
   @override
-  void shl(int n) => _num = _clamp(_num << n);
+  void shl(int n) => _value = clamp32(_value << n);
 
   @override
-  void xor(IUint32 other) => _num ^= other.value;
+  void xor(IUint32 other) => _value ^= other.value;
 
   @override
-  void xshr(int n) => _num ^= (_num >> n);
+  void xshr(int n) => _value ^= (_value >> n);
 }
-
-/// Type definition for platform-specific implementation
-// ignore: camel_case_types
-typedef Uint32_int_xplat = Uint32_int_48bit_mul;

@@ -1,73 +1,62 @@
+import 'dart:typed_data';
+
+import '_helpers.dart';
 import 'uint.dart' show IUint64;
 
 /// 64-bit arithmetic based on a [BigInt] value.
 // ignore: camel_case_types
 class Uint64_BigInt implements IUint64 {
-  static final _mask = BigInt.parse('0xFFFFFFFFFFFFFFFF');
   static final _loMask = BigInt.parse('0x00000000FFFFFFFF');
   static final _hiMask = BigInt.parse('0xFFFFFFFF00000000');
 
-  static BigInt _clamp(BigInt n) =>
-      (BigInt.zero <= n && n <= _mask) ? n : (n & _mask);
-
-  Uint64_BigInt(dynamic num)
-      : _num = (num is BigInt)
-            ? num
-            : _clamp((num is String) ? BigInt.parse(num) : BigInt.from(num));
+  Uint64_BigInt(Object? value) : _value = toBigInt(value);
 
   @override
-  BigInt get value => _num;
-  BigInt _num;
+  BigInt get value => _value;
+  BigInt _value;
 
   @override
-  int loadLEBytes(List<int> bytes, int offset, {int fromByte = 0}) {
-    var idx = offset, len = bytes.length, count = 0;
-    int lo, hi;
-    if (fromByte == 0) {
-      lo = 0;
-      hi = 0;
-    } else {
-      lo = (_num & _loMask).toInt();
-      hi = ((_num & _hiMask) >> 32).toInt();
+  int loadLEBytes(ByteData bytes, int offset, {int fromByte = 0}) {
+    final len = bytes.lengthInBytes;
+    if (fromByte == 0 && len - offset >= 8) {
+      final lo = bytes.getUint32(offset, Endian.little);
+      final hi = bytes.getUint32(offset + 4, Endian.little);
+      _value = (BigInt.from(hi) << 32) | BigInt.from(lo);
+      return 8;
     }
-    if (fromByte < 4) {
-      var n = fromByte * 8;
-      while (idx < len && n < 32) {
-        lo |= bytes[idx] << n;
-        count++;
-        idx++;
-        n += 8;
-      }
-      fromByte = 4;
+
+    var count = fromByte * 8;
+    var lo = (fromByte == 0) ? 0 : (_value & _loMask).toInt();
+    var hi = (fromByte == 0) ? 0 : ((_value & _hiMask) >> 32).toInt();
+    while (count < 32 && offset < len) {
+      lo |= bytes.getUint8(offset) << count;
+      count += 8;
+      offset++;
     }
-    if (fromByte >= 4) {
-      var n = (fromByte - 4) * 8;
-      while (idx < len && n < 32) {
-        hi |= bytes[idx] << n;
-        count++;
-        idx++;
-        n += 8;
-      }
+    while (count < 64 && offset < len) {
+      hi |= bytes.getUint8(offset) << (count - 32);
+      count += 8;
+      offset++;
     }
-    _num = (BigInt.from(hi) << 32) | BigInt.from(lo);
-    return count;
+    _value = (BigInt.from(hi) << 32) | BigInt.from(lo);
+    return count ~/ 8 - fromByte;
   }
 
   @override
-  void add(IUint64 other) => _num = _clamp(_num + other.value);
+  void add(IUint64 other) => _value = clamp64(_value + other.value);
 
   @override
-  void mul(IUint64 other) => _num = _clamp(_num * other.value);
+  void mul(IUint64 other) => _value = clamp64(_value * other.value);
 
   @override
-  void rotl(int n) => _num = _clamp(_num << n | (_num >> (64 - n)));
+  void rotl(int n) => _value = clamp64(_value << n | (_value >> (64 - n)));
 
   @override
-  void xor(IUint64 other) => _num ^= other.value;
+  void xor(IUint64 other) => _value ^= other.value;
 
   @override
-  void shl(int n) => _num = _clamp(_num << n);
+  void shl(int n) => _value = clamp64(_value << n);
 
   @override
-  void xshr(int n) => _num ^= (_num >> n);
+  void xshr(int n) => _value ^= (_value.toUnsigned(64) >> n);
 }
