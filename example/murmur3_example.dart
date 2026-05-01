@@ -64,9 +64,11 @@ BigInt encodeDoubleAsUInt64(double value) {
 }
 
 extension IntHexExt on int {
-  toHex(int bits) => toRadixString(16).padLeft(bits ~/ 4, '0').toUpperCase();
+  String toHex(int bits) =>
+      toRadixString(16).padLeft(bits ~/ 4, '0').toUpperCase();
 }
 
 extension BigIntHexExt on BigInt {
-  toHex(int bits) => toRadixString(16).padLeft(bits ~/ 4, '0').toUpperCase();
+  String toHex(int bits) =>
+      toRadixString(16).padLeft(bits ~/ 4, '0').toUpperCase();
 }
